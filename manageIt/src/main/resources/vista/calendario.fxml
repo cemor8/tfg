@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import atlantafx.base.controls.Calendar?>
+<?import io.github.palexdev.materialfx.controls.MFXScrollPane?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="801.0" prefWidth="1106.0" styleClass="fondo" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ControllerCalendario">
+   <children>
+      <Calendar fx:id="calendario" layoutX="597.0" layoutY="192.0" onMouseClicked="#mostrarContenidoDia" prefHeight="450.0" prefWidth="428.0" />
+      <MFXScrollPane fx:id="scroll" layoutX="67.0" layoutY="183.0" prefHeight="589.0" prefWidth="486.0" styleClass="scrollProyectos" />
+      <Label layoutX="43.0" layoutY="33.0" prefHeight="51.0" prefWidth="301.0" styleClass="indicar" text="%calendario.calendario" />
+   </children>
+</AnchorPane>

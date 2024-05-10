@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import io.github.palexdev.materialfx.controls.MFXScrollPane?>
+<?import io.github.palexdev.materialfx.controls.MFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane maxHeight="1237.0" prefHeight="801.0" prefWidth="1106.0" styleClass="fondo" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ControllerVistaConfiguracion">
+   <children>
+      <MFXScrollPane fitToHeight="true" fitToWidth="true" layoutX="177.0" layoutY="101.0" prefHeight="600.0" prefWidth="752.0" styleClass="scrollProyectos">
+         <content>
+            <VBox prefHeight="1257.0" prefWidth="729.0">
+               <children>
+                  <HBox minHeight="200.0" prefHeight="200.0" prefWidth="707.0" styleClass="cadaHboxConfig">
+                     <children>
+                        <AnchorPane prefHeight="130.0" prefWidth="739.0">
+                           <children>
+                              <Label layoutX="31.0" layoutY="21.0" prefHeight="51.0" prefWidth="150.0" styleClass="labelCadaConfiguracion" text="%config.nombre" />
+                              <MFXTextField fx:id="introducirNombre" layoutX="153.0" layoutY="76.0" prefHeight="49.0" prefWidth="379.0" styleClass="introducirContenido" />
+                              <MFXButton layoutX="598.0" layoutY="74.0" onMouseClicked="#guardarNombre" prefHeight="46.0" prefWidth="84.0" styleClass="btnGuardarConfiguracion" text="%config.btn" />
+                              <Label fx:id="errorNombre" layoutX="161.0" layoutY="125.0" prefHeight="17.0" prefWidth="182.0" styleClass="error" />
+                           </children>
+                        </AnchorPane>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox minHeight="200.0" prefHeight="194.0" prefWidth="707.0" styleClass="cadaHboxConfig">
+                     <children>
+                        <AnchorPane prefHeight="200.0" prefWidth="737.0">
+                           <children>
+                              <Label layoutX="31.0" layoutY="21.0" prefHeight="51.0" prefWidth="150.0" styleClass="labelCadaConfiguracion" text="%config.apellidos" />
+                              <MFXTextField fx:id="introducirApellido" layoutX="154.0" layoutY="76.0" prefHeight="49.0" prefWidth="379.0" styleClass="introducirContenido" />
+                              <MFXButton layoutX="595.0" layoutY="74.0" onMouseClicked="#guardarApellido" prefHeight="46.0" prefWidth="84.0" styleClass="btnGuardarConfiguracion" text="%config.btn" />
+                              <Label fx:id="errorApellidos" layoutX="162.0" layoutY="125.0" prefHeight="17.0" prefWidth="182.0" styleClass="error" />
+                           </children>
+                        </AnchorPane>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox minHeight="200.0" prefHeight="194.0" prefWidth="707.0" styleClass="cadaHboxConfig">
+                     <children>
+                        <AnchorPane prefHeight="194.0" prefWidth="708.0">
+                           <children>
+                              <Label layoutX="32.0" layoutY="5.0" prefHeight="51.0" prefWidth="150.0" styleClass="labelCadaConfiguracion" text="%config.tema" />
+                              <MFXButton fx:id="btnOscuro" layoutX="224.0" layoutY="65.0" onMouseClicked="#cambiarOscuro" prefHeight="50.0" prefWidth="113.0" styleClass="btnOpciones" text="%config.oscuro" />
+                              <MFXButton fx:id="btnClaro" layoutX="431.0" layoutY="65.0" onMouseClicked="#cambiarClaro" prefHeight="50.0" prefWidth="113.0" styleClass="btnOpciones" text="%config.claro" />
+                           </children>
+                        </AnchorPane>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox minHeight="200.0" prefHeight="194.0" prefWidth="707.0" styleClass="cadaHboxConfig">
+                     <children>
+                        <AnchorPane prefHeight="194.0" prefWidth="708.0">
+                           <children>
+                              <Label layoutX="31.0" layoutY="21.0" prefHeight="51.0" prefWidth="150.0" styleClass="labelCadaConfiguracion" text="%config.idioma" />
+                              <MFXButton fx:id="btnEspañol" layoutX="224.0" layoutY="81.0" onMouseClicked="#cambiarEspañol" prefHeight="50.0" prefWidth="113.0" styleClass="btnOpciones" text="%config.español" />
+                              <MFXButton fx:id="btnIngles" layoutX="431.0" layoutY="81.0" onMouseClicked="#cambiarIngles" prefHeight="50.0" prefWidth="113.0" styleClass="btnOpciones" text="%config.ingles" />
+                           </children>
+                        </AnchorPane>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox minHeight="200.0" prefHeight="194.0" prefWidth="707.0" styleClass="cadaHboxConfig">
+                     <children>
+                        <AnchorPane prefHeight="194.0" prefWidth="708.0">
+                           <children>
+                              <Label layoutX="31.0" layoutY="21.0" prefHeight="51.0" prefWidth="150.0" styleClass="labelCadaConfiguracion" text="%config.bio" />
+                              <TextArea fx:id="introducirBio" layoutX="207.0" layoutY="24.0" prefHeight="146.0" prefWidth="292.0" styleClass="areaBio" wrapText="true" />
+                              <MFXButton layoutX="594.0" layoutY="79.0" onMouseClicked="#guardarBio" prefHeight="46.0" prefWidth="84.0" styleClass="btnGuardarConfiguracion" text="%config.btn" />
+                              <Label fx:id="errorBio" layoutX="210.0" layoutY="176.0" prefHeight="17.0" prefWidth="182.0" styleClass="error" />
+                           </children>
+                        </AnchorPane>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox minHeight="200.0" prefHeight="194.0" prefWidth="707.0" styleClass="cadaHboxConfig">
+                     <children>
+                        <AnchorPane prefHeight="194.0" prefWidth="731.0">
+                           <children>
+                              <Label layoutX="31.0" layoutY="21.0" prefHeight="51.0" prefWidth="150.0" styleClass="labelCadaConfiguracion" text="%config.imagen" />
+                              <ImageView fx:id="imgPersona" fitHeight="150.0" fitWidth="200.0" layoutX="260.0" layoutY="22.0" pickOnBounds="true" styleClass="imgPersona" />
+                              <ImageView fx:id="imgEditar" fitHeight="35.0" fitWidth="37.0" layoutX="464.0" layoutY="137.0" onMouseClicked="#editarImagen" pickOnBounds="true" preserveRatio="true" styleClass="edit" />
+                              <MFXButton layoutX="594.0" layoutY="79.0" onMouseClicked="#guardarImagen" prefHeight="46.0" prefWidth="84.0" styleClass="btnGuardarConfiguracion" text="%config.btn" />
+                              <Label fx:id="errorImagen" layoutX="260.0" layoutY="177.0" prefHeight="17.0" prefWidth="182.0" styleClass="error" />
+                           </children>
+                        </AnchorPane>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                  </HBox>
+               </children>
+            </VBox>
+         </content>
+      </MFXScrollPane>
+   </children>
+</AnchorPane>

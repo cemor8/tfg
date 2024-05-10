@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="371.0" prefWidth="342.0" styleClass="contenedorVistaCadaProyecto" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ControllerCadaTarea">
+   <children>
+      <ImageView fx:id="imagen" fitHeight="114.0" fitWidth="344.0" pickOnBounds="true" styleClass="imagenVistaCadaProyecto" />
+      <ImageView fx:id="imagenCreador" fitHeight="64.0" fitWidth="86.0" layoutX="135.0" layoutY="90.0" pickOnBounds="true" preserveRatio="true" />
+      <Label fx:id="nombre" layoutX="11.0" layoutY="169.0" prefHeight="33.0" prefWidth="199.0" styleClass="labelVistaCadaProyecto" text="Label" />
+      <Label fx:id="fechaCreacion" layoutX="35.0" layoutY="210.0" prefHeight="27.0" prefWidth="108.0" styleClass="fechaVistaCadaProyecto" text="Label" />
+      <Label fx:id="fechaEntrega" layoutX="35.0" layoutY="248.0" prefHeight="27.0" prefWidth="108.0" styleClass="fechaVistaCadaProyecto" text="Label" />
+      <Label fx:id="descripcion" alignment="TOP_LEFT" layoutX="15.0" layoutY="293.0" prefHeight="64.0" prefWidth="316.0" styleClass="descripcionVistaCadaProyecto" text="Label" />
+      <ImageView fx:id="imagenVer" fitHeight="40.0" fitWidth="50.0" layoutX="221.0" layoutY="217.0" onMouseClicked="#verTarea" pickOnBounds="true" preserveRatio="true" styleClass="ojoVistaCadaProyecto" />
+      <ImageView fx:id="imagenBasura" fitHeight="40.0" fitWidth="50.0" layoutX="280.0" layoutY="217.0" onMouseClicked="#eliminarTarea" pickOnBounds="true" preserveRatio="true" styleClass="papeleraVistaCadaProyecto" />
+      <ImageView fx:id="fotoCreacion" fitHeight="20.0" fitWidth="19.0" layoutX="11.0" layoutY="213.0" pickOnBounds="true" preserveRatio="true" styleClass="imagenFecha" />
+      <ImageView fx:id="fotoEntrega" fitHeight="20.0" fitWidth="19.0" layoutX="11.0" layoutY="251.0" pickOnBounds="true" preserveRatio="true" styleClass="imagenFechaEntrega" />
+      <Label fx:id="cliente" alignment="CENTER" layoutX="11.0" layoutY="130.0" prefHeight="33.0" prefWidth="94.0" styleClass="estadoVistaCada" text="Label" />
+   </children>
+</AnchorPane>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane fx:id="padre" prefHeight="908.0" prefWidth="1306.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ControllerContenedor">
+   <children>
+      <AnchorPane fx:id="menuLateral" prefHeight="908.0" prefWidth="210.0" />
+      <AnchorPane fx:id="menuSuperior" layoutX="200.0" prefHeight="107.0" prefWidth="1106.0" />
+      <AnchorPane fx:id="rellenar" layoutX="200.0" layoutY="107.0" prefHeight="801.0" prefWidth="1106.0" />
+   </children>
+</AnchorPane>

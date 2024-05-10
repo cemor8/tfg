@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="801.0" prefWidth="1106.0" styleClass="fondo" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ControllerVistaCadaContacto">
+   <children>
+      <MFXButton fx:id="btn" layoutX="429.0" layoutY="655.0" onMouseClicked="#gestionarContacto" prefHeight="61.0" prefWidth="265.0" styleClass="btnVistaCadaContacto" />
+      <AnchorPane fx:id="anchor" layoutX="123.0" layoutY="37.0" prefHeight="570.0" prefWidth="876.0" styleClass="fondoNota">
+         <children>
+            <Label fx:id="descripcion" alignment="TOP_CENTER" layoutX="54.0" layoutY="325.0" prefHeight="221.0" prefWidth="768.0" styleClass="descripcionVistaCadaContacto" text="Label" wrapText="true">
+               <padding>
+                  <Insets top="15.0" />
+               </padding></Label>
+            <ImageView fx:id="img" fitHeight="100.0" fitWidth="100.0" layoutX="177.0" layoutY="92.0" pickOnBounds="true" preserveRatio="true" />
+            <Label fx:id="labelNombre" layoutX="305.0" layoutY="76.0" prefHeight="50.0" prefWidth="404.0" styleClass="nombreContacto" text="Label" />
+            <Label fx:id="labelPuesto" layoutX="305.0" layoutY="125.0" prefHeight="35.0" prefWidth="265.0" styleClass="puestoVistaCadaContacto" text="Label" />
+            <Label fx:id="labelCorreo" layoutX="305.0" layoutY="166.0" prefHeight="35.0" prefWidth="299.0" styleClass="correoVistaCadaContacto" text="Label" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

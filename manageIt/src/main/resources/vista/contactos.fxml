@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import io.github.palexdev.materialfx.controls.MFXScrollPane?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="801.0" prefWidth="1106.0" styleClass="fondo" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ControllerContactos">
+   <children>
+      <MFXScrollPane fx:id="scroll" layoutX="94.0" layoutY="174.0" prefHeight="601.0" prefWidth="995.0" styleClass="scrollProyectos" />
+      <MFXButton fx:id="btnMeter" layoutX="1011.0" layoutY="699.0" onMouseClicked="#meter" prefHeight="64.0" prefWidth="75.0" styleClass="btnFlotante" />
+      <Label layoutX="43.0" layoutY="44.0" prefHeight="51.0" prefWidth="301.0" styleClass="indicar" text="%contactos.contactos" />
+   </children>
+</AnchorPane>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="184.0" prefWidth="313.0" styleClass="fondoCadaNota" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ControllerCadaNota">
+   <children>
+      <Label fx:id="labelTitulo" layoutX="14.0" layoutY="10.0" prefHeight="42.0" prefWidth="159.0" styleClass="tituloCadaNota" text="Label" />
+      <Label fx:id="labelFecha" layoutX="43.0" layoutY="68.0" prefHeight="17.0" prefWidth="100.0" styleClass="fechaCadaNota" text="Label" />
+      <ImageView fx:id="imagen" fitHeight="17.0" fitWidth="17.0" layoutX="19.0" layoutY="69.0" pickOnBounds="true" preserveRatio="true" styleClass="imagenFecha" />
+      <ImageView fx:id="imagenOjo" fitHeight="29.0" fitWidth="27.0" layoutX="230.0" layoutY="128.0" onMouseClicked="#ver" pickOnBounds="true" preserveRatio="true" styleClass="ojoVistaCadaProyecto" />
+      <ImageView fx:id="imagenPapelera" fitHeight="29.0" fitWidth="27.0" layoutX="272.0" layoutY="128.0" onMouseClicked="#borrarNota" pickOnBounds="true" preserveRatio="true" styleClass="papeleraVistaCadaProyecto" />
+      <Label fx:id="labelDescripcion" alignment="TOP_LEFT" layoutX="20.0" layoutY="116.0" prefHeight="61.0" prefWidth="174.0" styleClass="descripcionCadaNota" text="Label" wrapText="true" />
+   </children>
+</AnchorPane>

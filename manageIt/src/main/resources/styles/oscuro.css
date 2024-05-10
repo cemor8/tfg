@@ -1,0 +1,1044 @@
+/*
+Estilos generales
+*/
+
+.fondo{
+    -fx-background-color : #131313;
+}
+.btn{
+    -fx-background-color : #00E18A;
+    -fx-text-fill : "black";
+    -fx-background-radius : 10px;
+    -fx-font-family : "Roboto";
+    -fx-text-size : 18px;
+}
+.hboxLateral:hover{
+    -fx-cursor : hand;
+}
+.btn:hover{
+    -fx-scale-x: 1.1;
+        -fx-scale-y: 1.1;
+        -fx-cursor: hand;
+}
+/*
+Estilos Login
+*/
+
+.textfieldLogin{
+    -fx-font-size: 14px;
+    -fx-min-height: 10;
+    -fx-max-height: 35;
+    -fx-font-family : "Roboto";
+    -fx-font-style: italic;
+    -fx-border-color: none;
+
+}
+.textfieldLogin:pressed, .textfieldLogin:hover{
+    -fx-border-color: #00E18A;
+}
+
+.error{
+    -fx-font-family : "Roboto";
+    -fx-text-fill : "red";
+}
+.labelLogin{
+   -fx-text-fill : "white";
+   -fx-font-family : "Roboto";
+   -fx-text-size : 18px;
+}
+
+/*
+Estilos Menu Lateral
+*/
+
+#fondoMenuLateral{
+    -fx-background-color : #1F1F1F;
+}
+.hboxLateral:selected, .hboxLateral:hover{
+    -fx-background-color: #ACABBB;
+}
+.hboxLateral{
+    -fx-background-color: transparent;
+}
+.labelLateral{
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 14px;
+    -fx-font-family: 'Roboto Flex', sans-serif;
+}
+
+
+/*
+Estilos Menu Superior
+*/
+
+.barraBusqueda{
+    -fx-min-height: 10;
+    -fx-max-height: 30;
+    -fx-border-color : none;
+    -fx-text-size : 14px;
+    -fx-font-family : "Roboto";
+}
+.barraBusqueda:pressed, .barraBusqueda:hover{
+    -fx-border-color: #00E18A;
+}
+.labelMenuSuperiorNombre{
+    -fx-text-fill:"white";
+    -fx-font-size: 30px;
+    -fx-font-family : "Roboto";
+}
+
+/*
+Estilos Panel
+*/
+
+.labelMostrarNombre{
+    -fx-font-family: 'Roboto Mono', sans-serif;
+    -fx-font-size: 34px;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-weight : bold;
+}
+.labelSecciones{
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 16px;
+    -fx-font-family: 'Roboto Mono';
+    -fx-font-weight: bold;
+}
+
+.labelTerminado{
+    -fx-font-family: "Roboto Flex";
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 46px;
+    -fx-font-weight: bold;
+}
+.terminados{
+    -fx-font-family: "Roboto Flex";
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+}
+.btnSecciones{
+
+}
+.contenedorProyectos{
+    -fx-background-color : #1F1F1F;
+    -fx-background-radius: 10px;
+}
+.seccionTerminado{
+    -fx-background-color : #1F1F1F;
+    -fx-background-radius: 5px;
+}
+.hboxTarjetaProyecto{
+    -fx-padding: 5;
+    -fx-spacing: 5;
+    -fx-alignment: center-left;
+    -fx-background-color: #454545;
+    -fx-background-radius: 5;
+}
+.nombreTarjetaProyecto{
+    -fx-font-size: 14px;
+    -fx-text-fill: white;
+    -fx-font-family : "Roboto Mono";
+    -fx-min-width: 90;
+}
+.estadoTarjetaProyecto{
+    -fx-border-color: black;
+    -fx-border-width: 2;
+}
+.btnTarjetaProyecto{
+    -fx-background-color: #00C87B;
+    -fx-padding: 5 5;
+    -fx-background-radius: 5;
+    -fx-min-width: 70;
+    -fx-min-height: 30;
+    -fx-font-weight : bold;
+    -fx-font-family : "Roboto Mono";
+    -fx-text-size : 14px;
+}
+.btnTarjetaProyecto:hover{
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+    -fx-cursor: hand;
+}
+
+/*
+Estilos cada Proyecto
+*/
+.contenedorVistaCadaProyecto{
+    -fx-background-radius: 10px;
+    -fx-background-color : #1F1F1F;
+    -fx-scale-x: 1;
+    -fx-scale-y: 1;
+    -fx-cursor: default;
+    -transition: all 0.2s ease-in-out;
+}
+.contenedorVistaCadaProyecto:hover{
+    -fx-scale-x: 1.01;
+    -fx-scale-y: 1.01;
+    -fx-cursor: hand;
+}
+.fechaVistaCadaProyecto{
+    -fx-font-family: 'Roboto Mono', sans-serif;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 12px;
+}
+.descripcionVistaCadaProyecto{
+    -fx-font-family: 'Roboto Mono', sans-serif;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 16px;
+}
+.labelVistaCadaProyecto{
+    -fx-font-family: 'Roboto Mono', sans-serif;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 18px;
+}
+.imagenVistaCadaProyecto{
+
+}
+.papeleraVistaCadaProyecto{
+    -fx-image: url(../images/proyectos/vistaCadaProyecto/Trash.png);
+
+    -fx-scale-x: 1;
+    -fx-scale-y: 1;
+    -fx-cursor: default;
+    -transition: all 0.2s ease-in-out;
+}
+.papeleraVistaCadaProyecto:hover{
+    -fx-image: url(../images/proyectos/vistaCadaProyecto/TrashCan.png);
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+    -fx-cursor: hand;
+}
+
+.ojoVistaCadaProyecto{
+    -fx-image: url(../images/proyectos/vistaCadaProyecto/Eye.png);
+    -fx-scale-x: 1;
+    -fx-scale-y: 1;
+    -transition: all 0.2s ease-in-out;
+
+}
+.ojoVistaCadaProyecto:hover{
+    -fx-image: url(../images/proyectos/vistaCadaProyecto/EyeV.png);
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+    -fx-cursor: hand;
+}
+
+
+/*
+Vista Proyectos
+*/
+
+.labelCantidadProyectos{
+   -fx-font-family: 'Roboto Mono', sans-serif;
+   -fx-text-fill: #FFFFFF;
+   -fx-font-size: 42px;
+   -fx-font-weight : bold;
+}
+
+.indicar{
+
+    -fx-font-family: 'Roboto Mono', sans-serif;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 42px;
+    -fx-font-weight : bold;
+}
+
+
+.labelNombreCantidadProyectos{
+    -fx-font-family: 'Roboto Mono', sans-serif;
+       -fx-text-fill: #FFFFFF;
+       -fx-font-size: 16px;
+       -fx-font-weight : bold;
+}
+
+.btnFlotante{
+    -fx-background-radius: 50%;
+    -fx-background-color: #00E18A;
+    -fx-min-width: 70px;
+    -fx-min-height: 70px;
+    -fx-max-width: 70px;
+    -fx-max-height: 70px;
+    -fx-background-image: url(../images/global/Plus.png);
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center center;
+    -fx-scale-x: 1;
+    -fx-scale-y: 1;
+    -transition: all 0.2s ease-in-out;
+    -fx-background-size: 60% 70%
+
+}
+.btnFlotante:hover{
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+    -fx-cursor: hand;
+}
+.btnFlotante:pressed{
+    -fx-scale-x: 0.9;
+    -fx-scale-y: 0.9;
+    -fx-cursor: hand;
+}
+
+.scrollProyectos{
+
+}
+.scrollProyectos > .viewport {
+    -fx-background-color: transparent;
+}
+
+.scrollProyectos > .scroll-bar:vertical, .scrollProyectos > .scroll-bar:horizontal {
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+    -fx-opacity: 0;
+}
+
+.scrollProyectos {
+    -fx-background-color: transparent;
+}
+.text-area .scroll-pane .scroll-bar:vertical, .text-area .scroll-pane .scroll-bar:horizontal {
+    -fx-background-color: transparent;
+    -fx-padding: 0;
+    -fx-opacity: 0;
+    -fx-pref-width: 0;
+    -fx-pref-height: 0;
+    -fx-max-width: 0;
+    -fx-max-height: 0;
+    -fx-min-width: 0;
+    -fx-min-height: 0;
+    -fx-background-insets: 0;
+    -fx-background-radius: 0;
+}
+
+/*
+Vista Crear Proyecto
+*/
+.contenedor{
+    -fx-background-color : #1F1F1F;
+    -fx-background-radius : 10px
+}
+.labelCrear{
+    -fx-text-fill: "white";
+    -fx-font-family:"Roboto";
+    -fx-font-size: 16px;
+}
+.introducciones{
+    -fx-text-fill: "white";
+    -fx-font-family:"Roboto";
+    -fx-font-size: 30px;
+    -fx-font-weight : bold;
+}
+
+.introducirNombreCrear{
+    -fx-max-width: 250px;
+    -fx-max-height: 30px;
+    -fx-min-width: 250px;
+    -fx-min-height: 30px;
+    -fx-border-color: none;
+}
+.introducirNombreCrear:pressed, .introducirNombreCrear:hover{
+    -fx-border-color: #00E18A;
+}
+.btnCrear{
+    -fx-background-color : #00E18A;
+    -fx-text-fill : "black";
+    -fx-background-radius : 5px;
+    -fx-font-family : "Roboto";
+    -fx-text-size : 18px;
+}
+.placeholderImagen{
+    -fx-image: url(../images/global/placeholder.jpg);
+}
+
+
+/*
+Vista Cada Proyecto
+*/
+
+.btnAtras{
+    -fx-background-radius: 50%;
+    -fx-min-width: 50px;
+    -fx-min-height: 60px;
+    -fx-max-width: 50px;
+    -fx-max-height: 60px;
+    -fx-background-color : none;
+    -fx-background-image: url(../images/menuLateral/ChevronLeft.png);
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center center;
+    -fx-background-size: 90% 90%;
+    -fx-scale-x: 1;
+    -fx-scale-y: 1;
+    -transition: all 0.2s ease-in-out;
+}
+.btnAtras:hover{
+    -fx-background-image: url(../images/menuLateral/ChevronLeftV.png);
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+    -fx-cursor: hand;
+}
+.btnAtras:pressed{
+    -fx-background-image: url(../images/menuLateral/ChevronLeftV.png);
+    -fx-scale-x: 0.9;
+    -fx-scale-y: 0.9;
+    -fx-cursor: hand;
+}
+
+
+
+/*
+Estilos panel de notas
+*/
+
+.fondoNota{
+    -fx-background-color : #1F1F1F;
+    -fx-background-radius : 10px;
+}
+
+.tituloVerNota{
+    -fx-text-fill : "white";
+    -fx-font-family : "Roboto Flex";
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+}
+.tituloVerNota .content{
+    -fx-text-alignment: center;
+}
+
+
+.creadorVerNota{
+    -fx-text-fill : "white";
+    -fx-font-family : "Roboto Mono";
+    -fx-font-size: 12px;
+}
+.nombreCreadorVerNota{
+    -fx-text-fill : "white";
+    -fx-font-family : "Roboto";
+    -fx-font-size: 16px;
+}
+
+.fechaVerNota{
+    -fx-text-fill : "white";
+    -fx-font-family : "Roboto";
+    -fx-font-size: 16px;
+}
+
+
+.text-area {
+     -fx-text-fill : "white";
+     -fx-font-size: 16px;
+     -fx-background-color: transparent;
+     -fx-background-insets: 0;
+     -fx-background-radius: 0;
+     -fx-control-inner-background: transparent;
+     -fx-highlight-fill: transparent;
+     -fx-highlight-text-fill: black;
+ }
+
+ .text-area .content {
+     -fx-background-color: transparent;
+ }
+
+ .text-area .scroll-pane {
+     -fx-background-color: transparent;
+     -fx-background-insets: 0;
+ }
+
+ .text-area .scroll-pane .viewport { /* Clase para la viewport del scroll pane */
+     -fx-background-color: transparent;
+ }
+
+ .text-area:focused { /* Estilos cuando el TextArea está enfocado */
+     -fx-faint-focus-color: transparent; /* Color de enfoque tenue */
+     -fx-focus-color: transparent; /* Color de enfoque */
+ }
+/*
+Estilos cada Nota
+*/
+.fondoCadaNota{
+    -fx-background-color : #1F1F1F;
+    -fx-background-radius : 10px;
+}
+.descripcionCadaNota{
+    -fx-text-fill : "white";
+    -fx-font-family : "Roboto";
+    -fx-font-size: 14px;
+}
+
+.fechaCadaNota{
+    -fx-text-fill : "white";
+    -fx-font-family : "Roboto Mono";
+    -fx-font-size: 14px;
+}
+
+.tituloCadaNota{
+    -fx-text-fill : "white";
+    -fx-font-family : "Roboto Flex";
+    -fx-font-weight: bold;
+    -fx-font-size: 20px;
+}
+
+/*
+Estilos Contactos
+*/
+
+.vboxContactos{
+    -fx-spacing: 40;
+    -fx-padding: 20;
+}
+
+.imagenContacto{
+}
+.cartaContacto{
+}
+.nombreContactoCarta{
+     -fx-text-fill:"white";
+     -fx-font-size: 16px;
+     -fx-max-width: 125;
+     -fx-min-width: 125;
+     -fx-font-family : "Roboto";
+     -fx-border-color: none;
+}
+
+.cartaContacto{
+     -fx-pref-width: 400px;
+     -fx-background-color: #1F1F1F;
+     -fx-spacing: 5;
+     -fx-padding: 10;
+     -fx-alignment: center-left;
+     -fx-border-color: #1F1F1F;
+     -fx-border-width: 1;
+     -fx-border-radius: 5;
+     -fx-background-radius: 5;
+}
+
+/*
+Estilos vista cada contacto
+*/
+
+.nombreContacto{
+    -fx-text-fill:"white";
+    -fx-font-size: 18px;
+    -fx-font-family : "Roboto Mono";
+    -fx-font-weight : bold;
+}
+.puestoVistaCadaContacto{
+    -fx-text-fill:"white";
+    -fx-font-size: 14px;
+    -fx-font-family : "Roboto Mono";
+}
+
+.correoVistaCadaContacto{
+    -fx-text-fill:"white";
+    -fx-font-size: 12px;
+    -fx-font-family : "Roboto Mono";
+}
+.descripcionVistaCadaContacto{
+    -fx-text-fill:"white";
+    -fx-font-size: 16px;
+    -fx-font-family : "Roboto Mono";
+}
+
+.btnVistaCadaContacto{
+     -fx-background-color: #00C87B;
+     -fx-font-size: 14px;
+     -fx-font-family : "Roboto Mono";
+     -fx-font-weight : bold;
+     -fx-border-radius:5;
+}
+
+/*
+Estilos cada vista
+*/
+.labelNombreJefe{
+    -fx-text-fill:"white";
+    -fx-font-size: 16px;
+    -fx-font-family : "Roboto Mono";
+}
+.labelJefeProyecto{
+    -fx-text-fill:"white";
+    -fx-font-size: 22px;
+    -fx-font-weight : bold;
+    -fx-font-family : "Roboto Mono";
+}
+
+.btnCada{
+     -fx-background-color: #00C87B;
+     -fx-font-size: 14px;
+     -fx-font-family : "Roboto Mono";
+     -fx-font-weight : bold;
+
+
+}
+.btnCada:hover{
+     -fx-scale-x: 1.1;
+     -fx-scale-y: 1.1;
+     -fx-cursor: hand;
+
+}
+
+.labelVistaDescripcion{
+    -fx-text-fill:"white";
+    -fx-font-size: 16px;
+    -fx-font-family : "Roboto Mono";
+}
+.areaDescripcion{
+    -fx-text-fill:"white";
+    -fx-font-size: 14px;
+    -fx-font-family : "Roboto Mono";
+    -fx-background-color: #1F1F1F;
+    -fx-background-radius : 10px;
+    -fx-padding: 10px;
+}
+.labelTituloCadaVista{
+    -fx-text-fill:"white";
+    -fx-font-size: 26px;
+    -fx-font-family : "Roboto Mono";
+     -fx-font-weight : bold;
+}
+.labelEstadoCadaVista{
+    -fx-text-fill:"white";
+    -fx-font-size: 16px;
+    -fx-font-family : "Roboto Mono";
+}
+.combo{
+
+}
+.imgVistaCada{
+
+}
+
+.fechasVistaCada{
+    -fx-text-fill:"white";
+    -fx-font-size: 20px;
+    -fx-font-family : "Roboto Mono";
+}
+
+
+/*
+Configuracion
+*/
+
+.btnOpciones{
+    -fx-background-color : #131313;
+        -fx-text-fill : "white";
+        -fx-background-radius : 5px;
+        -fx-font-family : "Roboto";
+        -fx-text-size : 18px;
+}
+.btnOpciones:selected{
+    -fx-background-color : #00E18A;
+        -fx-text-fill : "black";
+        -fx-background-radius : 5px;
+        -fx-font-family : "Roboto";
+        -fx-text-size : 18px;
+        -fx-font-weight:bold;
+}
+
+.labelCadaConfiguracion{
+    -fx-text-fill:"white";
+    -fx-font-size: 16px;
+    -fx-font-family : "Roboto Mono";
+   -fx-font-weight : bold;
+}
+
+.btnGuardarConfiguracion{
+    -fx-background-color : #00E18A;
+    -fx-text-fill : "black";
+    -fx-background-radius : 5px;
+    -fx-font-family : "Roboto";
+    -fx-text-size : 18px;
+}
+
+.btnOpciones{
+
+}
+.areaBio{
+    -fx-text-fill:"white";
+    -fx-font-size: 14px;
+    -fx-font-family : "Roboto Mono";
+    -fx-background-color: #131313;
+    -fx-background-radius : 10px;
+    -fx-padding: 10px;
+    -fx-font-weight : bold;
+}
+.imgEditar{
+
+}
+.imgPersona{
+
+}
+.cadaHboxConfig{
+    -fx-background-color : #1F1F1F;
+    -fx-background-radius : 10px;
+}
+
+.introducirContenido{
+     -fx-min-height: 40;
+     -fx-max-height: 40;
+     -fx-font-size : 16px;
+     -fx-font-family : "Roboto";
+     -fx-border-color : none;
+}
+
+
+/*
+Imagenes
+*/
+.panel{
+    -fx-image: url(../images/menuLateral/Home.png);
+}
+.panel:hover{
+
+}
+.proyectos, .proyectosSuperior{
+    -fx-image: url(../images/menuLateral/NewProduct.png);
+
+}
+.tareas{
+    -fx-image: url(../images/menuLateral/CheckList.png);
+}
+.notas{
+    -fx-image: url(../images/menuLateral/Paper.png);
+}
+.calendario, .calendarioSuperior{
+    -fx-image: url(../images/menuLateral/Calendar31.png);
+}
+.contactos{
+    -fx-image: url(../images/menuLateral/Contacts.png);
+}
+.config{
+    -fx-image: url(../images/menuLateral/Settings.png);
+}
+.cerrar{
+    -fx-image: url(../images/menuLateral/OpenPane.png);
+}
+
+.panelPresionado{
+    -fx-image: url(../images/menuLateral/HomeV.png);
+}
+.proyectosPresionado, .proyectosSuperior:hover{
+    -fx-image: url(../images/menuLateral/NewProductV.png);
+}
+
+.proyectosSuperior:hover{
+    -fx-cursor: hand;
+}
+
+.tareasPresionado{
+    -fx-image: url(../images/menuLateral/CheckListV.png);
+}
+.notasPresionado{
+    -fx-image: url(../images/menuLateral/PaperV.png);
+}
+.calendarioPresionado, .calendarioSuperior:hover{
+    -fx-image: url(../images/menuLateral/Calendar31V.png);
+}
+.calendarioSuperior:hover{
+    -fx-cursor: hand;
+}
+.contactosPresionado{
+    -fx-image: url(../images/menuLateral/ContactsV.png);
+}
+.configPresionado{
+    -fx-image: url(../images/menuLateral/SettingsV.png);
+}
+.imagenFecha{
+    -fx-image: url(../images/proyectos/vistaCadaProyecto/Calendar.png);
+}
+.imagenFechaEntrega{
+    -fx-image: url(../images/proyectos/vistaCadaProyecto/Schedule.png);
+}
+.imgPerfilSuperior{
+    -fx-cursor: hand;
+}
+.edit{
+    -fx-image: url(../images/global/Edit.png);
+     -fx-scale-x: 1;
+     -fx-scale-y: 1;
+    -transition: all 0.2s ease-in-out;
+}
+.edit:hover{
+    -fx-image: url(../images/global/EditV.png);
+    -fx-cursor: hand;
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+}
+.guardar{
+    -fx-image: url(../images/global/SaveV.png);
+}
+.guardar:hover{
+    -fx-image: url(../images/global/Save.png);
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+    -fx-cursor: hand;
+}
+
+.plusCadaProyectoVista{
+    -fx-image: url(../images/global/PlusMathB.png);
+}
+.plusCadaProyectoVista:hover{
+    -fx-image: url(../images/global/PlusV.png);
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+    -fx-cursor: hand;
+}
+.plusCadaProyectoVista:disabled{
+    -fx-image: url(../images/global/Done.png);
+}
+
+
+
+/*
+Estados y clientes
+*/
+
+.pendiente{
+     -fx-background-color : #FCF5F4;
+     -fx-text-fill : #7A5651;
+     -fx-font-family : "Roboto Mono";
+     -fx-text-size : 16px;
+     -fx-background-radius : 5px;
+}
+.completado{
+     -fx-background-color : #F8EDE3;
+     -fx-text-fill : #8A6A4F;
+     -fx-font-family : "Roboto Mono";
+     -fx-text-size : 16px;
+     -fx-background-radius : 5px;
+}
+.proceso{
+     -fx-background-color : #E6F3EB;
+     -fx-text-fill : #435743;
+     -fx-font-family : "Roboto Mono";
+     -fx-text-size : 16px;
+     -fx-background-radius : 5px;
+}
+
+
+
+
+
+
+/*
+Calendario y datepicker
+*/
+
+.calendar-grid {
+    -fx-background-color: #1F1F1F;
+    -fx-padding: 10;
+    -fx-hgap: 5;
+    -fx-vgap: 5;
+    -fx-background-radius: 5;
+}
+.calendar-grid > .date-cell {
+    -fx-background-color: transparent;
+    -fx-padding: 0;
+    -fx-alignment: BASELINE_CENTER;
+    -fx-opacity: 1.0;
+    -fx-text-fill: #000000;
+    -fx-cell-size: 40;
+    -fx-font-size: 12;
+}
+.calendar-grid > .day-cell {
+    -fx-padding: 2 5 2 5;
+    -fx-background-color: #1F1F1F;
+    -fx-text-fill: white;
+    -fx-border-width: 0;
+    -fx-border-color: transparent;
+    -fx-background-radius: 10;
+}
+.calendar-grid > .hijrah-day-cell {
+    -fx-alignment: TOP_LEFT;
+    -fx-padding: 2;
+    -fx-cell-size: 30;
+}
+
+.calendar-grid > .today {
+    -fx-background-color: #00C87B70;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+
+.date-picker-popup>.calendar-grid>.day-cell:hover {
+    -fx-background-color: #59BA9580;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-scale-x: 1.2;
+        -fx-cursor: hand;
+        -fx-scale-y: 1.2;
+}
+
+.date-picker-popup>.calendar-grid>.previous-month{
+    -fx-text-fill: gray;
+    -fx-fill: white;
+    -fx-font-weight: normal;
+}
+.date-picker-popup>.calendar-grid>.next-month{
+    -fx-text-fill: gray;
+    -fx-font-weight: normal;
+}
+
+
+
+.date-picker-popup {
+    -fx-background-color: #1F1F1F;
+    -fx-background-insets: 0, 1;
+    -fx-background-radius: 4px;
+    -fx-alignment: CENTER;
+    -fx-spacing: 0;
+    -fx-padding: 1;
+}
+
+.date-picker-popup > .month-year-pane {
+    -fx-padding: 10 5 10 5;
+    -fx-background-color: #1F1F1F;
+    -fx-background-insets: 0;
+    -fx-text-fill: white;
+    -fx-background-radius: 5px;
+}
+
+.date-picker-popup > .month-year-pane > .spinner {
+    -fx-spacing: 4;
+    -fx-alignment: CENTER;
+    -fx-fill-height: false;
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-font-size: 12;
+}
+
+.date-picker-popup > .month-year-pane > .spinner > .button {
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+    -fx-background-radius: 0;
+    -fx-cursor: hand;
+}
+
+.date-picker-popup > .month-year-pane > .spinner > .button > .left-arrow,
+.date-picker-popup > .month-year-pane > .spinner > .button > .right-arrow {
+    -fx-background-color: #333333;
+}
+
+.date-picker-popup > .month-year-pane > .label {
+    -fx-alignment: CENTER;
+    -fx-font-size : 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+    -fx-padding: 8;
+}
+
+
+.date-picker-popup > .month-year-pane > .secondary-label {
+    -fx-alignment: BASELINE_CENTER;
+    -fx-padding: 5 0 0 0;
+    -fx-text-fill: white;
+}
+
+
+
+
+
+.back-button {
+  -fx-background-image: url(../images/menuLateral/ChevronLeft.png);
+  -fx-background-size: cover;
+  -fx-background-repeat: no-repeat;
+  -fx-background-color: #1F1F1F;
+  -fx-pref-width: 50px;
+  -fx-background-position: center center;
+  -fx-pref-height: 50px;
+  -fx-translate-x: -20px;
+}
+
+.forward-button {
+  -fx-background-image: url(../images/global/ChevronRight.png);
+  -fx-background-size: cover;
+  -fx-background-position: center center;
+  -fx-background-color: #1F1F1F;
+  -fx-background-repeat: no-repeat;
+
+  -fx-pref-width: 50px;
+  -fx-pref-height: 50px;
+}
+
+.back-button:hover {
+    -fx-scale-x: 1.2;
+    -fx-background-image: url(../images/menuLateral/ChevronLeftV.png);
+     -fx-cursor: hand;
+    -fx-scale-y: 1.2;
+}
+
+.forward-button:hover {
+    -fx-scale-x: 1.2;
+    -fx-cursor: hand;
+    -fx-scale-y: 1.2;
+    -fx-background-image: url(../images/global/ChevronRight.png);
+}
+
+.calendar-grid .day-name-cell{
+     -fx-text-fill: white;
+     -fx-font-weight: bold;
+}
+
+/*
+Seleccionar dia
+*/
+
+.date-picker-popup>.calendar-grid>.selected,
+.date-picker-popup>.calendar-grid>.selected>.secondary-text,
+.date-picker-popup>.calendar-grid>.previous-month.selected,
+.date-picker-popup>.calendar-grid>.previous-month.today.selected,
+.date-picker-popup>.calendar-grid>.next-month.today.selected,
+.date-picker-popup>.calendar-grid>.next-month.selected {
+    -fx-background-color: #3CA57C;
+    -fx-text-fill: white;
+    -fx-fill: -color-date-day-fg-selected;
+    -fx-font-weight: normal;
+}
+.areaDescripcionCrear{
+    -fx-text-fill:"white";
+    -fx-font-size: 14px;
+    -fx-font-family : "Roboto Mono";
+    -fx-background-color: #131313;
+    -fx-background-radius : 10px;
+    -fx-padding: 10px;
+}
+
+
+.btnLupa {
+    -fx-background-radius: 50%;
+    -fx-min-width: 40px;
+    -fx-min-height: 40px;
+    -fx-max-width: 40px;
+    -fx-max-height: 40px;
+    -fx-background-color: white;
+    -fx-background-image: url(../images/menuLateral/lupa.png);
+    -fx-background-size: cover;
+    -fx-background-position: center;
+    -fx-border-color: transparent;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
+    -fx-cursor:hand;
+}
+.btnLupa:hover {
+      -fx-scale-x: 1.1;
+      -fx-scale-y: 1.1;
+}
+.date-picker-popup .label{
+    -fx-text-fill : white;
+}
+
+.imagenPrincipal{
+    -fx-image: url(../images/menuLateral/logo.png);
+}
+.btnVistaCadaContacto:hover{
+     -fx-scale-x: 1.1;
+         -fx-scale-y: 1.1;
+         -fx-cursor: hand;
+}
+.introducirContenido:pressed, .introducirContenido:hover{
+    -fx-border-color: #00E18A;
+}
+.btnCrear:hover{
+    -fx-cursor : hand;
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+
+}
