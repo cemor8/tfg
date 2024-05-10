@@ -579,17 +579,71 @@ public class ConexionBase {
 
     public void eliminarTarea(Integer id){
         MongoCollection<Document> notas = database.getCollection("notas");
-        MongoCollection<Document> proyectos = database.getCollection("proyectos");
         MongoCollection<Document> tareas = database.getCollection("tareas");
+
+        Document tarea = tareas.find(Filters.eq("id", id)).first();
+
+        ArrayList<Integer> idsNotasProyecto = (ArrayList<Integer>) tarea.get("notas");
+
+        for (Integer cadaIdNotaProyecto : idsNotasProyecto) {
+
+            notas.deleteOne(Filters.eq("id", cadaIdNotaProyecto));
+        }
+
         tareas.deleteOne(Filters.eq("id", id));
-        // eliminar las notas de la tarea y luego eliminar de la lista de proyectos la tarea
+
+        //buscar el proyecto de la tarea y eliminar el id de la tarea de la lista del proyecto
+
+
     }
+
+
+
     public void eliminarProyecto(Integer id){
         MongoCollection<Document> notas = database.getCollection("notas");
         MongoCollection<Document> proyectos = database.getCollection("proyectos");
         MongoCollection<Document> tareas = database.getCollection("tareas");
+        Document project = proyectos.find(Filters.eq("id", id)).first();
+        if (project != null) {
+            System.out.println("Proyecto encontrado: " + project.toJson());
+            ArrayList<Integer> idsTareas = (ArrayList<Integer>) project.get("tareas");
+
+
+            ArrayList<Integer> idsNotasProyecto = (ArrayList<Integer>) project.get("notas");
+
+            for (Integer cadaIdNotaProyecto : idsNotasProyecto) {
+
+                notas.deleteOne(Filters.eq("id", cadaIdNotaProyecto));
+            }
+
+
+            for (Integer cadaIdTarea : idsTareas) {
+
+                Document tareaDocumento = tareas.find(Filters.eq("id", cadaIdTarea)).first();
+
+                ArrayList<Integer> idsNotasTarea = (ArrayList<Integer>) tareaDocumento.get("tareas");
+
+                for (Integer cadaIdNotaTarea : idsNotasTarea){
+                    notas.deleteOne(Filters.eq("id",cadaIdNotaTarea));
+                }
+
+                tareas.deleteOne(Filters.eq("id", cadaIdTarea));
+            }
+            proyectos.deleteOne(Filters.eq("id", id));
+
+        } else {
+            System.out.println("No se encontró ningún proyecto con el ID: " + id);
+        }
         proyectos.deleteOne(Filters.eq("id", id));
         //eliminar las tareas del proyecto y las notas del proyecto
+    }
+    public static void eliminarNota(Integer id){
+        MongoCollection<Document> notas = database.getCollection("notas");
+
+        notas.deleteOne(Filters.eq("id", id));
+
+
+        //buscar la nota y eliminarla a donde pertenezca
     }
 
 
