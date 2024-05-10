@@ -1,5 +1,7 @@
 package modelo;
 
+import javafx.scene.image.Image;
+
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -7,8 +9,10 @@ public class Proyecto {
     private String nombre;
     private String cliente;
     private String rutaImagen;
+    private Integer id;
     private String estado;
     private String descripcion;
+    private Image imagen;
     private Date fechaCreacion;
     private Date fechaEntrega;
     private Usuario jefeProyecto;
@@ -30,6 +34,22 @@ public class Proyecto {
         this.notas = notas;
         this.personasAsignadas = personasAsignadas;
         this.rutaVideo = rutaVideo;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public Image getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(Image imagen) {
+        this.imagen = imagen;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public ArrayList<Tarea> getTareas() {

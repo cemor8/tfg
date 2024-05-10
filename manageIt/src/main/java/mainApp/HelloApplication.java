@@ -26,7 +26,10 @@ public class HelloApplication extends Application {
         stage.getIcons().add(new Image("file:src/main/resources/images/menuLateral/logo.png"));
         stage.setScene(scene);
         ConexionBase.getDatabase();
+        ConexionBase.recibirNotas();
         ConexionBase.recibirUsuarios();
+        ConexionBase.recibirProyectos();
+        ConexionBase.recibirTareas();
         stage.show();
     }
 

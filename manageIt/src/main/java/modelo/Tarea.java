@@ -1,11 +1,14 @@
 package modelo;
 
+import javafx.scene.image.Image;
+
 import java.util.ArrayList;
 import java.util.Date;
 
 public class Tarea {
     private String nombre;
     private String estado;
+    private Integer id;
     private String campo;
     private String descripcion;
     private Date fechaCreacion;
@@ -13,6 +16,7 @@ public class Tarea {
     private String rutaimagen;
     private ArrayList<Nota> notas;
     private ArrayList<Usuario> personasAsignadas;
+    private Image imagen;
     private Usuario creador;
     private String rutaVideo;
 
@@ -48,6 +52,22 @@ public class Tarea {
 
     public void setCampo(String campo) {
         this.campo = campo;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public Image getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(Image imagen) {
+        this.imagen = imagen;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public void setCreador(Usuario creador) {

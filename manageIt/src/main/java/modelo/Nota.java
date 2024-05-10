@@ -1,5 +1,7 @@
 package modelo;
 
+import javafx.scene.image.Image;
+
 import java.util.Date;
 
 public class Nota {
@@ -7,6 +9,7 @@ public class Nota {
     private Integer id;
     private String descripcion;
     private String rutaImagen;
+    private Image imagen;
     private Date fechaCreacion;
     private Usuario usuario;
 
@@ -32,6 +35,14 @@ public class Nota {
 
     public Integer getId() {
         return id;
+    }
+
+    public Image getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(Image imagen) {
+        this.imagen = imagen;
     }
 
     public void setId(Integer id) {
