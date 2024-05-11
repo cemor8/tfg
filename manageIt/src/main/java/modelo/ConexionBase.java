@@ -485,7 +485,7 @@ public class ConexionBase {
     }
     public static Image convertirImagen(String base64Image){
         if (base64Image == null || base64Image.isEmpty()) {
-            return new Image("file:"+"src/main/resources/images/usuarios/persona.png");
+            return new Image("file:"+"src/main/resources/images/proyectos/fondoProyectoPrueba.png");
         }
 
         byte[] imageBytes = Base64.getDecoder().decode(base64Image);
@@ -580,6 +580,7 @@ public class ConexionBase {
     public void eliminarTarea(Integer id){
         MongoCollection<Document> notas = database.getCollection("notas");
         MongoCollection<Document> tareas = database.getCollection("tareas");
+        MongoCollection<Document> proyectos = database.getCollection("proyectos");
 
         Document tarea = tareas.find(Filters.eq("id", id)).first();
 
@@ -589,6 +590,11 @@ public class ConexionBase {
 
             notas.deleteOne(Filters.eq("id", cadaIdNotaProyecto));
         }
+
+        proyectos.updateMany(
+                new Document("tareas", id),
+                new Document("$pull", new Document("tareas", id))
+        );
 
         tareas.deleteOne(Filters.eq("id", id));
 
@@ -635,16 +641,44 @@ public class ConexionBase {
             System.out.println("No se encontró ningún proyecto con el ID: " + id);
         }
         proyectos.deleteOne(Filters.eq("id", id));
+
         //eliminar las tareas del proyecto y las notas del proyecto
+
+
+
     }
     public static void eliminarNota(Integer id){
+        // Colecciones
         MongoCollection<Document> notas = database.getCollection("notas");
+        MongoCollection<Document> proyectos = database.getCollection("proyectos");
+        MongoCollection<Document> tareas = database.getCollection("tareas");
+        MongoCollection<Document> usuarios = database.getCollection("usuarios");
+
+        proyectos.updateOne(Filters.eq("notas", id), new Document("$pull", new Document("notas", id)));
+        tareas.updateOne(Filters.eq("notas", id), new Document("$pull", new Document("notas", id)));
+        usuarios.updateOne(Filters.eq("notas", id), new Document("$pull", new Document("notas", id)));
 
         notas.deleteOne(Filters.eq("id", id));
-
-
-        //buscar la nota y eliminarla a donde pertenezca
     }
+    public static void modificarUsuario(Usuario usuario){
+        MongoCollection<Document> usuarios = database.getCollection("usuarios");
+        //meter modificaciones
+        Document updateFields = new Document();
+        usuarios.updateOne(Filters.eq("id", usuario.getId()), new Document("$set", updateFields));
+    }
+
+    public static void crearUsuario(Usuario usuario){
+        MongoCollection<Document> usuarios = database.getCollection("usuarios");
+
+        Document nuevoUsuario = new Document("nombre", usuario.getNombre())
+                .append("apellidos", usuario.getApellidos());
+
+        // Añadir más campos según sean necesarios
+        usuarios.insertOne(nuevoUsuario);
+
+    }
+
+
 
 
     public static void eliminarUsuario(Integer id){
@@ -659,12 +693,47 @@ public class ConexionBase {
         tareas.deleteMany(Filters.eq("creador", id));
         proyectos.deleteMany(Filters.eq("creador", id));
     }
+
+
+
+
     public static void modificarTarea(Tarea tarea){
-        // buscar documento con el id de la tarea y modificar : nombre, estado, descripcion,
+        MongoCollection<Document> tareas = database.getCollection("tareas");
+        //meter modificaciones
+        ArrayList<Integer> notasTarea = new ArrayList<>();
+        for (Nota nota : tarea.getNotas()){
+            notasTarea.add(nota.getId());
+        }
+        ArrayList<Integer> usuariosAsignados = new ArrayList<>();
+        for (Usuario usuario : tarea.getPersonasAsignadas()){
+            usuariosAsignados.add(usuario.getId());
+        }
+        Document updateFields = new Document();
+        tareas.updateOne(Filters.eq("id", tarea.getId()), new Document("$set", updateFields));
     }
-    public static void modificarUsuario(Tarea tarea){
-        // buscar documento con el id de la tarea y modificar : nombre, estado, descripcion,
+
+    public static void modificarProyecto(Proyecto proyecto){
+        MongoCollection<Document> proyectos = database.getCollection("proyectos");
+        //meter modificaciones
+        ArrayList<Integer> notasProyecto = new ArrayList<>();
+        for (Nota nota : proyecto.getNotas()){
+            notasProyecto.add(nota.getId());
+        }
+        ArrayList<Integer> usuariosAsignados = new ArrayList<>();
+        for (Usuario usuario : proyecto.getPersonasAsignadas()){
+            usuariosAsignados.add(usuario.getId());
+        }
+        ArrayList<Integer> tareasProyecto = new ArrayList<>();
+        for (Tarea tarea : proyecto.getTareas()){
+            tareasProyecto.add(tarea.getId());
+        }
+
+
+
+        Document updateFields = new Document();
+        proyectos.updateOne(Filters.eq("id", proyecto.getId()), new Document("$set", updateFields));
     }
+
 
 
     public static void closeConnection() {
@@ -675,91 +744,4 @@ public class ConexionBase {
         }
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    /*
-    public static Tarea recibirTarea(Integer id){
-        ArrayList<Tarea> tareas = new ArrayList<>();
-        MongoCollection<Document> coleccionTareas = database.getCollection("tareas");
-
-        Bson lookupNotas = new Document("$lookup",
-                new Document("from", "notas")
-                        .append("localField", "notas")
-                        .append("foreignField", "id")
-                        .append("as", "notasDetalles"));
-
-        Bson lookupCreador = new Document("$lookup",
-                new Document("from", "usuarios")
-                        .append("localField", "usuario_creador")
-                        .append("foreignField", "id")
-                        .append("as", "usuario_creadorDetalles"));
-
-        Bson lookupContactos = new Document("$lookup",
-                new Document("from", "usuarios")
-                        .append("localField", "asignados")
-                        .append("foreignField", "id")
-                        .append("as", "asignadosDetalles"));
-
-        List<Bson> stages = Arrays.asList(
-                lookupContactos,
-                lookupNotas,
-                lookupCreador
-        );
-        AggregateIterable<Document> result = coleccionTareas.aggregate(stages);
-        Document tareaDoc = result.first();
-        Tarea tarea = null;
-        if (tareaDoc!=null){
-            tarea = new Tarea(null,null,null,null,null,null,null,null,null,null,null);
-            tarea.setId(tareaDoc.getInteger("id"));
-            tarea.setNombre(tareaDoc.getString("nombre"));
-            tarea.setDescripcion(tareaDoc.getString("descripcion"));
-            tarea.setCampo(tareaDoc.getString("campo"));
-            tarea.setEstado(tareaDoc.getString("estado"));
-            tarea.setCreador(ConexionBase.recibirUsuario(tareaDoc.getInteger("usuario_creador")));
-
-            ArrayList<Nota> notasTarea = new ArrayList<>();
-            List<Document> notasDocs = (List<Document>) tareaDoc.get("notasDetalles");
-            if (notasDocs != null) {
-                for (Document notaUsuario : notasDocs) {
-
-                    Nota nota = new Nota(null,null,null,null,null);
-                    nota.setId(notaUsuario.getInteger("id"));
-                    nota.setDescripcion(notaUsuario.getString("descripcion"));
-                    nota.setUsuario(ConexionBase.recibirUsuario(notaUsuario.getInteger("usuario_creador")));
-                    String fechaStr = notaUsuario.getString("fecha_creacion");
-                    SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-                    try {
-                        Date fecha = formatter.parse(fechaStr);
-                        nota.setFechaCreacion(fecha);
-                    } catch (ParseException e) {
-                        System.err.println("Formato de fecha no válido: " + e.getMessage());
-                        nota.setFechaCreacion(null);
-                    }
-
-                    notasTarea.add(nota);
-                }
-            }
-            tarea.setNotas(notasTarea);
-        }
-        return tarea;
-    }
-    */
 }
