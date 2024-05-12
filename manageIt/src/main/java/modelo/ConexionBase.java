@@ -37,7 +37,7 @@ public class ConexionBase {
                 mongoClient = MongoClients.create("mongodb+srv://cemor8:12q12q12@cluster0.3yldjuk.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0");
                 database = mongoClient.getDatabase("manageit");
             }catch (Exception e){
-                System.out.println("hola");
+
                 System.out.println(e.getMessage());
                 database = null;
             }
@@ -73,7 +73,7 @@ public class ConexionBase {
                         .append("as", "empresaDetalles"));
         List<Bson> stages = Arrays.asList(lookupContactos, lookupNotas, lookupEmpresa);
         AggregateIterable<Document> result = collection.aggregate(stages);
-        System.out.println(result);
+
         for (Document doc : result) {
             Usuario usuario = new Usuario(null,null,null,null,null,null,null,null,null);
             usuario.setId(doc.getInteger("id"));
@@ -123,7 +123,7 @@ public class ConexionBase {
                     nota.setUsuario(usuario);
                     nota.setTitulo(notaDoc.getString("titulo"));
                     nota.setImagen(ConexionBase.convertirImagen(notaDoc.getString("imagen")));
-                    System.out.println("texto "+ notaDoc.getString("imagen"));
+
                     String fechaStr = notaDoc.getString("fecha_creacion");
                     SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
                     try {
@@ -140,8 +140,7 @@ public class ConexionBase {
             usuario.setNotas(notas);
             usuarios.add(usuario);
         }
-        //falta empresa
-        System.out.println(usuarios);
+
         return usuarios;
 
     }
@@ -156,9 +155,9 @@ public class ConexionBase {
         MongoCollection<Document> usuariosCollection = database.getCollection("usuarios");
 
         FindIterable<Document> documentos = notasCollection.find();
-        System.out.println(documentos);
+
         for (Document notaDoc : documentos) {
-            System.out.println(notaDoc);
+
             Integer usuarioCreadorId = notaDoc.getInteger("usuario_creador");
 
             // Preparar los $lookup stages para el usuario creador
@@ -258,17 +257,44 @@ public class ConexionBase {
             nota.setImagen(ConexionBase.convertirImagen(notaDoc.getString("imagen")));
 
             notas.add(nota);
-            System.out.println(nota.getUsuario());
 
-            System.out.println(notas);
+
+
 
         }
         //Falta imagen
         return notas;
 
     }
+    public static Nota recibirNota(Integer id){
+        MongoCollection<Document> notasCollection = database.getCollection("notas");
+
+        FindIterable<Document> documento = notasCollection.find(Filters.eq("id", id));
+        Document usuarioDoc = documento.first();
+
+        Nota nota = new Nota(null,null,null,null,null);
+        assert usuarioDoc != null;
+        nota.setId(usuarioDoc.getInteger("id"));
+        nota.setTitulo(usuarioDoc.getString("titulo"));
+
+        nota.setDescripcion(usuarioDoc.getString("descripcion"));
+        nota.setImagen(ConexionBase.convertirImagen(usuarioDoc.getString("imagen")));
+        nota.setUsuario(ConexionBase.recibirUsuario(usuarioDoc.getInteger("usuario_creador")));
+
+        String fechaStr = usuarioDoc.getString("fecha_creacion");
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+        try {
+            Date fecha = formatter.parse(fechaStr);
+            nota.setFechaCreacion(fecha);
+        } catch (ParseException e) {
+            System.err.println("Formato de fecha no válido: " + e.getMessage());
+            nota.setFechaCreacion(null);
+        }
+        return nota;
+    }
 
     public static ArrayList<Proyecto> recibirProyectos(){
+        System.out.println("Recibiendo proyectos");
         ArrayList<Proyecto> proyectos = new ArrayList<>();
         MongoCollection<Document> coleccionProyectos = database.getCollection("proyectos");
 
@@ -350,7 +376,7 @@ public class ConexionBase {
             }
             proyecto.setNotas(notasProyecto);
             proyecto.setJefeProyecto(ConexionBase.recibirUsuario(doc.getInteger("jefe_proyecto")));
-            System.out.println(proyecto.getJefeProyecto());
+
             proyecto.setDescripcion(doc.getString("descripcion"));
             proyecto.setEstado(doc.getString("estado"));
             proyecto.setNombre(doc.getString("nombre"));
@@ -383,6 +409,22 @@ public class ConexionBase {
                     tarea.setDescripcion(cadatarea.getString("descripcion"));
                     tarea.setCreador(ConexionBase.recibirUsuario(cadatarea.getInteger("usuario_creador")));
                     tarea.setImagen(ConexionBase.convertirImagen(cadatarea.getString("imagen")));
+                    tarea.setEstado(cadatarea.getString("estado"));
+                    tarea.setNombre(cadatarea.getString("nombre"));
+                    tarea.setCampo(cadatarea.getString("campo"));
+                    ArrayList<Nota> notas = new ArrayList<>();
+                    ArrayList<Integer> notasInt = (ArrayList<Integer>) cadatarea.get("notas");
+                    for (Integer inte : notasInt){
+                        notas.add(ConexionBase.recibirNota(inte));
+                    }
+                    ArrayList<Usuario> asignadosTarea = new ArrayList<>();
+                    ArrayList<Integer> intsAsignados = (ArrayList<Integer>) cadatarea.get("asignados");
+                    for (Integer inte : intsAsignados){
+                        asignadosTarea.add(ConexionBase.recibirUsuario(inte));
+                    }
+                    tarea.setPersonasAsignadas(asignadosTarea);
+
+                    tarea.setNotas(notas);
                     String fechaStr5 = cadatarea.getString("fecha_creacion");
                     String fechaStr6 = cadatarea.getString("fecha_entrega");
                     SimpleDateFormat formatter2 = new SimpleDateFormat("dd/MM/yyyy");
@@ -393,11 +435,11 @@ public class ConexionBase {
                         Date fecha = formatter2.parse(fechaStr5);
                         Date fecha2 = formatter2.parse(fechaStr6);
                         tarea.setFechaCreacion(fecha);
-                        tarea.setFechaCreacion(fecha2);
+                        tarea.setFechaEntrega(fecha2);
                     } catch (ParseException e) {
                         System.err.println("Formato de fecha no válido: " + e.getMessage());
                         tarea.setFechaCreacion(null);
-                        tarea.setFechaCreacion(null);
+                        tarea.setFechaEntrega(null);
                     }
 
                     tareasaProyecto.add(tarea);
@@ -407,11 +449,13 @@ public class ConexionBase {
 
 
             proyectos.add(proyecto);
+            System.out.println(proyecto);
         }
         return proyectos;
 
     }
     public static ArrayList<Tarea> recibirTareas(){
+        System.out.println("recibiendo tareas");
         ArrayList<Tarea> tareas = new ArrayList<>();
         MongoCollection<Document> coleccionTareas = database.getCollection("tareas");
 
@@ -448,6 +492,25 @@ public class ConexionBase {
             tarea.setEstado(doc.getString("estado"));
             tarea.setImagen(ConexionBase.convertirImagen(doc.getString("imagen")));
             tarea.setCreador(ConexionBase.recibirUsuario(doc.getInteger("usuario_creador")));
+
+
+            String fechaStr5 = doc.getString("fecha_creacion");
+            String fechaStr6 = doc.getString("fecha_entrega");
+            SimpleDateFormat formatter2 = new SimpleDateFormat("dd/MM/yyyy");
+            //faltan imagenes
+
+
+            try {
+                Date fecha = formatter2.parse(fechaStr5);
+                Date fecha2 = formatter2.parse(fechaStr6);
+                tarea.setFechaCreacion(fecha);
+                tarea.setFechaEntrega(fecha2);
+            } catch (ParseException e) {
+                System.err.println("Formato de fecha no válido: " + e.getMessage());
+                tarea.setFechaCreacion(null);
+                tarea.setFechaCreacion(null);
+            }
+
 
             ArrayList<Nota> notasTarea = new ArrayList<>();
             List<Document> notasDocs = (List<Document>) doc.get("notasDetalles");
@@ -491,11 +554,13 @@ public class ConexionBase {
             }
             tarea.setPersonasAsignadas(asignados);
             tareas.add(tarea);
+
+            System.out.println(tarea);
         }
         return tareas;
     }
     public static Image convertirImagen(String base64Image){
-        System.out.println(base64Image);
+
         if (base64Image == null || base64Image.isEmpty()) {
             System.out.println("usuario no tiene imagen");
             return new Image("file:"+"src/main/resources/images/proyectos/vistaCadaProyecto/fondoProyectoPrueba.png");
@@ -601,7 +666,7 @@ public class ConexionBase {
             usuario.setCorreo(usuarioDoc.getString("correo"));
             usuario.setNombre(usuarioDoc.getString("nombre"));
             usuario.setDescripcion(usuarioDoc.getString("descripcion"));
-            usuario.setImagen(ConexionBase.convertirImagen(usuarioDoc.getString("apellidos")));
+            usuario.setImagen(ConexionBase.convertirImagen(usuarioDoc.getString("imagen")));
             usuario.setId(usuarioDoc.getInteger("id"));
             usuario.setDepartamento(usuarioDoc.getString("departamento"));
         }
@@ -801,6 +866,8 @@ public class ConexionBase {
     }
 
     public static void crearTarea(Tarea tarea) throws IOException {
+        System.out.println("creando tarea");
+        System.out.println();
         MongoCollection<Document> tareas = database.getCollection("tareas");
         ArrayList<Integer> usuariosTarea = new ArrayList<>();
         for (Usuario usuario : tarea.getPersonasAsignadas()){
@@ -813,9 +880,9 @@ public class ConexionBase {
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
         String dateString = formatter.format(tarea.getFechaCreacion());
         String entrega = formatter.format(tarea.getFechaEntrega());
-        Document nuevoUsuario = new Document("nombre", tarea.getNombre())
+        Document nuevoUsuario = new Document("nombre", tarea.getNombre()).append("id",tarea.getId())
                 .append("estado", tarea.getEstado()).append("campo",tarea.getCampo()).append("descripcion",tarea.getDescripcion()).append("notas",notasTarea).append("imagen",ConexionBase.transformarA64(tarea.getImagen()))
-                .append("usuarios",usuariosTarea).append("fecha_entrega",entrega).append("fecha_creacion",dateString).append("usuario_creador",tarea.getCreador().getId());
+                .append("asignados",usuariosTarea).append("fecha_entrega",entrega).append("fecha_creacion",dateString).append("usuario_creador",tarea.getCreador().getId());
 
         // Añadir más campos según sean necesarios
         tareas.insertOne(nuevoUsuario);
@@ -840,9 +907,9 @@ public class ConexionBase {
         String dateString = formatter.format(proyecto.getFechaCreacion());
         String entrega = formatter.format(proyecto.getFechaEntrega());
 
-        Document nuevoUsuario = new Document("nombre", proyecto.getNombre())
+        Document nuevoUsuario = new Document("nombre", proyecto.getNombre()).append("id",proyecto.getId())
                 .append("estado", proyecto.getEstado()).append("cliente",proyecto.getCliente()).append("descripcion",proyecto.getDescripcion()).append("notas",notasProyecto)
-                .append("usuarios",usuariosProyecto).append("fecha_entrega",entrega).append("fecha_creacion",dateString).append("jefe_proyecto",proyecto.getJefeProyecto().getId())
+                .append("asignados",usuariosProyecto).append("fecha_entrega",entrega).append("fecha_creacion",dateString).append("jefe_proyecto",proyecto.getJefeProyecto().getId())
                 .append("tareas",tareasProyecto).append("imagen",ConexionBase.transformarA64(proyecto.getImagen()));
 
         // Añadir más campos según sean necesarios
@@ -854,7 +921,7 @@ public class ConexionBase {
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
         String dateString = formatter.format(nota.getFechaCreacion());
         Document nuevoUsuario = new Document("titulo", nota.getTitulo()).append("imagen",ConexionBase.transformarA64(nota.getImagen()))
-                .append("descripcion",nota.getDescripcion()).append("usuario_creador",nota.getUsuario().getId()).append("fecha_creacion",dateString);
+                .append("descripcion",nota.getDescripcion()).append("usuario_creador",nota.getUsuario().getId()).append("fecha_creacion",dateString).append("id",nota.getId());
 
         // Añadir más campos según sean necesarios
         notas.insertOne(nuevoUsuario);
@@ -876,7 +943,7 @@ public class ConexionBase {
                 break;
         }
         Document updatedDocument = coleccion.findOneAndUpdate(
-                new Document(),Updates.inc("sequence_value", 1)
+                new Document(),Updates.inc("valor", 1)
         );
         assert updatedDocument != null;
         int currentValue = updatedDocument.getInteger("valor");

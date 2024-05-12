@@ -76,6 +76,7 @@ public class ControllerNotas {
         Nota nota = new Nota("","","",Date.from(hoy.atStartOfDay(ZoneId.systemDefault()).toInstant()), this.data.getCurrentUser());
         nota.setId(ConexionBase.obtenerId("notas"));
         this.notasRecorrer.add(nota);
+
         ConexionBase.crearNota(nota);
 
         try {

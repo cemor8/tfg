@@ -74,6 +74,8 @@ public class ControllerCadaTarea {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/vista/vistaCadaTarea.fxml"), CambiarIdioma.getInstance().getBundle());
         Parent root = fxmlLoader.load();
         ControllerVistaCadaTarea controllerVistaCadaTarea = fxmlLoader.getController();
+        System.out.println("tarea");
+        System.out.println(this.tarea);
         controllerVistaCadaTarea.recibirData(this.data,this.tarea,this.tareas,this.meter);
         this.data.getListaControladores().getControllerContenedor().rellenarContenido(root);
     }

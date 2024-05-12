@@ -130,6 +130,8 @@ public class ControllerVistaCrearTarea {
         tarea.setImagen(image);
         this.tareas.add(tarea);
         ConexionBase.crearTarea(tarea);
+        Optional<Proyecto> proyecto = this.data.getProyectos().stream().filter(proyecto1 -> proyecto1.getTareas().contains(tarea)).findAny();
+        ConexionBase.modificarProyecto(proyecto.get());
         try {
             this.data.getListaControladores().getControllerMenuLateral().mostrarTareas(null);
         }catch (IOException err){

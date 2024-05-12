@@ -147,4 +147,24 @@ public class Proyecto {
     public void setPersonasAsignadas(ArrayList<Usuario> personasAsignadas) {
         this.personasAsignadas = personasAsignadas;
     }
+
+    @Override
+    public String toString() {
+        return "Proyecto{" +
+                "nombre='" + nombre + '\'' +
+                ", cliente='" + cliente + '\'' +
+                ", rutaImagen='" + rutaImagen + '\'' +
+                ", id=" + id +
+                ", estado='" + estado + '\'' +
+                ", descripcion='" + descripcion + '\'' +
+                ", imagen=" + imagen +
+                ", fechaCreacion=" + fechaCreacion +
+                ", fechaEntrega=" + fechaEntrega +
+                ", jefeProyecto=" + jefeProyecto +
+                ", tareas=" + tareas +
+                ", notas=" + notas +
+                ", personasAsignadas=" + personasAsignadas +
+                ", rutaVideo='" + rutaVideo + '\'' +
+                '}';
+    }
 }

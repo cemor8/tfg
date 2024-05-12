@@ -126,7 +126,8 @@ public class ControllerVistaCadaTarea {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/vista/notas.fxml"), CambiarIdioma.getInstance().getBundle());
         Parent root = fxmlLoader.load();
         ControllerNotas controllerNotas = fxmlLoader.getController();
-        controllerNotas.recibirData(this.data,this.tarea.getNotas());
+        Optional<Tarea> tarea1 = this.data.getTareas().stream().filter(tarea2 -> tarea2.getId() == this.tarea.getId()).findAny();
+        controllerNotas.recibirData(this.data,tarea1.get().getNotas());
         this.data.getListaControladores().getControllerContenedor().rellenarContenido(root);
     }
 
@@ -151,10 +152,13 @@ public class ControllerVistaCadaTarea {
      * @param tareas    lista de tareas
      */
     public void recibirData(Data data,Tarea tarea, ArrayList<Tarea> tareas,boolean meter){
+        System.out.println("Hola tarea");
+
         this.tarea = tarea;
         this.data = data;
         this.meter = meter;
         this.tareas = tareas;
+        System.out.println(this.tarea);
         this.inicializar();
     }
 

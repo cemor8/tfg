@@ -137,4 +137,23 @@ public class Tarea {
     public void setPersonasAsignadas(ArrayList<Usuario> personasAsignadas) {
         this.personasAsignadas = personasAsignadas;
     }
+
+    @Override
+    public String toString() {
+        return "Tarea{" +
+                "nombre='" + nombre + '\'' +
+                ", estado='" + estado + '\'' +
+                ", id=" + id +
+                ", campo='" + campo + '\'' +
+                ", descripcion='" + descripcion + '\'' +
+                ", fechaCreacion=" + fechaCreacion +
+                ", fechaEntrega=" + fechaEntrega +
+                ", rutaimagen='" + rutaimagen + '\'' +
+                ", notas=" + notas +
+                ", personasAsignadas=" + personasAsignadas +
+                ", imagen=" + imagen +
+                ", creador=" + creador +
+                ", rutaVideo='" + rutaVideo + '\'' +
+                '}';
+    }
 }

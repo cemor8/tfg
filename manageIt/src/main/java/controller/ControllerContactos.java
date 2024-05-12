@@ -183,8 +183,12 @@ public class ControllerContactos {
             for (Tarea tarea : this.data.getTareas()){
                 ConexionBase.modificarTarea(tarea);
             }
+            //eliminar nota?
             for (Nota nota : this.data.getNotas()){
                 ConexionBase.modificarNota(nota);
+            }
+            for (Usuario usuario : this.data.getUsuarios()){
+                ConexionBase.modificarUsuario(usuario);
             }
         }catch (Exception err){
             System.out.println(err.getMessage());
@@ -240,9 +244,20 @@ public class ControllerContactos {
         ImageView img = (ImageView) event.getSource();
         int posicion = Integer.parseInt(img.getId());
         this.contactos.remove(posicion);
-        for (Proyecto proyecto : this.data.getProyectos()){
-            ConexionBase.modificarProyecto(proyecto);
+        try {
+            for (Proyecto proyecto : this.data.getProyectos()){
+                ConexionBase.modificarProyecto(proyecto);
+            }
+            for (Tarea tarea : this.data.getTareas()){
+                ConexionBase.modificarTarea(tarea);
+            }
+            for (Usuario usuario : this.data.getUsuarios()){
+                ConexionBase.modificarUsuario(usuario);
+            }
+        }catch (IOException err){
+            System.out.println(err.getMessage());
         }
+
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/vista/contactos.fxml"), CambiarIdioma.getInstance().getBundle());
             Parent root = fxmlLoader.load();
@@ -264,6 +279,11 @@ public class ControllerContactos {
      * @param contactosMeter    lista de contactos que se pueden meter
      */
     public void recibirData(Data data, ArrayList<Usuario> contactos, boolean añadir,ArrayList<Usuario> contactosMeter,boolean verBoton){
+        System.out.println(contactos);
+        System.out.println(contactosMeter);
+
+
+
         this.contactos = contactos;
         this.contactosMeter = contactosMeter;
         this.btnMeter.setText("");
