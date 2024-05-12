@@ -10,6 +10,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import modelo.CambiarIdioma;
+import modelo.ConexionBase;
 import modelo.Data;
 import modelo.Tarea;
 
@@ -59,7 +60,7 @@ public class ControllerCadaTarea {
     @FXML
     void eliminarTarea(MouseEvent event) throws IOException {
         this.tareas.remove(tarea);
-
+        ConexionBase.eliminarTarea(tarea.getId());
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/vista/tareas.fxml"), CambiarIdioma.getInstance().getBundle());
         Parent root = fxmlLoader.load();
         ControllerTareas controllerTareas = fxmlLoader.getController();
@@ -78,7 +79,8 @@ public class ControllerCadaTarea {
     }
     public void inicializar()  {
         this.nombre.setText(this.tarea.getNombre());
-        this.imagen.setImage(new Image("file:"+this.tarea.getRutaimagen()));
+        //this.imagen.setImage(new Image("file:"+this.tarea.getRutaimagen()));
+        this.imagen.setImage(this.tarea.getImagen());
         this.descripcion.setText(this.tarea.getDescripcion());
         SimpleDateFormat fechaCreacion = new SimpleDateFormat("dd-MM-yyyy");
         String mostrarCreacion = fechaCreacion.format(this.tarea.getFechaCreacion());
@@ -104,7 +106,8 @@ public class ControllerCadaTarea {
         this.fotoCreacion.setFitWidth(20);
         this.fotoCreacion.setFitHeight(20);
 
-        this.imagenCreador.setImage(new Image("file:"+this.tarea.getCreador().getRutaImagen()));
+        //this.imagenCreador.setImage(new Image("file:"+this.tarea.getCreador().getRutaImagen()));
+        this.imagenCreador.setImage(this.tarea.getCreador().getImagen());
         this.imagenCreador.setFitWidth(70);
         this.imagenCreador.setFitHeight(70);
         this.imagenCreador.setPreserveRatio(false);

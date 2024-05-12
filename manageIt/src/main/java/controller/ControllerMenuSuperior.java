@@ -58,7 +58,8 @@ public class ControllerMenuSuperior {
      * Método que se encarga de poner la imagen del usuario
      */
     public void ponerImagen(){
-        this.perfil.setImage(new Image("file:"+this.data.getCurrentUser().getRutaImagen()));
+        this.perfil.setImage(this.data.getCurrentUser().getImagen());
+
         this.perfil.setFitWidth(60);
         this.perfil.setFitHeight(60);
         this.perfil.setPreserveRatio(false);

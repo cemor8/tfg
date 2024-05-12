@@ -112,7 +112,8 @@ public class ControllerVistaConfiguracion {
         this.data.getListaControladores().getControllerContenedor().rellenarContenido(root);
 
         if (this.rutaImagen == null || this.rutaImagen.equalsIgnoreCase("")){
-            controllerVistaConfiguracion.imgPersona.setImage(new Image("file:"+this.data.getCurrentUser().getRutaImagen()));
+            //controllerVistaConfiguracion.imgPersona.setImage(new Image("file:"+this.data.getCurrentUser().getRutaImagen()));
+            controllerVistaConfiguracion.imgPersona.setImage(this.data.getCurrentUser().getImagen());
         }else {
             controllerVistaConfiguracion.imgPersona.setImage(new Image("file:"+rutaImagen));
         }
@@ -159,7 +160,8 @@ public class ControllerVistaConfiguracion {
         this.data.getListaControladores().getControllerContenedor().rellenarContenido(root);
 
         if (this.rutaImagen == null || this.rutaImagen.equalsIgnoreCase("")){
-            controllerVistaConfiguracion.imgPersona.setImage(new Image("file:"+this.data.getCurrentUser().getRutaImagen()));
+            //controllerVistaConfiguracion.imgPersona.setImage(new Image("file:"+this.data.getCurrentUser().getRutaImagen()));
+            controllerVistaConfiguracion.imgPersona.setImage(this.data.getCurrentUser().getImagen());
         }else {
             controllerVistaConfiguracion.imgPersona.setImage(new Image("file:"+rutaImagen));
         }

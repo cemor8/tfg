@@ -73,7 +73,10 @@ public class ControllerNotas {
     @FXML
     void meter(MouseEvent event) throws IOException {
         LocalDate hoy = LocalDate.now();
-        this.notasRecorrer.add(new Nota("","","",Date.from(hoy.atStartOfDay(ZoneId.systemDefault()).toInstant()), this.data.getCurrentUser()));
+        Nota nota = new Nota("","","",Date.from(hoy.atStartOfDay(ZoneId.systemDefault()).toInstant()), this.data.getCurrentUser());
+        nota.setId(ConexionBase.obtenerId("notas"));
+        this.notasRecorrer.add(nota);
+        ConexionBase.crearNota(nota);
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/vista/notas.fxml"), CambiarIdioma.getInstance().getBundle());
         Parent root = fxmlLoader.load();
         ControllerNotas controllerNotas = fxmlLoader.getController();
@@ -81,13 +84,15 @@ public class ControllerNotas {
         this.data.getListaControladores().getControllerContenedor().rellenarContenido(root);
     }
     @FXML
-    void guardarNota(MouseEvent event) {
+    void guardarNota(MouseEvent event) throws IOException {
 
         if (rutaImagenElegida != null && !rutaImagenElegida.isEmpty()){
-            this.notaSeleccionada.setRutaImagen(rutaImagenElegida);
+            //this.notaSeleccionada.setRutaImagen(rutaImagenElegida);
+            this.notaSeleccionada.setImagen(new Image("file:"+rutaImagenElegida));
         }
         this.notaSeleccionada.setTitulo(this.tituloNota.getText());
         this.notaSeleccionada.setDescripcion(this.descripcion.getText());
+        ConexionBase.modificarNota(this.notaSeleccionada);
     }
     public void inicializar() throws IOException {
         /* Recorrer notas y meter en scrolleable */
@@ -157,7 +162,8 @@ public class ControllerNotas {
 
         this.descripcion.setText(this.notaSeleccionada.getDescripcion());
 
-        this.imgCreador.setImage(new Image("file:"+this.notaSeleccionada.getUsuario().getRutaImagen()));
+        //this.imgCreador.setImage(new Image("file:"+this.notaSeleccionada.getUsuario().getRutaImagen()));
+        this.imgCreador.setImage(this.notaSeleccionada.getUsuario().getImagen());
         this.imgCreador.setFitWidth(60);
         this.imgCreador.setFitHeight(60);
         this.imgCreador.setPreserveRatio(false);
@@ -170,8 +176,10 @@ public class ControllerNotas {
         clip.setArcWidth(10);
         clip.setArcHeight(10);
         if(this.notaSeleccionada.getRutaImagen()!=null && !this.notaSeleccionada.getRutaImagen().isEmpty()){
-            this.img.setImage(new Image("file:"+this.notaSeleccionada.getRutaImagen()));
+            //this.img.setImage(new Image("file:"+this.notaSeleccionada.getRutaImagen()));
+
         }
+        this.img.setImage(this.notaSeleccionada.getImagen());
 
         this.img.setClip(clip);
 
@@ -203,7 +211,6 @@ public class ControllerNotas {
         if(selectedFile != null){
             String imagePath = selectedFile.getAbsolutePath();
             this.rutaImagenElegida = imagePath;
-
             this.img.setImage(new Image("file:"+rutaImagenElegida));
 
         }

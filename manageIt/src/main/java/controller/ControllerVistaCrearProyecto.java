@@ -11,6 +11,7 @@ import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
 import javafx.stage.FileChooser;
 import javafx.util.converter.DefaultStringConverter;
+import modelo.ConexionBase;
 import modelo.Data;
 import modelo.Proyecto;
 
@@ -82,7 +83,7 @@ public class ControllerVistaCrearProyecto {
      * @param event
      */
     @FXML
-    void crear(MouseEvent event) {
+    void crear(MouseEvent event) throws IOException {
         errorFecha.setText("");
         errorCliente.setText("");
         errorDescrip.setText("");
@@ -120,10 +121,14 @@ public class ControllerVistaCrearProyecto {
         LocalDate today = LocalDate.now();
         Date dateHoy = Date.from(today.atStartOfDay(ZoneId.systemDefault()).toInstant());
         Date dateCrear = Date.from(this.datePicker.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
-
-        this.data.getProyectos().add(new Proyecto(this.introducirNombre.getText(),
+        Image image = new Image("file:"+this.imagenSeleccionada);
+        Proyecto proyecto = new Proyecto(this.introducirNombre.getText(),
                 this.seleccionarCliente.getValue(),this.imagenSeleccionada,"En proceso",this.introducirDescripcion.getText(),dateHoy,dateCrear,this.data.getCurrentUser(),
-                new ArrayList<>(),new ArrayList<>(),new ArrayList<>(List.of(this.data.getCurrentUser())),this.videoSeleccionado));
+                new ArrayList<>(),new ArrayList<>(),new ArrayList<>(List.of(this.data.getCurrentUser())),this.videoSeleccionado);
+        proyecto.setImagen(image);
+        proyecto.setId(ConexionBase.obtenerId("proyectos"));
+        this.data.getProyectos().add(proyecto);
+        ConexionBase.crearProyecto(proyecto);
         try {
             this.data.getListaControladores().getControllerMenuLateral().mostrarProyectos(null);
         }catch (IOException err){

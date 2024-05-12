@@ -17,16 +17,25 @@ public class Data {
     private boolean español = true;
 
     public Data() {
+        /*
         this.notas = new ArrayList<>();
         this.proyectos = new ArrayList<>();
         this.usuarios = new ArrayList<>();
         this.tareas = new ArrayList<>();
-        this.listaControladores = new ListaControladores();
+
         this.crearUsuarios();
         this.crearTareas();
         this.crearNotas();
         this.crearNotasProyectos();
         this.crearProyectos();
+
+         */
+        this.listaControladores = new ListaControladores();
+        ConexionBase.getDatabase();
+        this.notas = ConexionBase.recibirNotas();
+        this.usuarios = ConexionBase.recibirUsuarios();
+        this.proyectos = ConexionBase.recibirProyectos();
+        this.tareas = ConexionBase.recibirTareas();
 
 
 

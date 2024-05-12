@@ -62,9 +62,10 @@ public class ControllerVistaCadaContacto {
     public void cargarContacto(){
         this.labelCorreo.setText(this.contacto.getCorreo());
         this.labelNombre.setText(this.contacto.getNombre()+" "+this.contacto.getApellidos());
-        this.labelPuesto.setText(this.contacto.getPuesto());
+        this.labelPuesto.setText(this.contacto.getDepartamento());
         this.descripcion.setText(this.contacto.getDescripcion());
-        this.img.setImage(new Image("file:"+this.contacto.getRutaImagen()));
+        //this.img.setImage(new Image("file:"+this.contacto.getRutaImagen()));
+        this.img.setImage(this.contacto.getImagen());
         img.setFitHeight(100);
         img.setFitWidth(100);
         img.setPreserveRatio(false);

@@ -8,6 +8,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import modelo.CambiarIdioma;
+import modelo.ConexionBase;
 import modelo.Data;
 import modelo.Nota;
 
@@ -45,8 +46,9 @@ public class ControllerCadaNota {
     void borrarNota(MouseEvent event) throws IOException {
         ImageView img = (ImageView) event.getSource();
         String id = img.getId();
+        Nota nota = this.notas.get(Integer.parseInt(id));
         this.notas.remove(this.notas.get(Integer.parseInt(id)));
-
+        ConexionBase.eliminarNota(nota.getId());
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/vista/notas.fxml"), CambiarIdioma.getInstance().getBundle());
         Parent root = fxmlLoader.load();
         ControllerNotas controllerNotas = fxmlLoader.getController();

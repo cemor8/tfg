@@ -13,6 +13,7 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
 import javafx.stage.FileChooser;
+import modelo.ConexionBase;
 import modelo.Data;
 import modelo.Proyecto;
 import modelo.Tarea;
@@ -83,7 +84,7 @@ public class ControllerVistaCrearTarea {
      * @param event
      */
     @FXML
-    void crear(MouseEvent event) {
+    void crear(MouseEvent event) throws IOException {
         errorFecha.setText("");
         errorCliente.setText("");
         errorDescrip.setText("");
@@ -121,10 +122,14 @@ public class ControllerVistaCrearTarea {
         LocalDate today = LocalDate.now();
         Date dateHoy = Date.from(today.atStartOfDay(ZoneId.systemDefault()).toInstant());
         Date dateCrear = Date.from(this.datePicker.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
-
-        this.tareas.add(new Tarea(this.introducirNombre.getText(),"En proceso",this.seleccionarCampo.getValue(),this.introducirDescripcion.getText(),
-                        dateHoy,dateCrear,this.imagenSeleccionada,new ArrayList<>(),new ArrayList<>(List.of(this.data.getCurrentUser())),this.data.getCurrentUser(),
-                this.videoSeleccionado));
+        Image image = new Image("file:"+this.imagenSeleccionada);
+        Tarea tarea = new Tarea(this.introducirNombre.getText(),"En proceso",this.seleccionarCampo.getValue(),this.introducirDescripcion.getText(),
+                dateHoy,dateCrear,this.imagenSeleccionada,new ArrayList<>(),new ArrayList<>(List.of(this.data.getCurrentUser())),this.data.getCurrentUser(),
+                this.videoSeleccionado);
+        tarea.setId(ConexionBase.obtenerId("tareas"));
+        tarea.setImagen(image);
+        this.tareas.add(tarea);
+        ConexionBase.crearTarea(tarea);
         try {
             this.data.getListaControladores().getControllerMenuLateral().mostrarTareas(null);
         }catch (IOException err){

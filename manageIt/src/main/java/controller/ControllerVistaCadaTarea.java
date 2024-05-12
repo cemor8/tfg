@@ -166,8 +166,13 @@ public class ControllerVistaCadaTarea {
         this.labelDescripcion.setText(this.tarea.getDescripcion());
         this.labelNombreJefe.setText(this.tarea.getCreador().getNombre()+" "+this.tarea.getCreador().getApellidos());
         this.labelNombreTarea.setText(this.tarea.getNombre());
-        this.imagenJefe.setImage(new Image("file:"+this.tarea.getCreador().getRutaImagen()));
-        this.imagenProyecto.setImage(new Image("file:"+this.tarea.getRutaimagen()));
+        //this.imagenJefe.setImage(new Image("file:"+this.tarea.getCreador().getRutaImagen()));
+        //this.imagenProyecto.setImage(new Image("file:"+this.tarea.getRutaimagen()));
+
+        this.imagenJefe.setImage(this.tarea.getCreador().getImagen());
+        this.imagenProyecto.setImage(this.tarea.getImagen());
+
+
 
         this.imagenJefe.setFitWidth(55);
         this.imagenJefe.setFitHeight(55);

@@ -9,10 +9,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
-import modelo.CambiarIdioma;
-import modelo.Data;
-import modelo.Proyecto;
-import modelo.Usuario;
+import modelo.*;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -64,6 +61,7 @@ public class ControllerCadaProyecto {
     @FXML
     void eliminarProyecto(MouseEvent event) throws IOException {
         this.data.getProyectos().remove(this.proyecto);
+        ConexionBase.eliminarProyecto(this.proyecto.getId());
         ArrayList<Proyecto> proyectos = new ArrayList<>();
         for (Proyecto proyecto : this.data.getProyectos()) {
             for (Usuario usuario : proyecto.getPersonasAsignadas()) {
@@ -113,7 +111,8 @@ public class ControllerCadaProyecto {
         String mostrarEntrega = fechaCreacion.format(this.proyecto.getFechaEntrega());
         this.fechaCreacion.setText(mostrarCreacion);
         this.fechaEntrega.setText(mostrarEntrega);
-        this.imagen.setImage(new Image("file:"+this.proyecto.getRutaImagen()));
+        //this.imagen.setImage(new Image("file:"+this.proyecto.getRutaImagen()));
+        this.imagen.setImage(this.proyecto.getImagen());
         Rectangle clip = new Rectangle(
                 this.imagen.getFitWidth(), this.imagen.getFitHeight()
         );
@@ -133,7 +132,8 @@ public class ControllerCadaProyecto {
         this.fotoCreacion.setFitWidth(20);
         this.fotoCreacion.setFitHeight(20);
 
-        this.imagenCreador.setImage(new Image("file:"+this.proyecto.getJefeProyecto().getRutaImagen()));
+        //this.imagenCreador.setImage(new Image("file:"+this.proyecto.getJefeProyecto().getRutaImagen()));
+        this.imagenCreador.setImage(this.proyecto.getJefeProyecto().getImagen());
         this.imagenCreador.setFitWidth(70);
         this.imagenCreador.setFitHeight(70);
         this.imagenCreador.setPreserveRatio(false);

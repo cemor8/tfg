@@ -16,6 +16,7 @@ import javafx.scene.media.MediaView;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import modelo.CambiarIdioma;
+import modelo.ConexionBase;
 import modelo.Data;
 import modelo.Proyecto;
 
@@ -85,6 +86,7 @@ public class ControllerVistaCadaProyecto {
             this.imgGuardarDesc.setDisable(true);
             this.labelDescripcion.setEditable(false);
         }
+        ConexionBase.modificarProyecto(this.proyecto);
     }
 
     /**
@@ -97,6 +99,10 @@ public class ControllerVistaCadaProyecto {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/vista/contactos.fxml"), CambiarIdioma.getInstance().getBundle());
         Parent root = fxmlLoader.load();
         ControllerContactos controllerContactos = fxmlLoader.getController();
+        System.out.println("Asignaods");
+        System.out.println(this.proyecto.getPersonasAsignadas());
+        System.out.println(this.data.getCurrentUser().getContactos());
+
         controllerContactos.recibirData(this.data,this.proyecto.getPersonasAsignadas(),false,this.data.getCurrentUser().getContactos(),true);
         this.data.getListaControladores().getControllerContenedor().rellenarContenido(root);
     }
@@ -152,8 +158,12 @@ public class ControllerVistaCadaProyecto {
         this.labelDescripcion.setText(this.proyecto.getDescripcion());
         this.labelNombreJefe.setText(this.proyecto.getJefeProyecto().getNombre()+" "+this.proyecto.getJefeProyecto().getApellidos());
         this.labelNombreProyecto.setText(this.proyecto.getNombre());
-        this.imagenJefe.setImage(new Image("file:"+this.proyecto.getJefeProyecto().getRutaImagen()));
-        this.imagenProyecto.setImage(new Image("file:"+this.proyecto.getRutaImagen()));
+        //this.imagenJefe.setImage(new Image("file:"+this.proyecto.getJefeProyecto().getRutaImagen()));
+        //this.imagenProyecto.setImage(new Image("file:"+this.proyecto.getRutaImagen()));
+
+        this.imagenJefe.setImage(this.proyecto.getJefeProyecto().getImagen());
+        this.imagenProyecto.setImage(this.proyecto.getImagen());
+
 
         this.imagenJefe.setFitWidth(55);
         this.imagenJefe.setFitHeight(55);
@@ -222,6 +232,7 @@ public class ControllerVistaCadaProyecto {
             return;
         }
         this.proyecto.setDescripcion(this.labelDescripcion.getText());
+        ConexionBase.modificarProyecto(this.proyecto);
     }
 
     /**

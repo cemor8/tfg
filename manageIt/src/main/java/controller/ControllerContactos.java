@@ -15,9 +15,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Circle;
-import modelo.CambiarIdioma;
-import modelo.Data;
-import modelo.Usuario;
+import modelo.*;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -48,7 +46,8 @@ public class ControllerContactos {
         for (Usuario contacto : contactos){
             hBox.getStyleClass().add("cartaContacto");
 
-            Image image = new Image("file:"+contacto.getRutaImagen());
+            //Image image = new Image("file:"+contacto.getRutaImagen());
+            Image image = contacto.getImagen();
             ImageView imageView = new ImageView(image);
             imageView.setFitWidth(50);
             imageView.setFitHeight(50);
@@ -113,7 +112,8 @@ public class ControllerContactos {
         for (Usuario contacto : contactosMeter){
             hBox.getStyleClass().add("cartaContacto");
 
-            Image image = new Image("file:"+contacto.getRutaImagen());
+            //Image image = new Image("file:"+contacto.getRutaImagen());
+            Image image = contacto.getImagen();
             ImageView imageView = new ImageView(image);
             imageView.setFitWidth(50);
             imageView.setFitHeight(50);
@@ -175,6 +175,10 @@ public class ControllerContactos {
         int posicion = Integer.parseInt(img.getId());
         this.contactos.add(this.contactosMeter.get(posicion));
         img.setDisable(true);
+
+        for (Proyecto proyecto : this.data.getProyectos()){
+            ConexionBase.modificarProyecto(proyecto);
+        }
     }
 
     /**
@@ -185,11 +189,24 @@ public class ControllerContactos {
         ImageView img = (ImageView) event.getSource();
         int posicion = Integer.parseInt(img.getId());
         Usuario contacto;
-        try {
-            contacto = this.contactos.get(posicion);
-        }catch (Exception err){
-            contacto = this.contactosMeter.get(posicion);
+        System.out.println(this.verBoton);
+        if (this.verBoton){
+            try {
+                contacto = this.contactos.get(posicion);
+            }catch (Exception err){
+                contacto = this.contactosMeter.get(posicion);
+            }
+        }else {
+            try {
+                contacto = this.contactosMeter.get(posicion);
+            }catch (Exception err){
+                contacto = this.contactos.get(posicion);
+            }
         }
+
+        System.out.println(this.contactos);
+        System.out.println("Contacto ver");
+        System.out.println(contacto);
 
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/vista/vistaCadaContacto.fxml"), CambiarIdioma.getInstance().getBundle());
@@ -212,6 +229,9 @@ public class ControllerContactos {
         ImageView img = (ImageView) event.getSource();
         int posicion = Integer.parseInt(img.getId());
         this.contactos.remove(posicion);
+        for (Proyecto proyecto : this.data.getProyectos()){
+            ConexionBase.modificarProyecto(proyecto);
+        }
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/vista/contactos.fxml"), CambiarIdioma.getInstance().getBundle());
             Parent root = fxmlLoader.load();
