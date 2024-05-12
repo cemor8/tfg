@@ -77,6 +77,25 @@ public class ControllerNotas {
         nota.setId(ConexionBase.obtenerId("notas"));
         this.notasRecorrer.add(nota);
         ConexionBase.crearNota(nota);
+
+        try {
+            for (Proyecto proyecto : this.data.getProyectos()){
+                ConexionBase.modificarProyecto(proyecto);
+            }
+            for (Tarea tarea : this.data.getTareas()){
+                ConexionBase.modificarTarea(tarea);
+            }
+            for (Nota notcada : this.data.getNotas()){
+                ConexionBase.modificarNota(notcada);
+            }
+            for (Usuario usuario : this.data.getUsuarios()){
+                ConexionBase.modificarUsuario(usuario);
+            }
+        }catch (Exception err){
+            System.out.println(err.getMessage());
+        }
+
+
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/vista/notas.fxml"), CambiarIdioma.getInstance().getBundle());
         Parent root = fxmlLoader.load();
         ControllerNotas controllerNotas = fxmlLoader.getController();

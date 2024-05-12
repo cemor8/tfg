@@ -176,9 +176,20 @@ public class ControllerContactos {
         this.contactos.add(this.contactosMeter.get(posicion));
         img.setDisable(true);
 
-        for (Proyecto proyecto : this.data.getProyectos()){
-            ConexionBase.modificarProyecto(proyecto);
+        try {
+            for (Proyecto proyecto : this.data.getProyectos()){
+                ConexionBase.modificarProyecto(proyecto);
+            }
+            for (Tarea tarea : this.data.getTareas()){
+                ConexionBase.modificarTarea(tarea);
+            }
+            for (Nota nota : this.data.getNotas()){
+                ConexionBase.modificarNota(nota);
+            }
+        }catch (Exception err){
+            System.out.println(err.getMessage());
         }
+
     }
 
     /**

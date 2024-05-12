@@ -707,7 +707,11 @@ public class ConexionBase {
         for (Usuario contacto : usuario.getContactos()){
             contactos.add(contacto.getId());
         }
-        updateFields.append("contactos",contactos);
+        ArrayList<Integer> notas = new ArrayList<>();
+        for (Nota nota : usuario.getNotas()){
+            notas.add(nota.getId());
+        }
+        updateFields.append("contactos",contactos).append("notas",notas);
         usuariosColeccion.updateOne(Filters.eq("id", usuario.getId()), new Document("$set", updateFields));
 
     }

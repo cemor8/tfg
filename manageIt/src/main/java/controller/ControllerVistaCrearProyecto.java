@@ -128,6 +128,7 @@ public class ControllerVistaCrearProyecto {
         proyecto.setImagen(image);
         proyecto.setId(ConexionBase.obtenerId("proyectos"));
         this.data.getProyectos().add(proyecto);
+
         ConexionBase.crearProyecto(proyecto);
         try {
             this.data.getListaControladores().getControllerMenuLateral().mostrarProyectos(null);
