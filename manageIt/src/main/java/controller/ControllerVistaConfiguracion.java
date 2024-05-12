@@ -14,6 +14,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.FileChooser;
 import mainApp.HelloApplication;
 import modelo.CambiarIdioma;
+import modelo.ConexionBase;
 import modelo.Data;
 
 import java.io.File;
@@ -224,12 +225,13 @@ public class ControllerVistaConfiguracion {
      * @param event
      */
     @FXML
-    void guardarApellido(MouseEvent event) {
+    void guardarApellido(MouseEvent event) throws IOException {
         if (!validarContenido(this.columnasExpresiones.get("apellido"), this.introducirApellido.getText())) {
             this.errorApellidos.setText("Datos inválidos");
             return;
         }
         this.data.getCurrentUser().setApellidos(this.introducirApellido.getText());
+        ConexionBase.modificarUsuario(this.data.getCurrentUser());
     }
 
     /**
@@ -237,12 +239,13 @@ public class ControllerVistaConfiguracion {
      * @param event
      */
     @FXML
-    void guardarBio(MouseEvent event) {
+    void guardarBio(MouseEvent event) throws IOException {
         if (!validarContenido(this.columnasExpresiones.get("descripcion"), this.introducirBio.getText())) {
             this.errorBio.setText("Bio de 15 - 100 caracteres");
             return;
         }
         this.data.getCurrentUser().setDescripcion(this.introducirBio.getText());
+        ConexionBase.modificarUsuario(this.data.getCurrentUser());
     }
 
     /**
@@ -254,8 +257,11 @@ public class ControllerVistaConfiguracion {
     void guardarImagen(MouseEvent event) throws IOException {
         if (this.rutaImagen!= null && !this.rutaImagen.equalsIgnoreCase("")){
             this.data.getCurrentUser().setRutaImagen(this.rutaImagen);
+            this.data.getCurrentUser().setImagen(new Image("file:"+this.rutaImagen));
             this.data.getListaControladores().getControllerContenedor().cargarSuperior();
+
         }
+        ConexionBase.modificarUsuario(this.data.getCurrentUser());
     }
 
     /**
@@ -271,6 +277,7 @@ public class ControllerVistaConfiguracion {
         }
         this.data.getCurrentUser().setNombre(this.introducirNombre.getText());
         this.data.getListaControladores().getControllerContenedor().cargarSuperior();
+        ConexionBase.modificarUsuario(this.data.getCurrentUser());
 
     }
 
@@ -287,7 +294,8 @@ public class ControllerVistaConfiguracion {
      * Método que se encarga de inicializar todos los datos en la configuracion
      */
     public void inicializar(){
-        this.imgPersona.setImage(new Image("file:"+this.data.getCurrentUser().getRutaImagen()));
+        //this.imgPersona.setImage(new Image("file:"+this.data.getCurrentUser().getRutaImagen()));
+        this.imgPersona.setImage(this.data.getCurrentUser().getImagen());
         this.introducirBio.setText(this.data.getCurrentUser().getDescripcion());
         this.introducirNombre.setPromptText(this.data.getCurrentUser().getNombre());
         this.introducirApellido.setPromptText(this.data.getCurrentUser().getApellidos());

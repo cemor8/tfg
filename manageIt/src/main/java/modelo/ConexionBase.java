@@ -768,6 +768,7 @@ public class ConexionBase {
         updateFields.append("contraseña",usuario.getContraseña());
         updateFields.append("correo",usuario.getCorreo());
         updateFields.append("departamento",usuario.getDepartamento());
+        updateFields.append("apellidos",usuario.getApellidos());
         ArrayList<Integer> contactos = new ArrayList<>();
         for (Usuario contacto : usuario.getContactos()){
             contactos.add(contacto.getId());
