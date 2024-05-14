@@ -112,7 +112,8 @@ public class ControllerVistaCadaTarea {
         Parent root = fxmlLoader.load();
         ControllerContactos controllerContactos = fxmlLoader.getController();
         assert proyectoEncontrado != null;
-        controllerContactos.recibirData(this.data,this.tarea.getPersonasAsignadas(),false,proyectoEncontrado.getPersonasAsignadas(),true);
+        Optional<Tarea> tarea1 = this.data.getTareas().stream().filter(tarea2 -> tarea2.getId() == this.tarea.getId()).findAny();
+        controllerContactos.recibirData(this.data,tarea1.get().getPersonasAsignadas(), false,proyectoEncontrado.getPersonasAsignadas(),true);
         this.data.getListaControladores().getControllerContenedor().rellenarContenido(root);
     }
 
