@@ -16,10 +16,7 @@ import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
-import modelo.CambiarIdioma;
-import modelo.Data;
-import modelo.Proyecto;
-import modelo.Tarea;
+import modelo.*;
 
 import java.io.File;
 import java.io.IOException;
@@ -91,6 +88,9 @@ public class ControllerVistaCadaTarea {
             this.imgGuardarDesc.setDisable(true);
             this.labelDescripcion.setEditable(false);
         }
+        Optional<Tarea> tarea1 = this.data.getTareas().stream().filter(tarea2 -> tarea2.getId() == this.tarea.getId()).findAny();
+        this.tarea.setPersonasAsignadas(tarea1.get().getPersonasAsignadas());
+        ConexionBase.modificarTarea(this.tarea);
     }
 
     /**
@@ -248,7 +248,10 @@ public class ControllerVistaCadaTarea {
         if (!validarContenido(this.columnasExpresiones.get("descripcion"), this.labelDescripcion.getText())) {
             return;
         }
+        Optional<Tarea> tarea1 = this.data.getTareas().stream().filter(tarea2 -> tarea2.getId() == this.tarea.getId()).findAny();
         this.tarea.setDescripcion(this.labelDescripcion.getText());
+        this.tarea.setPersonasAsignadas(tarea1.get().getPersonasAsignadas());
+        ConexionBase.modificarTarea(this.tarea);
     }
     /**
      * Método que devuelve true si se cumple una expresion regular en una string

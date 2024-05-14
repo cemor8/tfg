@@ -99,9 +99,6 @@ public class ControllerVistaCadaProyecto {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/vista/contactos.fxml"), CambiarIdioma.getInstance().getBundle());
         Parent root = fxmlLoader.load();
         ControllerContactos controllerContactos = fxmlLoader.getController();
-        System.out.println("Asignaods");
-        System.out.println(this.proyecto.getPersonasAsignadas());
-        System.out.println(this.data.getCurrentUser().getContactos());
 
         controllerContactos.recibirData(this.data,this.proyecto.getPersonasAsignadas(),false,this.data.getCurrentUser().getContactos(),true);
         this.data.getListaControladores().getControllerContenedor().rellenarContenido(root);
