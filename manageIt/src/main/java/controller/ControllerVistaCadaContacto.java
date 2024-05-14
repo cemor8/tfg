@@ -10,9 +10,11 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import modelo.CambiarIdioma;
+import modelo.ConexionBase;
 import modelo.Data;
 import modelo.Usuario;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class ControllerVistaCadaContacto {
@@ -48,12 +50,14 @@ public class ControllerVistaCadaContacto {
      * @param event
      */
     @FXML
-    void gestionarContacto(MouseEvent event) {
+    void gestionarContacto(MouseEvent event) throws IOException {
         if (this.data.getCurrentUser().getContactos().contains(this.contacto)){
             this.data.getCurrentUser().getContactos().remove(contacto);
         }else {
             this.data.getCurrentUser().getContactos().add(contacto);
         }
+        ConexionBase.modificarUsuario(this.data.getCurrentUser());
+
     }
 
     /**

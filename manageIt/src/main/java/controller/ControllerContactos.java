@@ -244,6 +244,7 @@ public class ControllerContactos {
         ImageView img = (ImageView) event.getSource();
         int posicion = Integer.parseInt(img.getId());
         this.contactos.remove(posicion);
+        System.out.println(this.contactos);
         try {
             for (Proyecto proyecto : this.data.getProyectos()){
                 ConexionBase.modificarProyecto(proyecto);
@@ -252,6 +253,7 @@ public class ControllerContactos {
                 ConexionBase.modificarTarea(tarea);
             }
             for (Usuario usuario : this.data.getUsuarios()){
+                System.out.println(usuario.getContactos());
                 ConexionBase.modificarUsuario(usuario);
             }
         }catch (IOException err){
