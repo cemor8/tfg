@@ -157,6 +157,7 @@ public class ControllerVistaCadaTarea {
 
         this.tarea = tarea;
         this.data = data;
+        this.data.setTareas(ConexionBase.recibirTareas());
         this.meter = meter;
         this.tareas = tareas;
         System.out.println(this.tarea);

@@ -9,14 +9,12 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
-import modelo.CambiarIdioma;
-import modelo.ConexionBase;
-import modelo.Data;
-import modelo.Tarea;
+import modelo.*;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Optional;
 
 public class ControllerCadaTarea {
 
@@ -59,6 +57,9 @@ public class ControllerCadaTarea {
 
     @FXML
     void eliminarTarea(MouseEvent event) throws IOException {
+
+        Optional<Proyecto> optionalProyecto = this.data.getProyectos().stream().filter(proyecto -> proyecto.getTareas().contains(tarea)).findAny();
+        optionalProyecto.get().setTareas(this.tareas);
         this.tareas.remove(tarea);
         ConexionBase.eliminarTarea(tarea.getId());
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/vista/tareas.fxml"), CambiarIdioma.getInstance().getBundle());

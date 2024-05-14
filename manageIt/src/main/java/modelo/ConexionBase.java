@@ -724,7 +724,7 @@ public class ConexionBase {
 
                 Document tareaDocumento = tareas.find(Filters.eq("id", cadaIdTarea)).first();
 
-                ArrayList<Integer> idsNotasTarea = (ArrayList<Integer>) tareaDocumento.get("tareas");
+                ArrayList<Integer> idsNotasTarea = (ArrayList<Integer>) tareaDocumento.get("notas");
 
                 for (Integer cadaIdNotaTarea : idsNotasTarea){
                     notas.deleteOne(Filters.eq("id",cadaIdNotaTarea));
