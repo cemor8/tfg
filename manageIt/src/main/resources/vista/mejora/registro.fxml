@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import io.github.palexdev.materialfx.controls.MFXPasswordField?>
+<?import io.github.palexdev.materialfx.controls.MFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="906.0" prefWidth="526.0" styleClass="fondo" stylesheets="@../../styles/oscuro.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.mejora.ControllerRegistro">
+   <children>
+      <MFXTextField fx:id="introducirCorreo" layoutX="141.0" layoutY="260.0" prefHeight="49.0" prefWidth="247.0" promptText="%login.prompt" styleClass="textfieldLogin" />
+      <MFXPasswordField fx:id="introducirContraseña" layoutX="141.0" layoutY="389.0" prefHeight="49.0" prefWidth="247.0" promptText="%login.prompt" styleClass="textfieldLogin" />
+      <MFXButton fx:id="btnLogin" layoutX="173.0" layoutY="741.0" onMouseClicked="#registrarse" prefHeight="49.0" prefWidth="184.0" styleClass="btn" text="%registro.registrarse" />
+      <Label layoutX="141.0" layoutY="193.0" prefHeight="49.0" prefWidth="124.0" styleClass="labelLogin" text="%registro.correo" />
+      <Label layoutX="141.0" layoutY="333.0" prefHeight="49.0" prefWidth="124.0" styleClass="labelLogin" text="%registro.contraseña" />
+      <Label layoutX="145.0" layoutY="316.0" prefHeight="17.0" prefWidth="124.0" styleClass="error" text="%login.error" visible="false" />
+      <Label layoutX="145.0" layoutY="445.0" prefHeight="17.0" prefWidth="124.0" styleClass="error" text="%login.error" visible="false" />
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="188.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../images/claro/logoSin.png" />
+         </image>
+      </ImageView>
+      <MFXButton fx:id="btnLogin111" layoutX="173.0" layoutY="809.0" onMouseClicked="#volverLogin" prefHeight="49.0" prefWidth="184.0" styleClass="btn" text="%registro.volver" />
+      <Label layoutX="141.0" layoutY="454.0" prefHeight="49.0" prefWidth="124.0" styleClass="labelLogin" text="%registro.nombre" />
+      <MFXTextField fx:id="introducirNombre" layoutX="141.0" layoutY="512.0" prefHeight="49.0" prefWidth="247.0" promptText="%login.prompt" styleClass="textfieldLogin" />
+      <Label layoutX="141.0" layoutY="573.0" prefHeight="49.0" prefWidth="124.0" styleClass="labelLogin" text="%registro.sector" />
+      <MFXTextField fx:id="introducirSector" layoutX="141.0" layoutY="631.0" prefHeight="49.0" prefWidth="247.0" promptText="%login.prompt" styleClass="textfieldLogin" />
+   </children>
+</AnchorPane>

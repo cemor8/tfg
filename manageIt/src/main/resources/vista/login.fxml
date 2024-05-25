@@ -8,11 +8,11 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="655.0" prefWidth="526.0" styleClass="fondo" stylesheets="@../styles/oscuro.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ControllerLogin">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="743.0" prefWidth="526.0" styleClass="fondo" stylesheets="@../styles/oscuro.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ControllerLogin">
    <children>
       <MFXTextField fx:id="introducirCorreo" layoutX="141.0" layoutY="260.0" prefHeight="49.0" prefWidth="247.0" promptText="%login.prompt" styleClass="textfieldLogin" />
       <MFXPasswordField fx:id="introducirContraseña" layoutX="141.0" layoutY="389.0" prefHeight="49.0" prefWidth="247.0" promptText="%login.prompt" styleClass="textfieldLogin" />
-      <MFXButton fx:id="btnLogin" layoutX="172.0" layoutY="524.0" onMouseClicked="#iniciar" prefHeight="49.0" prefWidth="184.0" styleClass="btn" text="%login.boton" />
+      <MFXButton fx:id="btnLogin" layoutX="173.0" layoutY="489.0" onMouseClicked="#iniciar" prefHeight="49.0" prefWidth="184.0" styleClass="btn" text="%login.boton" />
       <Label layoutX="141.0" layoutY="193.0" prefHeight="49.0" prefWidth="124.0" styleClass="labelLogin" text="%login.correo" />
       <Label layoutX="141.0" layoutY="333.0" prefHeight="49.0" prefWidth="124.0" styleClass="labelLogin" text="%login.contraseña" />
       <Label layoutX="145.0" layoutY="316.0" prefHeight="17.0" prefWidth="124.0" styleClass="error" text="%login.error" visible="false" />
@@ -22,5 +22,6 @@
             <Image url="@../images/claro/logoSin.png" />
          </image>
       </ImageView>
+      <MFXButton fx:id="btnLogin1" layoutX="171.0" layoutY="572.0" onMouseClicked="#loginEmpresa" prefHeight="49.0" prefWidth="184.0" styleClass="btn" text="%login.empresa" />
    </children>
 </AnchorPane>

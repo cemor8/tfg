@@ -1,5 +1,6 @@
 package controller;
 
+import controller.mejora.LoginEmpresa;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.controls.MFXPasswordField;
 import io.github.palexdev.materialfx.controls.MFXTextField;
@@ -64,6 +65,31 @@ public class ControllerLogin {
         Stage stage1 =(Stage) button.getScene().getWindow();
         stage1.close();
     }
+
+    /**
+     * Método que se encarga de abrir el login de empresa
+     * @param event
+     */
+    @FXML
+    void loginEmpresa(MouseEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/vista/mejora/loginempresa.fxml"), CambiarIdioma.getInstance().getBundle());
+        Parent root = fxmlLoader.load();
+        LoginEmpresa loginEmpresa = fxmlLoader.getController();
+        loginEmpresa.recibirData(this.data);
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+        stage.getIcons().add(new Image("file:src/main/resources/images/menuLateral/logo.png"));
+        stage.setTitle("Login de Empresa");
+        stage.setScene(scene);
+        stage.show();
+
+        MFXButton button = (MFXButton) event.getSource();
+        Stage stage1 =(Stage) button.getScene().getWindow();
+        stage1.close();
+    }
+
+
+
     public void recibirData(Data data){
         this.data = data;
     }

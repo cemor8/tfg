@@ -14,4 +14,6 @@ module com.example.manageit {
     exports controller;
     exports modelo;
     opens controller to javafx.fxml;
+    exports controller.mejora to javafx.fxml;
+    opens controller.mejora to javafx.fxml;
 }

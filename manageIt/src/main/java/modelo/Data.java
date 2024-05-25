@@ -11,6 +11,8 @@ public class Data {
     private ArrayList<Proyecto> proyectos;
     private ArrayList<Usuario> usuarios;
     private ArrayList<Tarea> tareas;
+    private ArrayList<Empresa> empresas;
+    private Empresa empresaSeleccionada;
     private Usuario currentUser;
     private ListaControladores listaControladores;
     private boolean oscuro = true;
@@ -211,6 +213,22 @@ public class Data {
 
     public void setTareas(ArrayList<Tarea> tareas) {
         this.tareas = tareas;
+    }
+
+    public ArrayList<Empresa> getEmpresas() {
+        return empresas;
+    }
+
+    public void setEmpresas(ArrayList<Empresa> empresas) {
+        this.empresas = empresas;
+    }
+
+    public void setEmpresaSeleccionada(Empresa empresaSeleccionada) {
+        this.empresaSeleccionada = empresaSeleccionada;
+    }
+
+    public Empresa getEmpresaSeleccionada() {
+        return empresaSeleccionada;
     }
 
     public void setCurrentUser(Usuario currentUser) {

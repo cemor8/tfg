@@ -942,6 +942,11 @@ public class ConexionBase {
             case "tareas":
                 coleccion = database.getCollection("idtareas");
                 break;
+            case "empresa":
+                coleccion = database.getCollection("idempresas");
+                break;
+            default:
+                break;
         }
         Document updatedDocument = coleccion.findOneAndUpdate(
                 new Document(),Updates.inc("valor", 1)
