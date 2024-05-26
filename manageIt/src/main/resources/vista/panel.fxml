@@ -22,7 +22,7 @@
             <MFXButton fx:id="btnVerTodosProyectos1" layoutX="334.0" layoutY="20.0" onMouseClicked="#verTareas" prefHeight="34.0" prefWidth="88.0" styleClass="btn" text="%panel.botonVerTodos" />
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="anchorgraf1" layoutX="132.0" layoutY="131.0" prefHeight="233.0" prefWidth="333.0" styleClass="seccionTerminado" />
-      <AnchorPane fx:id="anchorgraf2" layoutX="648.0" layoutY="123.0" prefHeight="250.0" prefWidth="367.0" styleClass="seccionTerminado" />
+      <AnchorPane fx:id="anchorgraf1" layoutX="115.0" layoutY="131.0" prefHeight="250.0" prefWidth="367.0" styleClass="seccionTerminado" />
+      <AnchorPane fx:id="anchorgraf2" layoutX="648.0" layoutY="131.0" prefHeight="250.0" prefWidth="367.0" styleClass="seccionTerminado" />
    </children>
 </AnchorPane>
