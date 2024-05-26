@@ -63,6 +63,10 @@ public class LoginEmpresa {
         stage.setScene(scene);
         stage.show();
 
+        MFXButton button = (MFXButton) event.getSource();
+        Stage stage1 =(Stage) button.getScene().getWindow();
+        stage1.close();
+
     }
 
     @FXML

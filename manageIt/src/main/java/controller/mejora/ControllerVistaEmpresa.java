@@ -46,7 +46,7 @@ public class ControllerVistaEmpresa {
     public void recibirData(Data data, Empresa empresa){
         this.data = data;
         this.empresa = empresa;
-        if (this.data.getEmpresaSeleccionada() == null){
+        if (this.data.getEmpresaSeleccionada() != null){
             this.btn.setVisible(false);
         }
         this.cargarDatos();
@@ -59,8 +59,8 @@ public class ControllerVistaEmpresa {
         this.labelDescripcion.setEditable(false);
         this.nombreEmpresa.setText(this.empresa.getNombre());
         this.sectorEmpresa.setText(this.empresa.getSector());
-        this.imgPerfil.setFitWidth(60);
-        this.imgPerfil.setFitHeight(60);
+        this.imgPerfil.setFitWidth(100);
+        this.imgPerfil.setFitHeight(100);
         this.imgPerfil.setPreserveRatio(false);
         Circle clip = new Circle(this.imgPerfil.getFitWidth() / 2, this.imgPerfil.getFitHeight() / 2, this.imgPerfil.getFitWidth() / 2);
         this.imgPerfil.setClip(clip);
