@@ -6,7 +6,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.chart.PieChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
@@ -29,6 +31,10 @@ public class ControllerPanel {
 
     @FXML
     private AnchorPane contenedorProyectos;
+    @FXML
+    private AnchorPane anchorgraf1;
+    @FXML
+    private AnchorPane anchorgraf2;
     @FXML
     private Label labelTareasTerminados;
 
@@ -238,6 +244,47 @@ public class ControllerPanel {
 
         }
     }
+    public void iniciarGraficos(){
+        int cantidadTareasCompletadas = (int) this.tareasAsignadas.stream().filter(tarea -> tarea.getEstado().equalsIgnoreCase("Completado")).count();
+        int cantidadProyectosCompletadas = (int) this.proyectosAsignados.stream().filter(proyecto -> proyecto.getEstado().equalsIgnoreCase("Completado")).count();
+
+        int cantidadTareasProceso = (int) this.tareasAsignadas.stream().filter(tarea -> tarea.getEstado().equalsIgnoreCase("En proceso")).count();
+        int cantidadProyectosProceso = (int) this.proyectosAsignados.stream().filter(proyecto -> proyecto.getEstado().equalsIgnoreCase("En proceso")).count();
+
+        int cantidadTareasBloqueado = (int) this.tareasAsignadas.stream().filter(tarea -> tarea.getEstado().equalsIgnoreCase("Bloqueado")).count();
+        int cantidadProyectosBloqueado = (int) this.proyectosAsignados.stream().filter(proyecto -> proyecto.getEstado().equalsIgnoreCase("Bloqueado")).count();
+
+        System.out.println(cantidadProyectosBloqueado + " "+ cantidadProyectosProceso+ " "+ cantidadProyectosCompletadas);
+
+        PieChart.Data slice1 = new PieChart.Data("Completado", (double) cantidadProyectosCompletadas / this.proyectosAsignados.size() * 100 );
+        PieChart.Data slice2 = new PieChart.Data("En proceso", (double) cantidadProyectosProceso / this.proyectosAsignados.size() * 100);
+        PieChart.Data slice3 = new PieChart.Data("Bloqueado", (double) cantidadProyectosBloqueado / this.proyectosAsignados.size() * 100);
+
+        PieChart.Data slice4 = new PieChart.Data("Completado", (double) cantidadTareasCompletadas / tareasAsignadas.size() * 100 );
+        PieChart.Data slice5 = new PieChart.Data("En proceso", (double) cantidadTareasProceso / tareasAsignadas.size() * 100);
+        PieChart.Data slice6 = new PieChart.Data("Bloqueado", (double) cantidadTareasBloqueado / tareasAsignadas.size() * 100);
+
+
+        PieChart pieChart = new PieChart();
+        PieChart pieChart2 = new PieChart();
+
+        pieChart.getData().addAll(slice3, slice2, slice1);
+        pieChart2.getData().addAll(slice6, slice5, slice4);
+
+
+        this.anchorgraf1.getChildren().add(pieChart);
+        this.anchorgraf2.getChildren().add(pieChart2);
+
+
+        AnchorPane.setTopAnchor(pieChart, 10.0);
+        AnchorPane.setRightAnchor(pieChart, 10.0);
+        AnchorPane.setBottomAnchor(pieChart, 10.0);
+        AnchorPane.setLeftAnchor(pieChart, 10.0);
+        AnchorPane.setTopAnchor(pieChart2, 10.0);
+        AnchorPane.setRightAnchor(pieChart2, 10.0);
+        AnchorPane.setBottomAnchor(pieChart2, 10.0);
+        AnchorPane.setLeftAnchor(pieChart2, 10.0);
+    }
 
     /**
      * Método que se encarga de recibir la informacion y mostrar el nombre del usuario
@@ -250,16 +297,7 @@ public class ControllerPanel {
         this.cargarProyectos();
         this.cargarTareas();
         this.labelMostrarNombre.setText(this.labelMostrarNombre.getText()+this.data.getCurrentUser().getNombre());
-
-        this.labelProyectosTotales.setText(String.valueOf(this.proyectosAsignados.size()));
-        this.labelTareasTotales.setText(String.valueOf(this.tareasAsignadas.size()));
-
-        int cantidadTareas = (int) this.tareasAsignadas.stream().filter(tarea -> tarea.getEstado().equalsIgnoreCase("Completado")).count();
-        int cantidadProyectos = (int) this.proyectosAsignados.stream().filter(proyecto -> proyecto.getEstado().equalsIgnoreCase("Completado")).count();
-
-        this.labelTareasTerminados.setText(String.valueOf(cantidadTareas));
-        this.labelProyectosTerminados.setText(String.valueOf(cantidadProyectos));
-
+        this.iniciarGraficos();
 
 
     }

@@ -784,7 +784,21 @@ Imagenes
 .plusCadaProyectoVista:disabled{
     -fx-image: url(../images/global/Done.png);
 }
+.empresa{
+    -fx-image: url(../images/mejora/Company.png);
+}
 
+.empresapresionado{
+    -fx-image: url(../images/mejora/CompanyV.png);
+}
+
+.usuarios{
+    -fx-image: url(../images/mejora/Team.png);
+}
+
+.usuariospresionado{
+    -fx-image: url(../images/mejora/TeamV.png);
+}
 
 
 /*
@@ -1040,5 +1054,30 @@ Seleccionar dia
     -fx-cursor : hand;
     -fx-scale-x: 1.1;
     -fx-scale-y: 1.1;
+}
 
+/* Estilos para el PieChart */
+.pie-chart {
+    -fx-background-color: black;
+}
+
+
+
+/* Estilos para los textos dentro de las rebanadas */
+.chart-pie-label {
+    -fx-fill: white;
+}
+
+/* Estilos para la leyenda */
+.chart-legend{
+    -fx-background-color: #1F1F1F;
+    -fx-text-fill: white;
+}
+.chart-legend-item{
+    -fx-text-fill: white;
+}
+.chart-pie-label {
+    -fx-text-fill: transparent;
+    -fx-stroke: transparent;
+    -fx-content-display: none;
 }

@@ -1,12 +1,14 @@
 package modelo;
 
 import controller.*;
+import controller.mejora.ControllerMenuLateralEmpresa;
 
 public class ListaControladores {
     private ControllerContenedor controllerContenedor;
     private ControllerMenuLateral controllerMenuLateral;
     private ControllerMenuSuperior controllerMenuSuperior;
     private ControllerProyectos controllerProyectos;
+    private ControllerMenuLateralEmpresa controllerMenuLateralEmpresa;
     private ControllerNotas controllerNotas;
 
     public ControllerNotas getControllerNotas() {
@@ -23,6 +25,14 @@ public class ListaControladores {
 
     public ControllerMenuLateral getControllerMenuLateral() {
         return controllerMenuLateral;
+    }
+
+    public ControllerMenuLateralEmpresa getControllerMenuLateralEmpresa() {
+        return controllerMenuLateralEmpresa;
+    }
+
+    public void setControllerMenuLateralEmpresa(ControllerMenuLateralEmpresa controllerMenuLateralEmpresa) {
+        this.controllerMenuLateralEmpresa = controllerMenuLateralEmpresa;
     }
 
     public void setControllerContenedor(ControllerContenedor controllerContenedor) {

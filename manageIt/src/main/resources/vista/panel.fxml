@@ -2,26 +2,12 @@
 
 <?import io.github.palexdev.materialfx.controls.MFXButton?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
 <AnchorPane prefHeight="801.0" prefWidth="1106.0" styleClass="fondo" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ControllerPanel">
    <children>
       <Label fx:id="labelMostrarNombre" layoutX="43.0" layoutY="40.0" prefHeight="65.0" prefWidth="314.0" styleClass="labelMostrarNombre" text="%panel.nombre" />
-      <AnchorPane layoutX="165.0" layoutY="148.0" prefHeight="233.0" prefWidth="314.0" styleClass="seccionTerminado">
-         <children>
-            <Label fx:id="labelProyectosTerminados" alignment="CENTER" layoutX="48.0" layoutY="53.0" prefHeight="71.0" prefWidth="122.0" styleClass="labelTerminado" text="Label" />
-            <ImageView fitHeight="107.0" fitWidth="148.0" layoutX="96.0" layoutY="59.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/panel/Line.png" />
-               </image>
-            </ImageView>
-            <Label fx:id="labelProyectosTotales" alignment="CENTER" layoutX="131.0" layoutY="89.0" prefHeight="71.0" prefWidth="122.0" styleClass="labelTerminado" text="Label" />
-            <Label alignment="CENTER" layoutX="16.0" layoutY="184.0" prefHeight="42.0" prefWidth="283.0" styleClass="terminados" text="%panel.contenedorProyectosTerminados" />
-         </children>
-      </AnchorPane>
       <AnchorPane fx:id="contenedorProyectos" layoutX="80.0" layoutY="437.0" prefHeight="309.0" prefWidth="436.0" styleClass="contenedorProyectos">
          <children>
             <VBox fx:id="contenedorCadaProyecto" layoutY="85.0" prefHeight="224.0" prefWidth="436.0" />
@@ -36,17 +22,7 @@
             <MFXButton fx:id="btnVerTodosProyectos1" layoutX="334.0" layoutY="20.0" onMouseClicked="#verTareas" prefHeight="34.0" prefWidth="88.0" styleClass="btn" text="%panel.botonVerTodos" />
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="656.0" layoutY="148.0" prefHeight="233.0" prefWidth="314.0" styleClass="seccionTerminado">
-         <children>
-            <Label fx:id="labelTareasTerminados" alignment="CENTER" layoutX="48.0" layoutY="53.0" prefHeight="71.0" prefWidth="122.0" styleClass="labelTerminado" text="Label" />
-            <ImageView fitHeight="107.0" fitWidth="148.0" layoutX="96.0" layoutY="59.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/panel/Line.png" />
-               </image>
-            </ImageView>
-            <Label fx:id="labelTareasTotales" alignment="CENTER" layoutX="131.0" layoutY="89.0" prefHeight="71.0" prefWidth="122.0" styleClass="labelTerminado" text="Label" />
-            <Label alignment="CENTER" layoutX="16.0" layoutY="184.0" prefHeight="42.0" prefWidth="283.0" styleClass="terminados" text="%panel.contenedorTareasTerminadas" />
-         </children>
-      </AnchorPane>
+      <AnchorPane fx:id="anchorgraf1" layoutX="132.0" layoutY="131.0" prefHeight="233.0" prefWidth="333.0" styleClass="seccionTerminado" />
+      <AnchorPane fx:id="anchorgraf2" layoutX="648.0" layoutY="123.0" prefHeight="250.0" prefWidth="367.0" styleClass="seccionTerminado" />
    </children>
 </AnchorPane>
