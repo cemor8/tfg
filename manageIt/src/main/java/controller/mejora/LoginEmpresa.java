@@ -1,5 +1,6 @@
 package controller.mejora;
 
+import controller.ControllerContenedor;
 import controller.ControllerLogin;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.controls.MFXPasswordField;
@@ -13,8 +14,11 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import modelo.CambiarIdioma;
 import modelo.Data;
+import modelo.Empresa;
+import modelo.Usuario;
 
 import java.io.IOException;
+import java.util.Optional;
 
 public class LoginEmpresa {
     @FXML
@@ -34,8 +38,31 @@ public class LoginEmpresa {
     private MFXTextField introducirCorreo;
 
     @FXML
-    void iniciarEmpresa(MouseEvent event) {
+    void iniciarEmpresa(MouseEvent event) throws IOException {
         /** Iniciar sesion como la empresa  */
+
+        Optional<Empresa> empresaOptional = this.data.getEmpresas().stream().filter(empresa -> empresa.getCorreo().equalsIgnoreCase(introducirCorreo.getText()) &&
+                empresa.getContraseña().equals(this.introducirContraseña.getText())).findAny();
+
+
+
+        if(empresaOptional.isPresent()){
+            this.data.setEmpresaSeleccionada(empresaOptional.get());
+        }else {
+            return;
+        }
+
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/vista/contenedor.fxml"), CambiarIdioma.getInstance().getBundle());
+        Parent root = fxmlLoader.load();
+        ControllerContenedor controllerContenedor = fxmlLoader.getController();
+        controllerContenedor.recibirData(this.data,true,false);
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+        stage.getIcons().add(new Image("file:src/main/resources/images/menuLateral/logo.png"));
+        stage.setTitle("Panel");
+        stage.setScene(scene);
+        stage.show();
+
     }
 
     @FXML

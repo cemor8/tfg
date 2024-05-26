@@ -53,7 +53,7 @@ public class ControllerLogin {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/vista/contenedor.fxml"), CambiarIdioma.getInstance().getBundle());
         Parent root = fxmlLoader.load();
         ControllerContenedor controllerContenedor = fxmlLoader.getController();
-        controllerContenedor.recibirData(this.data);
+        controllerContenedor.recibirData(this.data,false,true);
         Scene scene = new Scene(root);
         Stage stage = new Stage();
         stage.getIcons().add(new Image("file:src/main/resources/images/menuLateral/logo.png"));

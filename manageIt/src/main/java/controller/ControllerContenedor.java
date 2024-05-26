@@ -1,5 +1,7 @@
 package controller;
 
+import controller.mejora.ControllerMenuLateralEmpresa;
+import controller.mejora.ControllerVistaEmpresa;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -31,13 +33,50 @@ public class ControllerContenedor {
      * @param data
      * @throws IOException
      */
-    public void recibirData(Data data) throws IOException {
+    public void recibirData(Data data,boolean esEmpresa, boolean esUsuario) throws IOException {
         this.data = data;
         this.data.getListaControladores().setControllerContenedor(this);
-        this.cargarLateral();
-        this.cargarSuperior();
-        this.cargarContenido();
-        this.meterEstilo("/styles/oscuro.css");
+        if (esEmpresa){
+            this.data.setCurrentUser(this.data.getUsuarios().get(0));
+            this.cargarSuperior();
+            this.cargarLateralEmpresa();
+            this.cargarContenidoEmpresa();
+            this.meterEstilo("/styles/oscuro.css");
+            return;
+        }
+        if (esUsuario){
+            this.cargarLateral();
+            this.cargarSuperior();
+            this.cargarContenido();
+            this.meterEstilo("/styles/oscuro.css");
+            return;
+        }
+
+
+    }
+
+    /**
+     * Método que carga el menu lateral de la empresa
+     * @throws IOException
+     */
+    public void cargarLateralEmpresa() throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/vista/mejora/menuLateralEmpresa.fxml"), CambiarIdioma.getInstance().getBundle());
+        Parent root = fxmlLoader.load();
+        ControllerMenuLateralEmpresa controllerMenuLateralEmpresa = fxmlLoader.getController();
+        controllerMenuLateralEmpresa.recibirData(this.data);
+        this.menuLateral.getChildren().setAll(root);
+    }
+
+    /**
+     * Método que carga el contenido de la empresa
+     */
+    public void cargarContenidoEmpresa() throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/vista/mejora/vistaEmpresa.fxml"), CambiarIdioma.getInstance().getBundle());
+        Parent root = fxmlLoader.load();
+        ControllerVistaEmpresa controllerVistaEmpresa = fxmlLoader.getController();
+        controllerVistaEmpresa.recibirData(this.data,this.data.getEmpresaSeleccionada());
+        this.data.getListaControladores().getControllerMenuLateralEmpresa().iniciarPanel();
+        this.rellenarContenido(root);
     }
 
     /**
