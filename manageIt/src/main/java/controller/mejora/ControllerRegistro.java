@@ -1,4 +1,7 @@
-package controller.mejora;import io.github.palexdev.materialfx.controls.MFXButton;
+package controller.mejora;
+
+import controller.ControllerContenedor;
+import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.controls.MFXPasswordField;
 import io.github.palexdev.materialfx.controls.MFXTextField;
 import javafx.fxml.FXML;
@@ -50,7 +53,7 @@ public class ControllerRegistro {
     };
 
     @FXML
-    void registrarse(MouseEvent event) {
+    void registrarse(MouseEvent event) throws IOException {
         /** Comprobar datos y registrarse*/
         boolean error = false;
         String nombreEmpresa = introducirNombre.getText();
@@ -58,18 +61,22 @@ public class ControllerRegistro {
         String sectorEmpresa = introducirSector.getText();
         String contraseña = introducirContraseña.getText();
 
-        if (this.data.getEmpresas().stream().anyMatch(empresa -> empresa.getNombre().equalsIgnoreCase(nombreEmpresa)) ||!this.validarContenido(nombreEmpresa,columnasExpresiones.get("nombre"))){
+        if (this.data.getEmpresas().stream().anyMatch(empresa -> empresa.getNombre().equalsIgnoreCase(nombreEmpresa)) ||!this.validarContenido(columnasExpresiones.get("nombre"),nombreEmpresa)){
             /* No vale hay empresa con ese nombre, dar error  = true*/
+            System.out.println("correo mal");
             error = true;
         }
-        if (this.data.getEmpresas().stream().anyMatch(empresa -> empresa.getCorreo().equalsIgnoreCase(correoEmpresa)) || !this.validarContenido(correoEmpresa,columnasExpresiones.get("correo"))){
+        if (this.data.getEmpresas().stream().anyMatch(empresa -> empresa.getCorreo().equalsIgnoreCase(correoEmpresa)) || !this.validarContenido(columnasExpresiones.get("correo"),correoEmpresa)){
             /* No vale hay empresa con ese correo, dar error  = true*/
+            System.out.println("nombre mal");
             error = true;
         }
-        if (!this.validarContenido(sectorEmpresa,columnasExpresiones.get("sector"))){
+        if (!this.validarContenido(columnasExpresiones.get("sector"),sectorEmpresa)){
+            System.out.println("sector mal");
             error = true;
         }
-        if (!this.validarContenido(contraseña,columnasExpresiones.get("contraseña"))){
+        if (!this.validarContenido(columnasExpresiones.get("contraseña"),contraseña)){
+            System.out.println("contraseña mal");
             error = true;
         }
 
@@ -81,12 +88,27 @@ public class ControllerRegistro {
         /* poner imagenes por defecto, meter empresa en base de datos */
 
         Integer id = ConexionBase.obtenerId("empresas");
-        Empresa empresa = new Empresa(id,nombreEmpresa,correoEmpresa,contraseña,null,null,sectorEmpresa,"Descripcion por defecto para nueva empresa, modificame!!");
+        Empresa empresa = new Empresa(id,nombreEmpresa,correoEmpresa,contraseña,new Image("file:"+"src/main/resources/images/mejora/empresa/prueba.jpg"),new Image("file:"+"src/main/resources/images/usuarios/persona.png"),sectorEmpresa,"Descripcion por defecto para nueva empresa, modificame!!");
         this.data.getEmpresas().add(empresa);
 
         this.data.setEmpresaSeleccionada(empresa);
 
         /*Poner vista de empresa*/
+
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/vista/contenedor.fxml"), CambiarIdioma.getInstance().getBundle());
+        Parent root = fxmlLoader.load();
+        ControllerContenedor controllerContenedor = fxmlLoader.getController();
+        controllerContenedor.recibirData(this.data,true,false);
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+        stage.getIcons().add(new Image("file:src/main/resources/images/menuLateral/logo.png"));
+        stage.setTitle("Panel");
+        stage.setScene(scene);
+        stage.show();
+
+        MFXButton button = (MFXButton) event.getSource();
+        Stage stage1 =(Stage) button.getScene().getWindow();
+        stage1.close();
 
 
     }

@@ -942,7 +942,7 @@ public class ConexionBase {
             case "tareas":
                 coleccion = database.getCollection("idtareas");
                 break;
-            case "empresa":
+            case "empresas":
                 coleccion = database.getCollection("idempresas");
                 break;
             default:
