@@ -1116,6 +1116,12 @@ Seleccionar dia
     -fx-text-fill: white; /* Establece el color del texto del encabezado a blanco */
 
 }
+.table-view .placeholder {
+    -fx-text-fill: white; /* Establece el color del texto a blanco */
+    -fx-font-size: 16px; /* Opcional: Ajusta el tamaño de la fuente si lo deseas */
+    -fx-font-style: italic; /* Opcional: Puedes hacer que el texto sea cursiva para diferenciarlo */
+    -fx-font-family: 'Roboto', sans-serif; /* Establece la fuente a Roboto */
+}
 
 /* Estilos para filas seleccionadas */
 .table-row-cell:selected {
@@ -1129,4 +1135,45 @@ Seleccionar dia
 .table-cell {
     -fx-padding: 10px 5px; /* Agrega espacio arriba y abajo dentro de cada celda de datos */
 }
+
+.botonTablaEliminar {
+    -fx-background-color: #C1402E; /* Color rojo similar al de tu imagen */
+    -fx-text-fill: white; /* Texto blanco, asumiendo que quieres que haya texto */
+    -fx-font-family: 'Roboto'; /* Fuente Arial, puedes cambiarla */
+    -fx-font-size: 14px; /* Tamaño del texto */
+    -fx-padding: 10px 20px; /* Espaciado interno */
+    -fx-background-radius: 20; /* Bordes redondeados */
+    -fx-border-radius: 20; /* Radio del borde */
+    -fx-scale-x: 1;
+     -fx-scale-y: 1;
+    -transition: all 0.2s ease-in-out;
+}
+
+.botonTablaEliminar:hover {
+
+    -fx-scale-x: 1.1;
+         -fx-scale-y: 1.1;
+         -fx-cursor: hand;
+}
+.botonTablaModificar {
+    -fx-background-color: #3D753D; /* Color verde oscuro, ajusta según necesites */
+    -fx-text-fill: white; /* Texto blanco */
+    -fx-font-family: 'Roboto'; /* Fuente Arial, puedes cambiarla */
+    -fx-font-size: 14px; /* Tamaño del texto */
+    -fx-padding: 10px 20px; /* Espaciado interno */
+    -fx-background-radius: 20; /* Bordes redondeados */
+    -fx-border-radius: 20; /* Radio del borde */
+    -fx-scale-x: 1;
+         -fx-scale-y: 1;
+        -transition: all 0.2s ease-in-out;
+}
+
+.botonTablaModificar:hover {
+
+    -fx-scale-x: 1.1;
+             -fx-scale-y: 1.1;
+             -fx-cursor: hand;
+}
+
+
 

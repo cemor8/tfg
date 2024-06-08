@@ -5,15 +5,19 @@ import javafx.beans.value.ObservableListValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.Parent;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.VBox;
+import modelo.CambiarIdioma;
 import modelo.Data;
 import modelo.Usuario;
 
 import java.awt.image.AreaAveragingScaleFilter;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -31,18 +35,38 @@ public class ControllerTablaUsuarios implements Initializable {
 
 
     @FXML
-    void crear(MouseEvent event) {
-
+    void crear(MouseEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/vista/mejora/vistaModificacionUsuario.fxml"), CambiarIdioma.getInstance().getBundle());
+        Parent root = fxmlLoader.load();
+        ControllerModificarUsuario controllerModificarUsuario = fxmlLoader.getController();
+        controllerModificarUsuario.recibirData(this.data,null);
+        this.data.getListaControladores().getControllerContenedor().rellenarContenido(root);
     }
 
     @FXML
     void eliminar(MouseEvent event) {
-
+        Usuario usuario = this.tabla.getSelectionModel().getSelectedItem();
+        if (usuario == null){
+            return;
+        }
+        this.data.getUsuarios().remove(usuario);
+        this.usuariosObservable.remove(usuario);
+        this.tabla.refresh();
+        /*Eliminar usuario de la base de datos*/
     }
 
     @FXML
-    void modificar(MouseEvent event) {
+    void modificar(MouseEvent event) throws IOException {
+        Usuario usuario = this.tabla.getSelectionModel().getSelectedItem();
+        if (usuario == null){
+            return;
+        }
 
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/vista/mejora/vistaModificacionUsuario.fxml"), CambiarIdioma.getInstance().getBundle());
+        Parent root = fxmlLoader.load();
+        ControllerModificarUsuario controllerModificarUsuario = fxmlLoader.getController();
+        controllerModificarUsuario.recibirData(this.data,usuario);
+        this.data.getListaControladores().getControllerContenedor().rellenarContenido(root);
     }
 
     @Override

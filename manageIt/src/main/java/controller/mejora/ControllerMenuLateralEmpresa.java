@@ -65,11 +65,15 @@ public class ControllerMenuLateralEmpresa {
 
     @FXML
     void mostrarConfig(MouseEvent event) {
+        this.reiniciarHbox();
 
     }
 
     @FXML
     void verEmpresa(MouseEvent event) throws IOException {
+        this.reiniciarHbox();
+        this.hboxPanel.pseudoClassStateChanged(PseudoClass.getPseudoClass("selected"),true);
+        this.imagenPanel.getStyleClass().add("empresapresionado");
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/vista/mejora/vistaEmpresa.fxml"), CambiarIdioma.getInstance().getBundle());
         Parent root = fxmlLoader.load();
         ControllerVistaEmpresa controllerVistaEmpresa = fxmlLoader.getController();
@@ -79,6 +83,9 @@ public class ControllerMenuLateralEmpresa {
 
     @FXML
     void verUsuarios(MouseEvent event) throws IOException {
+        this.reiniciarHbox();
+        this.hboxProyectos.pseudoClassStateChanged(PseudoClass.getPseudoClass("selected"),true);
+        this.imagenProyectos.getStyleClass().add("usuariospresionado");
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/vista/mejora/tablaUsuariosEmpresa.fxml"), CambiarIdioma.getInstance().getBundle());
         Parent root = fxmlLoader.load();
         ControllerTablaUsuarios controllerTablaUsuarios = fxmlLoader.getController();
@@ -117,7 +124,7 @@ public class ControllerMenuLateralEmpresa {
      */
     public void iniciarPanel(){
         this.hboxPanel.pseudoClassStateChanged(PseudoClass.getPseudoClass("selected"),true);
-        this.imagenPanel.getStyleClass().add("empresaPresionado");
+        this.imagenPanel.getStyleClass().add("empresapresionado");
 
     }
 
