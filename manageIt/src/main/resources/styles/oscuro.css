@@ -1081,3 +1081,52 @@ Seleccionar dia
     -fx-stroke: transparent;
     -fx-content-display: none;
 }
+
+
+
+/* Estilos tablas */
+
+.table-view {
+    -fx-background-color: transparent;
+    -fx-table-cell-border-color: transparent;
+    -fx-text-fill: white; /* Cambia el color del texto de toda la tabla a blanco */
+}
+
+.table-row-cell {
+    -fx-border-color: transparent transparent gray transparent;
+    -fx-border-width: 0 0 1 0;
+    -fx-padding: 5px;
+    -fx-background-color: transparent; /* Hace las filas transparentes */
+    -fx-font-size: 14px
+}
+
+.table-cell {
+    -fx-text-fill: white; /* Color del texto para las celdas individuales */
+    -fx-font-family: 'Roboto', sans-serif; /* Establece la fuente a Roboto */
+}
+
+/* Estilos para el encabezado de las columnas */
+.column-header-background {
+    -fx-background-color: transparent; /* Elimina el color de fondo del encabezado */
+}
+
+.column-header, .column-header .label {
+    -fx-font-weight: bold;
+    -fx-background-color: transparent; /* Hace transparente el fondo del encabezado y su etiqueta */
+    -fx-text-fill: white; /* Establece el color del texto del encabezado a blanco */
+
+}
+
+/* Estilos para filas seleccionadas */
+.table-row-cell:selected {
+    -fx-background-color: #f0f0f0; /* Color gris claro tenue para filas seleccionadas */
+    -fx-table-cell-border-color: transparent;
+}
+.column-header {
+    -fx-padding: 0 0 20px 0; /* Agrega espacio en la parte inferior del encabezado */
+    -fx-font-size: 16px
+}
+.table-cell {
+    -fx-padding: 10px 5px; /* Agrega espacio arriba y abajo dentro de cada celda de datos */
+}
+

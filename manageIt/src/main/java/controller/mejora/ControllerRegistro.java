@@ -87,7 +87,8 @@ public class ControllerRegistro {
         /*Crear empresa*/
         /* poner imagenes por defecto, meter empresa en base de datos */
 
-        Integer id = ConexionBase.obtenerId("empresas");
+        //Integer id = ConexionBase.obtenerId("empresas");
+        Integer id = 1;
         Empresa empresa = new Empresa(id,nombreEmpresa,correoEmpresa,contraseña,new Image("file:"+"src/main/resources/images/mejora/empresa/prueba.jpg"),new Image("file:"+"src/main/resources/images/usuarios/persona.png"),sectorEmpresa,"Descripcion por defecto para nueva empresa, modificame!!");
         this.data.getEmpresas().add(empresa);
 

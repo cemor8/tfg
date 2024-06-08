@@ -69,13 +69,21 @@ public class ControllerMenuLateralEmpresa {
     }
 
     @FXML
-    void verEmpresa(MouseEvent event) {
-
+    void verEmpresa(MouseEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/vista/mejora/vistaEmpresa.fxml"), CambiarIdioma.getInstance().getBundle());
+        Parent root = fxmlLoader.load();
+        ControllerVistaEmpresa controllerVistaEmpresa = fxmlLoader.getController();
+        controllerVistaEmpresa.recibirData(this.data,this.data.getEmpresaSeleccionada());
+        this.data.getListaControladores().getControllerContenedor().rellenarContenido(root);
     }
 
     @FXML
-    void verUsuarios(MouseEvent event) {
-
+    void verUsuarios(MouseEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/vista/mejora/tablaUsuariosEmpresa.fxml"), CambiarIdioma.getInstance().getBundle());
+        Parent root = fxmlLoader.load();
+        ControllerTablaUsuarios controllerTablaUsuarios = fxmlLoader.getController();
+        controllerTablaUsuarios.recibirData(this.data);
+        this.data.getListaControladores().getControllerContenedor().rellenarContenido(root);
     }
     /**
      * Método que se encarga de recibir la información

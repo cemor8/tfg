@@ -12,7 +12,7 @@ public class Usuario {
     private String contraseña;
     private String descripcion;
     private String puesto;
-    private Empresa empresa;
+    private Integer idEmpresa;
     private String departamento;
     private String rutaImagen;
     private ArrayList<Usuario> contactos;
@@ -128,12 +128,12 @@ public class Usuario {
         return imagen;
     }
 
-    public Empresa getEmpresa() {
-        return empresa;
+    public Integer getIdEmpresa() {
+        return idEmpresa;
     }
 
-    public void setEmpresa(Empresa empresa) {
-        this.empresa = empresa;
+    public void setIdEmpresa(Integer idEmpresa) {
+        this.idEmpresa = idEmpresa;
     }
 
     @Override
@@ -146,7 +146,7 @@ public class Usuario {
                 ", contraseña='" + contraseña + '\'' +
                 ", descripcion='" + descripcion + '\'' +
                 ", puesto='" + puesto + '\'' +
-                ", empresa=" + empresa +
+                ", IDempresa=" + idEmpresa +
                 ", departamento='" + departamento + '\'' +
                 ", rutaImagen='" + rutaImagen + '\'' +
                 ", contactos=" + contactos +

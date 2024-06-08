@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="801.0" prefWidth="1106.0" styleClass="fondo" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.mejora.ControllerTablaUsuarios">
+   <children>
+      <AnchorPane layoutX="107.0" layoutY="155.0" prefHeight="378.0" prefWidth="893.0" styleClass="contenedorProyectos">
+         <children>
+            <TableView fx:id="tabla" layoutX="69.0" layoutY="32.0" prefHeight="315.0" prefWidth="756.0" styleClass="tablaDatos" />
+         </children>
+      </AnchorPane>
+      <MFXButton fx:id="btnMeter" layoutX="1011.0" layoutY="699.0" onMouseClicked="#crear" prefHeight="64.0" prefWidth="75.0" styleClass="btnFlotante" />
+      <MFXButton layoutX="253.0" layoutY="581.0" onMouseClicked="#eliminar" prefHeight="97.0" prefWidth="168.0" text="%tablae.eliminar" />
+      <MFXButton layoutX="686.0" layoutY="581.0" onMouseClicked="#modificar" prefHeight="97.0" prefWidth="168.0" text="%tablae.modificar" />
+   </children>
+</AnchorPane>

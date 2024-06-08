@@ -66,12 +66,7 @@ public class ConexionBase {
                         .append("foreignField", "id")
                         .append("as", "notasDetalles"));
 
-        Bson lookupEmpresa = new Document("$lookup",
-                new Document("from", "empresas")
-                        .append("localField", "empresa")
-                        .append("foreignField", "id")
-                        .append("as", "empresaDetalles"));
-        List<Bson> stages = Arrays.asList(lookupContactos, lookupNotas, lookupEmpresa);
+        List<Bson> stages = Arrays.asList(lookupContactos, lookupNotas);
         AggregateIterable<Document> result = collection.aggregate(stages);
 
         for (Document doc : result) {
@@ -84,15 +79,10 @@ public class ConexionBase {
             usuario.setDescripcion(doc.getString("descripcion"));
             usuario.setDepartamento(doc.getString("departamento"));
             usuario.setImagen(ConexionBase.convertirImagen(doc.getString("imagen")));
+            usuario.setPuesto(doc.getString("puesto"));
 
 
-            if (!doc.getList("empresaDetalles", Document.class).isEmpty()) {
-                Document empresaDoc = doc.getList("empresaDetalles", Document.class).get(0);
-                Empresa empresa = new Empresa(null,null,null,null,null,null,null,null);
-                empresa.setId(Integer.valueOf(empresaDoc.getString("id")));
-                empresa.setNombre(empresaDoc.getString("nombre"));
-                usuario.setEmpresa(empresa);
-            }
+            usuario.setIdEmpresa(doc.getInteger("empresa"));
 
             ArrayList<Usuario> contactos = new ArrayList<>();
             List<Document> contactosDocs = (List<Document>) doc.get("contactosDetalles");
@@ -107,7 +97,10 @@ public class ConexionBase {
                     contacto.setCorreo(contactoDoc.getString("correo"));
                     contacto.setDescripcion(contactoDoc.getString("descripcion"));
                     contacto.setImagen(ConexionBase.convertirImagen(contactoDoc.getString("imagen")));
+                    contacto.setIdEmpresa(contactoDoc.getInteger("empresa"));
+                    contacto.setPuesto(contactoDoc.getString("puesto"));
                     contactos.add(contacto);
+
                 }
             }
             usuario.setContactos(contactos);
@@ -173,17 +166,10 @@ public class ConexionBase {
                             .append("foreignField", "id")
                             .append("as", "notasDetalles"));
 
-            Bson lookupEmpresa = new Document("$lookup",
-                    new Document("from", "empresas")
-                            .append("localField", "empresa")
-                            .append("foreignField", "id")
-                            .append("as", "empresaDetalles"));
-
             List<Bson> stages = Arrays.asList(
                     Aggregates.match(Filters.eq("id", usuarioCreadorId)),
                     lookupContactos,
-                    lookupNotas,
-                    lookupEmpresa
+                    lookupNotas
             );
 
             AggregateIterable<Document> result = usuariosCollection.aggregate(stages);
@@ -206,6 +192,8 @@ public class ConexionBase {
                         contacto.setCorreo(contactoDoc.getString("correo"));
                         contacto.setDescripcion(contactoDoc.getString("descripcion"));
                         contacto.setImagen(ConexionBase.convertirImagen(usuarioDoc.getString("imagen")));
+                        contacto.setIdEmpresa(contactoDoc.getInteger("empresa"));
+                        contacto.setPuesto(contactoDoc.getString("puesto"));
                         contactos.add(contacto);
                     }
                 }
@@ -344,6 +332,8 @@ public class ConexionBase {
                     asignado.setApellidos(asginadoDoc.getString("apellidos"));
                     asignado.setDepartamento(asginadoDoc.getString("departamento"));
                     asignado.setCorreo(asginadoDoc.getString("correo"));
+                    asignado.setPuesto(asginadoDoc.getString("puesto"));
+                    asignado.setIdEmpresa(asginadoDoc.getInteger("empresa"));
                     asignado.setDescripcion(asginadoDoc.getString("descripcion"));
                     asignado.setImagen(ConexionBase.convertirImagen(asginadoDoc.getString("imagen")));
                     asignados.add(asignado);
@@ -547,6 +537,8 @@ public class ConexionBase {
                     asignado.setApellidos(asginadoDoc.getString("apellidos"));
                     asignado.setDepartamento(asginadoDoc.getString("departamento"));
                     asignado.setCorreo(asginadoDoc.getString("correo"));
+                    asignado.setPuesto(asginadoDoc.getString("puesto"));
+                    asignado.setIdEmpresa(asginadoDoc.getInteger("empresa"));
                     asignado.setDescripcion(asginadoDoc.getString("descripcion"));
                     asignado.setImagen(ConexionBase.convertirImagen(asginadoDoc.getString("imagen")));
                     asignados.add(asignado);
@@ -601,17 +593,10 @@ public class ConexionBase {
                         .append("foreignField", "id")
                         .append("as", "notasDetalles"));
 
-        Bson lookupEmpresa = new Document("$lookup",
-                new Document("from", "empresas")
-                        .append("localField", "empresa")
-                        .append("foreignField", "id")
-                        .append("as", "empresaDetalles"));
-
         List<Bson> stages = Arrays.asList(
                 Aggregates.match(Filters.eq("id", id)),
                 lookupContactos,
-                lookupNotas,
-                lookupEmpresa
+                lookupNotas
         );
 
         AggregateIterable<Document> result = coleccionUsuarios.aggregate(stages);
@@ -632,8 +617,10 @@ public class ConexionBase {
                     contacto.setApellidos(contactoDoc.getString("apellidos"));
                     contacto.setDepartamento(contactoDoc.getString("departamento"));
                     contacto.setCorreo(contactoDoc.getString("correo"));
+                    contacto.setPuesto(contactoDoc.getString("puesto"));
                     contacto.setDescripcion(contactoDoc.getString("descripcion"));
                     contacto.setImagen(ConexionBase.convertirImagen(usuarioDoc.getString("imagen")));
+                    contacto.setIdEmpresa(contactoDoc.getInteger("empresa"));
                     contactos.add(contacto);
                 }
             }
@@ -668,6 +655,8 @@ public class ConexionBase {
             usuario.setDescripcion(usuarioDoc.getString("descripcion"));
             usuario.setImagen(ConexionBase.convertirImagen(usuarioDoc.getString("imagen")));
             usuario.setId(usuarioDoc.getInteger("id"));
+            usuario.setIdEmpresa(usuarioDoc.getInteger("empresa"));
+            usuario.setPuesto(usuarioDoc.getString("puesto"));
             usuario.setDepartamento(usuarioDoc.getString("departamento"));
         }
         return usuario;
@@ -769,6 +758,7 @@ public class ConexionBase {
         updateFields.append("correo",usuario.getCorreo());
         updateFields.append("departamento",usuario.getDepartamento());
         updateFields.append("apellidos",usuario.getApellidos());
+        updateFields.append("puesto",usuario.getPuesto());
         ArrayList<Integer> contactos = new ArrayList<>();
         for (Usuario contacto : usuario.getContactos()){
             contactos.add(contacto.getId());
