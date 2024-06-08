@@ -1119,7 +1119,7 @@ Seleccionar dia
 
 /* Estilos para filas seleccionadas */
 .table-row-cell:selected {
-    -fx-background-color: #f0f0f0; /* Color gris claro tenue para filas seleccionadas */
+    -fx-background-color: rgba(240, 240, 240, 0.5); /* Color gris claro tenue para filas seleccionadas */
     -fx-table-cell-border-color: transparent;
 }
 .column-header {
