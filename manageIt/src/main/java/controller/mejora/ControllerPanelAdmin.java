@@ -69,7 +69,7 @@ public class ControllerPanelAdmin implements Initializable {
 
         this.tabla.setItems(this.empresaObservableList);
 
-        this.data.getListaControladores().getControllerMenuSuperiorEmpresa().barraBusqueda.textProperty().addListener((observable, textoPrevio, textoIntroducido) -> {
+        this.data.getListaControladores().getControllerMenuSuperiorAdmin().barraBusqueda.textProperty().addListener((observable, textoPrevio, textoIntroducido) -> {
 
             if (textoIntroducido.isEmpty()) {
                 this.empresaObservableList.addAll(this.data.getEmpresas());
