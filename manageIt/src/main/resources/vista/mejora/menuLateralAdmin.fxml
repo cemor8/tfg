@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane id="fondoMenuLateral" prefHeight="908.0" prefWidth="210.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.mejora.ControllerLateralAdmin">
+   <children>
+      <VBox layoutX="11.0" layoutY="195.0" prefHeight="453.0" prefWidth="176.0">
+         <children>
+            <HBox fx:id="hboxPanel" onMouseClicked="#verEmpresas" prefHeight="40.0" prefWidth="191.0" styleClass="hboxLateral">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+               <children>
+                  <ImageView fx:id="imagenPanel" fitHeight="43.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true" styleClass="empresa">
+                     <HBox.margin>
+                        <Insets left="10.0" top="2.0" />
+                     </HBox.margin>
+                     <image>
+                        <Image url="@../../images/mejora/Company.png" />
+                     </image>
+                  </ImageView>
+                  <Label prefHeight="67.0" prefWidth="149.0" styleClass="labelLateral" text="%lateral.empresa">
+                     <HBox.margin>
+                        <Insets left="15.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+            </HBox>
+         </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </VBox>
+      <VBox layoutX="11.0" layoutY="748.0" prefHeight="146.0" prefWidth="176.0">
+         <children>
+            <HBox fx:id="hboxCerrar" onMouseClicked="#cerrar" prefHeight="3.0" prefWidth="191.0" styleClass="hboxLateral">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <children>
+                  <ImageView fx:id="imagenSalir" fitHeight="43.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true" styleClass="cerrar">
+                     <HBox.margin>
+                        <Insets left="10.0" top="2.0" />
+                     </HBox.margin>
+                     <image>
+                        <Image url="@../../images/menuLateral/OpenPane.png" />
+                     </image>
+                  </ImageView>
+                  <Label prefHeight="67.0" prefWidth="149.0" styleClass="labelLateral" text="%lateral.cerrar">
+                     <HBox.margin>
+                        <Insets left="15.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+            </HBox>
+         </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </VBox>
+      <ImageView fitHeight="105.0" fitWidth="129.0" layoutX="53.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true" styleClass="imagenPrincipal" />
+   </children>
+   <opaqueInsets>
+      <Insets />
+   </opaqueInsets>
+</AnchorPane>

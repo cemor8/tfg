@@ -976,6 +976,19 @@ public class ConexionBase {
         empresas.updateOne(Filters.eq("id", empresa.getId()), new Document("$set", updateFields));
     }
 
+    public static void eliminarEmpresa(Integer id){
+        MongoCollection<Document> empresas = database.getCollection("empresas");
+
+        ArrayList<Usuario> usuarios = ConexionBase.recibirUsuarios();
+        for (Usuario usuario : usuarios){
+            if (usuario.getIdEmpresa() == id){
+                ConexionBase.eliminarUsuario(usuario.getId());
+            }
+        }
+
+        empresas.deleteOne(Filters.eq("id", id));
+    }
+
 
     public static Integer obtenerId(String coleccionNombre){
         MongoCollection<Document> coleccion = null;

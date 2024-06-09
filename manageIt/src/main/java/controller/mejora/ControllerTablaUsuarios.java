@@ -54,7 +54,7 @@ public class ControllerTablaUsuarios implements Initializable {
         this.usuariosObservable.remove(usuario);
         this.tabla.refresh();
         ConexionBase.eliminarUsuario(usuario.getId());
-        /*Eliminar usuario de la base de datos*/
+
     }
 
     @FXML
@@ -74,23 +74,23 @@ public class ControllerTablaUsuarios implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         this.tabla.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
-        TableColumn<Usuario,String> columnaNombre = new TableColumn<>("Nombre");
+        TableColumn<Usuario,String> columnaNombre = new TableColumn<>(CambiarIdioma.getInstance().getBundle().getString("tablaU.nombre"));
         this.tabla.getColumns().add(columnaNombre);
         columnaNombre.setCellValueFactory(new PropertyValueFactory<>("nombre"));
 
-        TableColumn<Usuario,String> columnaApellidos = new TableColumn<>("Apellidos");
+        TableColumn<Usuario,String> columnaApellidos = new TableColumn<>(CambiarIdioma.getInstance().getBundle().getString("tablaU.apellidos"));
         this.tabla.getColumns().add(columnaApellidos);
         columnaApellidos.setCellValueFactory(new PropertyValueFactory<>("apellidos"));
 
-        TableColumn<Usuario,String> columnaCorreo = new TableColumn<>("Correo");
+        TableColumn<Usuario,String> columnaCorreo = new TableColumn<>(CambiarIdioma.getInstance().getBundle().getString("tablaU.correo"));
         this.tabla.getColumns().add(columnaCorreo);
         columnaCorreo.setCellValueFactory(new PropertyValueFactory<>("correo"));
 
-        TableColumn<Usuario,String> columnaPuesto = new TableColumn<>("Puesto");
+        TableColumn<Usuario,String> columnaPuesto = new TableColumn<>(CambiarIdioma.getInstance().getBundle().getString("tablaU.puesto"));
         this.tabla.getColumns().add(columnaPuesto);
         columnaPuesto.setCellValueFactory(new PropertyValueFactory<>("puesto"));
 
-        TableColumn<Usuario,String> columnaDepartamento = new TableColumn<>("Departamento");
+        TableColumn<Usuario,String> columnaDepartamento = new TableColumn<>(CambiarIdioma.getInstance().getBundle().getString("tablaU.departamento"));
         this.tabla.getColumns().add(columnaDepartamento);
         columnaDepartamento.setCellValueFactory(new PropertyValueFactory<>("departamento"));
 
