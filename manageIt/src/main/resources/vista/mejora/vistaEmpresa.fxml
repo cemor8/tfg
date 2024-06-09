@@ -11,7 +11,7 @@
       <ImageView fx:id="imgPerfil" fitHeight="106.0" fitWidth="130.0" layoutX="268.0" layoutY="245.0" pickOnBounds="true" styleClass="imgVistaCada" />
       <Label fx:id="nombreEmpresa" layoutX="420.0" layoutY="216.0" prefHeight="59.0" prefWidth="266.0" styleClass="labelJefeProyecto" />
       <Label fx:id="sectorEmpresa" layoutX="420.0" layoutY="283.0" prefHeight="31.0" prefWidth="238.0" styleClass="labelNombreJefe" text="Label" />
-      <MFXButton fx:id="btn" layoutX="420.0" layoutY="351.0" onMouseClicked="#verTareas" prefHeight="31.0" prefWidth="90.0" styleClass="btnCada" text="%empresa.empleados" />
+      <MFXButton fx:id="btn" layoutX="420.0" layoutY="351.0" onMouseClicked="#verEmpleados" prefHeight="31.0" prefWidth="130.0" styleClass="btnCada" text="%empresa.empleados" />
       <Label layoutX="280.0" layoutY="440.0" prefHeight="41.0" prefWidth="130.0" styleClass="labelVistaDescripcion" text="%cadaProyecto.descripcion" />
       <TextArea fx:id="labelDescripcion" layoutX="280.0" layoutY="506.0" prefHeight="200.0" prefWidth="569.0" styleClass="areaDescripcion" wrapText="true" />
       <ImageView fx:id="imgFondo" fitHeight="150.0" fitWidth="760.0" layoutX="173.0" layoutY="46.0" pickOnBounds="true" preserveRatio="true" />

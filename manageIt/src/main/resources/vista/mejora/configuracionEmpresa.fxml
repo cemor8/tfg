@@ -13,9 +13,9 @@
 
 <AnchorPane maxHeight="1237.0" prefHeight="801.0" prefWidth="1106.0" styleClass="fondo" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.mejora.ControllerConfiguracionEmpresa">
    <children>
-      <MFXScrollPane fitToHeight="true" fitToWidth="true" layoutX="177.0" layoutY="101.0" prefHeight="600.0" prefWidth="752.0" styleClass="scrollProyectos">
+      <MFXScrollPane fitToHeight="true" fitToWidth="true" layoutX="177.0" layoutY="101.0" maxHeight="2000.0" prefHeight="600.0" prefWidth="752.0" styleClass="scrollProyectos">
          <content>
-            <VBox prefHeight="1257.0" prefWidth="729.0">
+            <VBox maxHeight="2000.0" prefHeight="1257.0" prefWidth="729.0" spacing="40.0">
                <children>
                   <HBox minHeight="200.0" prefHeight="200.0" prefWidth="707.0" styleClass="cadaHboxConfig">
                      <children>
@@ -28,6 +28,9 @@
                            </children>
                         </AnchorPane>
                      </children>
+                     <opaqueInsets>
+                        <Insets bottom="20.0" />
+                     </opaqueInsets>
                   </HBox>
                   <HBox minHeight="200.0" prefHeight="200.0" prefWidth="707.0" styleClass="cadaHboxConfig">
                      <children>
@@ -131,6 +134,9 @@
                      </VBox.margin>
                   </HBox>
                </children>
+               <padding>
+                  <Insets bottom="10.0" />
+               </padding>
             </VBox>
          </content>
       </MFXScrollPane>

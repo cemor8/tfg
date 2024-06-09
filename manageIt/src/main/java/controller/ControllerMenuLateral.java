@@ -1,5 +1,6 @@
 package controller;
 
+import controller.mejora.ControllerVistaEmpresa;
 import javafx.css.PseudoClass;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -14,6 +15,7 @@ import modelo.*;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Optional;
 
 public class ControllerMenuLateral {
 
@@ -25,6 +27,8 @@ public class ControllerMenuLateral {
 
     @FXML
     private HBox hboxConfiguracion;
+    @FXML
+    private HBox hboxEmpresa;
 
     @FXML
     private HBox hboxContactos;
@@ -42,6 +46,8 @@ public class ControllerMenuLateral {
     public HBox hboxTareas;
     @FXML
     private ImageView imagenContactos;
+    @FXML
+    private ImageView imagenEmpresa;
     @FXML
     private ImageView imagenAjustes;
 
@@ -63,6 +69,19 @@ public class ControllerMenuLateral {
     @FXML
     public ImageView imagenTareas;
     private Data data;
+    @FXML
+    void mostrarEmpresa(MouseEvent event) throws IOException {
+        this.reiniciarHbox();
+        this.hboxEmpresa.pseudoClassStateChanged(PseudoClass.getPseudoClass("selected"),true);
+        this.imagenEmpresa.getStyleClass().add("empresaMpresionado");
+        Optional<Empresa> empresa = this.data.getEmpresas().stream().filter(empresa1 -> empresa1.getId() == this.data.getCurrentUser().getIdEmpresa()).findAny();
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/vista/mejora/vistaEmpresa.fxml"), CambiarIdioma.getInstance().getBundle());
+        Parent root = fxmlLoader.load();
+        ControllerVistaEmpresa controllerVistaEmpresa = fxmlLoader.getController();
+        controllerVistaEmpresa.recibirData(this.data,empresa.get());
+        this.data.getListaControladores().getControllerContenedor().rellenarContenido(root);
+
+    }
 
     /**
      * Método que se encarga de cerrar sesión
@@ -104,6 +123,7 @@ public class ControllerMenuLateral {
         controllerCalendario.recibirData(this.data);
         this.data.getListaControladores().getControllerContenedor().rellenarContenido(root);
     }
+
 
     /**
      * Método que se encarga de mostrar la vista de la configuracion del usuario
@@ -282,6 +302,7 @@ public class ControllerMenuLateral {
         this.hboxPanel.pseudoClassStateChanged(PseudoClass.getPseudoClass("selected"),false);
         this.hboxProyectos.pseudoClassStateChanged(PseudoClass.getPseudoClass("selected"),false);
         this.hboxTareas.pseudoClassStateChanged(PseudoClass.getPseudoClass("selected"),false);
+        this.hboxEmpresa.pseudoClassStateChanged(PseudoClass.getPseudoClass("selected"),false);
 
 
         this.limpiarClasesImagenes();
@@ -294,6 +315,7 @@ public class ControllerMenuLateral {
         this.imagenTareas.getStyleClass().add("tareas");
         this.imagenNotas.getStyleClass().add("notas");
         this.imagenAjustes.getStyleClass().add("config");
+        this.imagenEmpresa.getStyleClass().add("empresaM");
     }
 
     /**
@@ -317,6 +339,7 @@ public class ControllerMenuLateral {
         this.imagenTareas.getStyleClass().clear();
         this.imagenNotas.getStyleClass().clear();
         this.imagenAjustes.getStyleClass().clear();
+        this.imagenEmpresa.getStyleClass().clear();
     }
 
 }

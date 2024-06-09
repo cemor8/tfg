@@ -669,6 +669,7 @@ Configuracion
 .cadaHboxConfig{
     -fx-background-color : #1F1F1F;
     -fx-background-radius : 10px;
+    -fx-padding: 10px 0 10px 0;
 }
 
 .introducirContenido{
@@ -704,6 +705,12 @@ Imagenes
 }
 .contactos{
     -fx-image: url(../images/menuLateral/Contacts.png);
+}
+.empresaM{
+    -fx-image: url(../images/mejora/Company.png);
+}
+.empresaMpresionado{
+    -fx-image: url(../images/mejora/CompanyV.png);
 }
 .config{
     -fx-image: url(../images/menuLateral/Settings.png);

@@ -10,7 +10,7 @@
 
 <AnchorPane id="fondoMenuLateral" prefHeight="908.0" prefWidth="210.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ControllerMenuLateral">
    <children>
-      <VBox layoutX="11.0" layoutY="195.0" prefHeight="453.0" prefWidth="176.0">
+      <VBox layoutX="11.0" layoutY="195.0" prefHeight="524.0" prefWidth="176.0">
          <children>
             <HBox fx:id="hboxPanel" onMouseClicked="#mostrarPanel" prefHeight="40.0" prefWidth="191.0" styleClass="hboxLateral">
                <opaqueInsets>
@@ -141,6 +141,29 @@
                      </image>
                   </ImageView>
                   <Label prefHeight="67.0" prefWidth="149.0" styleClass="labelLateral" text="%lateral.contactos">
+                     <HBox.margin>
+                        <Insets left="15.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox fx:id="hboxEmpresa" onMouseClicked="#mostrarEmpresa" prefHeight="19.0" prefWidth="191.0" styleClass="hboxLateral">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <children>
+                  <ImageView fx:id="imagenEmpresa" fitHeight="43.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true" styleClass="empresaM">
+                     <HBox.margin>
+                        <Insets left="10.0" top="2.0" />
+                     </HBox.margin>
+                     <image>
+                        <Image url="@../images/menuLateral/Contacts.png" />
+                     </image>
+                  </ImageView>
+                  <Label prefHeight="67.0" prefWidth="149.0" styleClass="labelLateral" text="%lateral.empresaM">
                      <HBox.margin>
                         <Insets left="15.0" />
                      </HBox.margin>

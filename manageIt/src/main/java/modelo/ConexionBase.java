@@ -937,13 +937,43 @@ public class ConexionBase {
         notas.insertOne(nuevoUsuario);
     }
 
-    public void crearEmpresa(Empresa empresa){
+    public static void crearEmpresa(Empresa empresa){
         MongoCollection<Document> empresas = database.getCollection("empresas");
         Document empresaNueva = new Document("nombre",empresa.getNombre()).append("correo",empresa.getCorreo()).append("contraseña",empresa.getContraseña())
                 .append("id",empresa.getId()).append("sector",empresa.getSector()).append("imagen_perfil",empresa.getImagenPerfil()).append("banner",empresa.getImagenFondo())
                 .append("descripcion",empresa.getDescripcion());
         empresas.insertOne(empresaNueva);
 
+    }
+    public static ArrayList<Empresa> recibirEmpresas(){
+        MongoCollection<Document> empresas = database.getCollection("empresas");
+        ArrayList<Empresa> empresasLista = new ArrayList<>();
+        for (Document doc : empresas.find()) {
+            Empresa emp = new Empresa(null,null,null,null,null,null,null,null);
+            emp.setId(doc.getInteger("id"));
+            emp.setNombre(doc.getString("nombre"));
+            emp.setCorreo(doc.getString("correo"));
+            emp.setContraseña(doc.getString("contraseña"));
+            emp.setImagenFondo(ConexionBase.convertirImagen(doc.getString("banner")));
+            emp.setImagenPerfil(ConexionBase.convertirImagen(doc.getString("imagen_perfil")));
+            emp.setDescripcion(doc.getString("descripcion"));
+            emp.setSector(doc.getString("sector"));
+            empresasLista.add(emp);
+        }
+        return empresasLista;
+    }
+    public static void modificarEmpresa(Empresa empresa) throws IOException {
+        MongoCollection<Document> empresas = database.getCollection("empresas");
+
+        Document updateFields = new Document();
+        updateFields.append("nombre",empresa.getNombre());
+        updateFields.append("descripcion",empresa.getDescripcion());
+        updateFields.append("imagen_perfil",ConexionBase.transformarA64(empresa.getImagenPerfil()));
+        updateFields.append("banner",ConexionBase.transformarA64(empresa.getImagenFondo()));
+        updateFields.append("contraseña",empresa.getContraseña());
+        updateFields.append("sector",empresa.getSector());
+        updateFields.append("correo",empresa.getCorreo());
+        empresas.updateOne(Filters.eq("id", empresa.getId()), new Document("$set", updateFields));
     }
 
 

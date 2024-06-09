@@ -14,6 +14,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.FileChooser;
 import modelo.CambiarIdioma;
+import modelo.ConexionBase;
 import modelo.Data;
 
 import java.io.File;
@@ -82,7 +83,9 @@ public class ControllerConfiguracionEmpresa {
         {
             put("descripcion", "^.{15,100}$");
             put("nombre", "^.{5,25}$");
-            put("apellido","^[A-Za-z]+$");
+            put("correo", "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$");
+            put("sector", "^.{5,20}$");
+            put("contraseña", "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[A-Za-z\\d]{8,}$");
         }
 
     };
@@ -207,33 +210,64 @@ public class ControllerConfiguracionEmpresa {
         }
     }
     @FXML
-    void guardarContraseña(MouseEvent event) {
-
+    void guardarContraseña(MouseEvent event) throws IOException {
+        if (!validarContenido(this.columnasExpresiones.get("contraseña"), this.introducirContraseña.getText())) {
+            this.errorBio.setText("Bio de 15 - 100 caracteres");
+            return;
+        }
+        this.data.getEmpresaSeleccionada().setContraseña(this.introducirContraseña.getText());
+        ConexionBase.modificarEmpresa(this.data.getEmpresaSeleccionada());
     }
 
     @FXML
-    void guardarCorreo(MouseEvent event) {
-
+    void guardarCorreo(MouseEvent event) throws IOException {
+        if (!validarContenido(this.columnasExpresiones.get("correo"), this.introducirCorreo.getText())) {
+            this.errorBio.setText("Bio de 15 - 100 caracteres");
+            return;
+        }
+        this.data.getEmpresaSeleccionada().setCorreo(this.introducirCorreo.getText());
+        ConexionBase.modificarEmpresa(this.data.getEmpresaSeleccionada());
     }
 
     @FXML
-    void guardarSector(MouseEvent event) {
-
+    void guardarSector(MouseEvent event) throws IOException {
+        if (!validarContenido(this.columnasExpresiones.get("sector"), this.introducirSector.getText())) {
+            this.errorBio.setText("Bio de 15 - 100 caracteres");
+            return;
+        }
+        this.data.getEmpresaSeleccionada().setSector(this.introducirSector.getText());
+        ConexionBase.modificarEmpresa(this.data.getEmpresaSeleccionada());
     }
 
     @FXML
-    void guardarBio(MouseEvent event) {
-
+    void guardarBio(MouseEvent event) throws IOException {
+        if (!validarContenido(this.columnasExpresiones.get("descripcion"), this.introducirBio.getText())) {
+            this.errorBio.setText("Bio de 15 - 100 caracteres");
+            return;
+        }
+        this.data.getEmpresaSeleccionada().setDescripcion(this.introducirBio.getText());
+        ConexionBase.modificarEmpresa(this.data.getEmpresaSeleccionada());
     }
 
     @FXML
-    void guardarImagen(MouseEvent event) {
+    void guardarImagen(MouseEvent event) throws IOException {
+        if (this.rutaImagen!= null && !this.rutaImagen.equalsIgnoreCase("")){
+            this.data.getEmpresaSeleccionada().setImagenPerfil(new Image("file:"+this.rutaImagen));
+            this.data.getListaControladores().getControllerContenedor().cargarSuperiorEmpresa();
 
+        }
+        ConexionBase.modificarEmpresa(this.data.getEmpresaSeleccionada());
     }
 
     @FXML
-    void guardarNombre(MouseEvent event) {
-
+    void guardarNombre(MouseEvent event) throws IOException {
+        if (!validarContenido(this.columnasExpresiones.get("nombre"), this.introducirNombre2.getText())) {
+            this.errorNombre.setText("Nombre incorrecto");
+            return;
+        }
+        this.data.getEmpresaSeleccionada().setNombre(this.introducirNombre2.getText());
+        this.data.getListaControladores().getControllerContenedor().cargarSuperiorEmpresa();
+        ConexionBase.modificarEmpresa(this.data.getEmpresaSeleccionada());
     }
     /**
      * Método que se encarga de recibir informacion
