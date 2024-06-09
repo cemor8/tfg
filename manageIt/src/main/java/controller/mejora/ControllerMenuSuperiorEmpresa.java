@@ -48,7 +48,7 @@ public class ControllerMenuSuperiorEmpresa {
     }
 
     @FXML
-    void verPerfil(MouseEvent event) {
+    void verPerfil(MouseEvent event) throws IOException {
         this.data.getListaControladores().getControllerMenuLateralEmpresa().mostrarConfig(null);
     }
     public void ponerNombre(){

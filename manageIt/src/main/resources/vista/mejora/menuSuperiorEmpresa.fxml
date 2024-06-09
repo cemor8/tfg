@@ -14,7 +14,7 @@
       <InputGroup fx:id="inputGroup" layoutX="45.0" layoutY="21.0" prefHeight="65.0" prefWidth="419.0">
          <children>
             <MFXTextField fx:id="barraBusqueda" prefHeight="49.0" prefWidth="267.0" styleClass="barraBusqueda" />
-            <MFXButton fx:id="btnBuscar" onMouseClicked="#buscar" styleClass="btnLupa" />
+            <MFXButton fx:id="btnBuscar" onMouseClicked="#buscar" styleClass="btnLupa" text="Button" />
          </children></InputGroup>
    </children>
 </AnchorPane>

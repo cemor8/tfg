@@ -4,6 +4,7 @@ import com.mongodb.client.model.Aggregates;
 import com.mongodb.client.model.Filters;
 import com.mongodb.client.model.Updates;
 import io.github.palexdev.materialfx.utils.SwingFXUtils;
+import javafx.geometry.Pos;
 import javafx.scene.image.Image;
 import org.bson.Document;
 import com.mongodb.client.MongoClients;
@@ -772,13 +773,15 @@ public class ConexionBase {
 
     }
 
-    public static void crearUsuario(Usuario usuario){
+    public static void crearUsuario(Usuario usuario) throws IOException {
         MongoCollection<Document> usuarios = database.getCollection("usuarios");
 
         Document nuevoUsuario = new Document("nombre", usuario.getNombre())
-                .append("apellidos", usuario.getApellidos());
+                .append("apellidos", usuario.getApellidos()).append("id",usuario.getId()).append("correo",usuario.getCorreo()).append("contraseña",usuario.getContraseña())
+                .append("descripcion",usuario.getDescripcion()).append("departamento",usuario.getDepartamento()).append("puesto",usuario.getPuesto())
+                .append("imagen",ConexionBase.transformarA64(usuario.getImagen())).append("empresa",usuario.getIdEmpresa())
+                .append("contactos",new ArrayList<Integer>()).append("notas",new ArrayList<Integer>());
 
-        // Añadir más campos según sean necesarios
         usuarios.insertOne(nuevoUsuario);
 
     }
@@ -791,12 +794,28 @@ public class ConexionBase {
         MongoCollection<Document> notas = database.getCollection("notas");
         MongoCollection<Document> proyectos = database.getCollection("proyectos");
         MongoCollection<Document> tareas = database.getCollection("tareas");
-        usuarios.deleteOne(Filters.eq("id", id));
-        //usuarios.updateMany(Filters.eq("contactos", id, Updates.pull("contactos", id));
+        ArrayList<Proyecto> proyectos1 = ConexionBase.recibirProyectos();
+        ArrayList<Tarea> tareas1 = ConexionBase.recibirTareas();
+        ArrayList<Nota> notas1 = ConexionBase.recibirNotas();
 
-        notas.deleteMany(Filters.eq("usuario_creador", id));
-        tareas.deleteMany(Filters.eq("creador", id));
-        proyectos.deleteMany(Filters.eq("creador", id));
+        for (Tarea tarea : tareas1){
+            if (tarea.getCreador().getId() == id){
+                ConexionBase.eliminarTarea(tarea.getId());
+            }
+        }
+        for (Proyecto proyecto : proyectos1){
+            if (proyecto.getJefeProyecto().getId() == id){
+                ConexionBase.eliminarProyecto(proyecto.getId());
+            }
+        }
+
+        for (Nota nota : notas1){
+            if (nota.getUsuario().getId() == id){
+                ConexionBase.eliminarNota(nota.getId());
+            }
+        }
+        usuarios.deleteOne(Filters.eq("id", id));
+
     }
 
 
@@ -917,6 +936,17 @@ public class ConexionBase {
         // Añadir más campos según sean necesarios
         notas.insertOne(nuevoUsuario);
     }
+
+    public void crearEmpresa(Empresa empresa){
+        MongoCollection<Document> empresas = database.getCollection("empresas");
+        Document empresaNueva = new Document("nombre",empresa.getNombre()).append("correo",empresa.getCorreo()).append("contraseña",empresa.getContraseña())
+                .append("id",empresa.getId()).append("sector",empresa.getSector()).append("imagen_perfil",empresa.getImagenPerfil()).append("banner",empresa.getImagenFondo())
+                .append("descripcion",empresa.getDescripcion());
+        empresas.insertOne(empresaNueva);
+
+    }
+
+
     public static Integer obtenerId(String coleccionNombre){
         MongoCollection<Document> coleccion = null;
         switch (coleccionNombre){

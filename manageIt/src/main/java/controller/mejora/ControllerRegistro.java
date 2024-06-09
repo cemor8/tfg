@@ -45,8 +45,8 @@ public class ControllerRegistro {
     Map<String, String> columnasExpresiones = new HashMap<String, String>() {
         {
             put("correo", "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$");
-            put("nombre", "^^.{5,15}$");
-            put("sector", "^^.{5,10}$");
+            put("nombre", "^.{5,15}$");
+            put("sector", "^.{5,10}$");
             put("contraseña", "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[A-Za-z\\d]{8,}$");
         }
 

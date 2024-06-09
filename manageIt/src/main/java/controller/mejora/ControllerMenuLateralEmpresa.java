@@ -64,8 +64,15 @@ public class ControllerMenuLateralEmpresa {
     }
 
     @FXML
-    void mostrarConfig(MouseEvent event) {
+    void mostrarConfig(MouseEvent event) throws IOException {
         this.reiniciarHbox();
+        this.hboxConfiguracion.pseudoClassStateChanged(PseudoClass.getPseudoClass("selected"),true);
+        this.imagenAjustes.getStyleClass().add("configPresionado");
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/vista/mejora/configuracionEmpresa.fxml"), CambiarIdioma.getInstance().getBundle());
+        Parent root = fxmlLoader.load();
+        ControllerConfiguracionEmpresa controllerConfiguracionEmpresa = fxmlLoader.getController();
+        controllerConfiguracionEmpresa.recibirData(this.data);
+        this.data.getListaControladores().getControllerContenedor().rellenarContenido(root);
 
     }
 

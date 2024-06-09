@@ -13,6 +13,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import modelo.CambiarIdioma;
+import modelo.ConexionBase;
 import modelo.Data;
 import modelo.Usuario;
 
@@ -52,6 +53,7 @@ public class ControllerTablaUsuarios implements Initializable {
         this.data.getUsuarios().remove(usuario);
         this.usuariosObservable.remove(usuario);
         this.tabla.refresh();
+        ConexionBase.eliminarUsuario(usuario.getId());
         /*Eliminar usuario de la base de datos*/
     }
 
