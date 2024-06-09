@@ -1,6 +1,7 @@
 package controller;
 
 import controller.mejora.ControllerMenuLateralEmpresa;
+import controller.mejora.ControllerMenuSuperiorEmpresa;
 import controller.mejora.ControllerVistaEmpresa;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -38,7 +39,7 @@ public class ControllerContenedor {
         this.data.getListaControladores().setControllerContenedor(this);
         if (esEmpresa){
             this.data.setCurrentUser(this.data.getUsuarios().get(0));
-            this.cargarSuperior();
+            this.cargarSuperiorEmpresa();
             this.cargarLateralEmpresa();
             this.cargarContenidoEmpresa();
             this.meterEstilo("/styles/oscuro.css");
@@ -88,6 +89,13 @@ public class ControllerContenedor {
         Parent root = fxmlLoader.load();
         ControllerMenuSuperior controllerMenuSuperior = fxmlLoader.getController();
         controllerMenuSuperior.recibirData(this.data);
+        this.menuSuperior.getChildren().setAll(root);
+    }
+    public void cargarSuperiorEmpresa() throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/vista/mejora/menuSuperiorEmpresa.fxml"), CambiarIdioma.getInstance().getBundle());
+        Parent root = fxmlLoader.load();
+        ControllerMenuSuperiorEmpresa controllerMenuSuperiorEmpresa = fxmlLoader.getController();
+        controllerMenuSuperiorEmpresa.recibirData(this.data);
         this.menuSuperior.getChildren().setAll(root);
     }
 

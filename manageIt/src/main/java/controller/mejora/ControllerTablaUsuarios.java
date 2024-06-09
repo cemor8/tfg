@@ -103,6 +103,21 @@ public class ControllerTablaUsuarios implements Initializable {
         }
         this.tabla.setItems(this.usuariosObservable);
 
+        this.data.getListaControladores().getControllerMenuSuperiorEmpresa().barraBusqueda.textProperty().addListener((observable, textoPrevio, textoIntroducido) -> {
+            System.out.println(textoIntroducido);
+            if (textoIntroducido.isEmpty()) {
+                this.usuariosObservable = FXCollections.observableArrayList();
+                for (Usuario usuario : this.data.getUsuarios()){
+                    if (usuario.getIdEmpresa() == this.data.getEmpresaSeleccionada().getId()){
+                        this.usuariosObservable.add(usuario);
+                    }
+                }
+                this.tabla.setItems(this.usuariosObservable);
+            } else {
+                ObservableList<Usuario> filteredList = this.usuariosObservable.filtered(item -> item.getCorreo().toLowerCase().contains(textoIntroducido.toLowerCase()));
+                this.tabla.setItems(filteredList);
+            }
+        });
     }
 }
 

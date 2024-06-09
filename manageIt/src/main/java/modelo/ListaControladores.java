@@ -2,6 +2,7 @@ package modelo;
 
 import controller.*;
 import controller.mejora.ControllerMenuLateralEmpresa;
+import controller.mejora.ControllerMenuSuperiorEmpresa;
 
 public class ListaControladores {
     private ControllerContenedor controllerContenedor;
@@ -10,6 +11,7 @@ public class ListaControladores {
     private ControllerProyectos controllerProyectos;
     private ControllerMenuLateralEmpresa controllerMenuLateralEmpresa;
     private ControllerNotas controllerNotas;
+    private ControllerMenuSuperiorEmpresa controllerMenuSuperiorEmpresa;
 
     public ControllerNotas getControllerNotas() {
         return controllerNotas;
@@ -17,6 +19,14 @@ public class ListaControladores {
 
     public void setControllerNotas(ControllerNotas controllerNotas) {
         this.controllerNotas = controllerNotas;
+    }
+
+    public ControllerMenuSuperiorEmpresa getControllerMenuSuperiorEmpresa() {
+        return controllerMenuSuperiorEmpresa;
+    }
+
+    public void setControllerMenuSuperiorEmpresa(ControllerMenuSuperiorEmpresa controllerMenuSuperiorEmpresa) {
+        this.controllerMenuSuperiorEmpresa = controllerMenuSuperiorEmpresa;
     }
 
     public ControllerContenedor getControllerContenedor() {
