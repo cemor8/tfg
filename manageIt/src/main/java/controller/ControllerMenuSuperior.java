@@ -3,6 +3,7 @@ package controller;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.controls.MFXTextField;
 import javafx.application.Platform;
+import javafx.css.PseudoClass;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -121,7 +122,9 @@ public class ControllerMenuSuperior {
                 }
             }
         }
-
+        this.data.getListaControladores().getControllerMenuLateral().reiniciarHbox();
+        this.data.getListaControladores().getControllerMenuLateral().hboxProyectos.pseudoClassStateChanged(PseudoClass.getPseudoClass("selected"),true);
+        this.data.getListaControladores().getControllerMenuLateral().imagenProyectos.getStyleClass().add("proyectosPresionado");
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/vista/proyectos.fxml"), CambiarIdioma.getInstance().getBundle());
         Parent root = fxmlLoader.load();
         ControllerProyectos controllerProyectos = fxmlLoader.getController();
