@@ -10,9 +10,11 @@
 <AnchorPane fx:id="menuSuperior" prefHeight="107.0" prefWidth="1106.0" styleClass="fondo" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.mejora.ControllerMenuSuperiorEmpresa">
    <children>
       <ImageView fx:id="perfil" fitHeight="65.0" fitWidth="84.0" layoutX="1008.0" layoutY="23.0" onMouseClicked="#verPerfil" pickOnBounds="true" preserveRatio="true" styleClass="imgPerfilSuperior" />
-      <MFXTextField fx:id="barraBusqueda" layoutX="106.0" layoutY="37.0" prefHeight="49.0" prefWidth="267.0" styleClass="barraBusqueda" />
       <Label fx:id="nombre" layoutX="788.0" layoutY="29.0" prefHeight="49.0" prefWidth="205.0" styleClass="labelMenuSuperiorNombre" />
-      <MFXButton fx:id="btnBuscar" layoutX="391.0" layoutY="32.0" onMouseClicked="#buscar" styleClass="btnLupa" />
-      <InputGroup fx:id="inputGroup" layoutX="475.0" layoutY="57.0" prefHeight="31.0" prefWidth="72.0" />
+      <InputGroup fx:id="inputGroup" layoutX="45.0" layoutY="21.0" prefHeight="65.0" prefWidth="419.0">
+         <children>
+            <MFXTextField fx:id="barraBusqueda" prefHeight="49.0" prefWidth="267.0" styleClass="barraBusqueda" />
+            <MFXButton fx:id="btnBuscar" onMouseClicked="#buscar" styleClass="btnLupa" />
+         </children></InputGroup>
    </children>
 </AnchorPane>

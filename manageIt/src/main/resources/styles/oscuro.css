@@ -1020,14 +1020,14 @@ Seleccionar dia
 .btnLupa {
     -fx-background-radius: 50%;
     -fx-min-width: 40px;
-    -fx-min-height: 40px;
+    -fx-min-height: 29px;
     -fx-max-width: 40px;
-    -fx-max-height: 40px;
+    -fx-max-height: 29px;
     -fx-background-color: white;
     -fx-background-image: url(../images/menuLateral/lupa.png);
-    -fx-background-size: cover;
-    -fx-background-position: center;
-    -fx-border-color: transparent;
+    -fx-background-repeat: no-repeat;
+       -fx-background-position: center center;
+      -fx-background-size: 25px 25px;
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
     -fx-cursor:hand;
 }
@@ -1176,4 +1176,20 @@ Seleccionar dia
 }
 
 
+.barraBusqueda{
+     -fx-background-color: white;
+        -fx-background-insets: 0, 0, 1, 0; /* Linea inferior más delgada */
+        -fx-background-radius: 5 0 0 5; /* Redondear solo las esquinas izquierdas */
+        -fx-border-color: black;
+        -fx-border-width: 2;
+        -fx-border-radius: 5 0 0 5;
+}
 
+.btnLupa{
+    -fx-background-color: white;
+        -fx-background-radius: 0 5 5 0;
+        -fx-border-color: black;
+        -fx-border-width: 1;
+        -fx-border-radius: 0 5 5 0;
+
+}
