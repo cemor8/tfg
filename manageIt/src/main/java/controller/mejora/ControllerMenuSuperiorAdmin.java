@@ -34,7 +34,7 @@ public class ControllerMenuSuperiorAdmin {
 
     }
     public void ponerNombre(){
-        this.nombre.setText(this.data.getEmpresaSeleccionada().getNombre());
+        this.nombre.setText("Administrador");
     }
 
     public void recibirData(Data data){

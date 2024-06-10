@@ -37,6 +37,27 @@ public class ControllerLogin {
     @FXML
     void iniciar(MouseEvent event) throws IOException {
 
+        String correo = this.introducirCorreo.getText();
+        String contraseña = this.introducirContraseña.getText();
+        if (correo.equalsIgnoreCase("admin") && contraseña.equalsIgnoreCase("admin")){
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/vista/contenedor.fxml"), CambiarIdioma.getInstance().getBundle());
+            Parent root = fxmlLoader.load();
+            ControllerContenedor controllerContenedor = fxmlLoader.getController();
+            controllerContenedor.recibirData(this.data,false,false);
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.getIcons().add(new Image("file:src/main/resources/images/menuLateral/logo.png"));
+            stage.setTitle("Panel Administrador");
+            stage.setScene(scene);
+            stage.show();
+
+            MFXButton button = (MFXButton) event.getSource();
+            Stage stage1 =(Stage) button.getScene().getWindow();
+            stage1.close();
+            return;
+        }
+
+
         Optional<Usuario> usuarioOptional = this.data.getUsuarios().stream().filter(usuario -> usuario.getCorreo().equalsIgnoreCase(introducirCorreo.getText()) &&
                 usuario.getContraseña().equals(this.introducirContraseña.getText())).findAny();
 

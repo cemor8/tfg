@@ -1,6 +1,7 @@
 package controller.mejora;
 
 import controller.ControllerLogin;
+import javafx.css.PseudoClass;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -57,11 +58,27 @@ public class ControllerLateralAdmin {
     }
 
     @FXML
-    void verEmpresas(MouseEvent event) {
+    void verEmpresas(MouseEvent event) throws IOException {
+
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/vista/mejora/panelAdmin.fxml"), CambiarIdioma.getInstance().getBundle());
+        Parent root = fxmlLoader.load();
+        ControllerPanelAdmin controllerPanelAdmin = fxmlLoader.getController();
+        controllerPanelAdmin.recibirData(this.data);
+        this.data.getListaControladores().getControllerContenedor().rellenarContenido(root);
 
     }
+    /**
+     * Método que inicia el panel principal como clickado
+     */
+    public void iniciarPanel(){
+        this.hboxPanel.pseudoClassStateChanged(PseudoClass.getPseudoClass("selected"),true);
+        this.imagenPanel.getStyleClass().add("empresapresionado");
+
+    }
+
     public void recibirData(Data data){
         this.data = data;
+        this.data.getListaControladores().setControllerLateralAdmin(this);
     }
 
 }

@@ -210,7 +210,7 @@ public class ControllerEditarEmpresas {
     public void recibirData(Data data, Empresa empresa){
         this.data = data;
         this.empresa = empresa;
-
+        this.btnAtras.setText("");
         if (this.empresa == null){
             this.introducirCorreo.setPromptText(CambiarIdioma.getInstance().getBundle().getString("login.prompt"));
             this.introducirContraseña.setPromptText(CambiarIdioma.getInstance().getBundle().getString("login.prompt"));

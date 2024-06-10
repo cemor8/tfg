@@ -1,8 +1,6 @@
 package controller;
 
-import controller.mejora.ControllerMenuLateralEmpresa;
-import controller.mejora.ControllerMenuSuperiorEmpresa;
-import controller.mejora.ControllerVistaEmpresa;
+import controller.mejora.*;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -52,8 +50,36 @@ public class ControllerContenedor {
             this.meterEstilo("/styles/oscuro.css");
             return;
         }
+        this.cargarLateralAdmin();
+        this.cargarSuperiorAdmin();
+        this.cargarContenidoAdmin();
+        this.meterEstilo("/styles/oscuro.css");
+        return;
 
 
+
+    }
+    public void cargarLateralAdmin() throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/vista/mejora/menuLateralAdmin.fxml"), CambiarIdioma.getInstance().getBundle());
+        Parent root = fxmlLoader.load();
+        ControllerLateralAdmin controllerLateralAdmin = fxmlLoader.getController();
+        controllerLateralAdmin.recibirData(this.data);
+        this.menuLateral.getChildren().setAll(root);
+    }
+    public void cargarSuperiorAdmin() throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/vista/mejora/menuSuperiorAdmin.fxml"), CambiarIdioma.getInstance().getBundle());
+        Parent root = fxmlLoader.load();
+        ControllerMenuSuperiorAdmin controllerMenuSuperiorAdmin = fxmlLoader.getController();
+        controllerMenuSuperiorAdmin.recibirData(this.data);
+        this.menuSuperior.getChildren().setAll(root);
+    }
+    public void cargarContenidoAdmin() throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/vista/mejora/panelAdmin.fxml"), CambiarIdioma.getInstance().getBundle());
+        Parent root = fxmlLoader.load();
+        ControllerPanelAdmin controllerPanelAdmin = fxmlLoader.getController();
+        controllerPanelAdmin.recibirData(this.data);
+        this.data.getListaControladores().getControllerLateralAdmin().iniciarPanel();
+        this.rellenarContenido(root);
     }
 
     /**

@@ -32,8 +32,8 @@ public class ControllerPanelAdmin implements Initializable {
     void crear(MouseEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/vista/mejora/editarEmpresas.fxml"), CambiarIdioma.getInstance().getBundle());
         Parent root = fxmlLoader.load();
-        ControllerModificarUsuario controllerModificarUsuario = fxmlLoader.getController();
-        controllerModificarUsuario.recibirData(this.data,null);
+        ControllerEditarEmpresas controllerEditarEmpresas = fxmlLoader.getController();
+        controllerEditarEmpresas.recibirData(this.data,null);
         this.data.getListaControladores().getControllerContenedor().rellenarContenido(root);
     }
 

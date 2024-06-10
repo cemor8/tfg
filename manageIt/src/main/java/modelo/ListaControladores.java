@@ -1,6 +1,7 @@
 package modelo;
 
 import controller.*;
+import controller.mejora.ControllerLateralAdmin;
 import controller.mejora.ControllerMenuLateralEmpresa;
 import controller.mejora.ControllerMenuSuperiorAdmin;
 import controller.mejora.ControllerMenuSuperiorEmpresa;
@@ -14,9 +15,18 @@ public class ListaControladores {
     private ControllerNotas controllerNotas;
     private ControllerMenuSuperiorEmpresa controllerMenuSuperiorEmpresa;
     private ControllerMenuSuperiorAdmin controllerMenuSuperiorAdmin;
+    private ControllerLateralAdmin controllerLateralAdmin;
 
     public ControllerNotas getControllerNotas() {
         return controllerNotas;
+    }
+
+    public ControllerLateralAdmin getControllerLateralAdmin() {
+        return controllerLateralAdmin;
+    }
+
+    public void setControllerLateralAdmin(ControllerLateralAdmin controllerLateralAdmin) {
+        this.controllerLateralAdmin = controllerLateralAdmin;
     }
 
     public ControllerMenuSuperiorAdmin getControllerMenuSuperiorAdmin() {
