@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -28,6 +29,8 @@ public class ControllerLogin {
     @FXML
     private MFXTextField introducirCorreo;
     private Data data;
+    @FXML
+    private Label error1;
 
     /**
      * Método que se encarga de logear a un usuario en la app
@@ -39,6 +42,7 @@ public class ControllerLogin {
 
         String correo = this.introducirCorreo.getText();
         String contraseña = this.introducirContraseña.getText();
+
         if (correo.equalsIgnoreCase("admin") && contraseña.equalsIgnoreCase("admin")){
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/vista/contenedor.fxml"), CambiarIdioma.getInstance().getBundle());
             Parent root = fxmlLoader.load();
@@ -66,6 +70,7 @@ public class ControllerLogin {
         if(usuarioOptional.isPresent()){
             this.data.setCurrentUser(usuarioOptional.get());
         }else {
+            this.error1.setText(CambiarIdioma.getInstance().getBundle().getString("login.error"));
             return;
         }
 

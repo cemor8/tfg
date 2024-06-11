@@ -15,8 +15,6 @@
       <MFXButton fx:id="btnLogin" layoutX="173.0" layoutY="741.0" onMouseClicked="#registrarse" prefHeight="49.0" prefWidth="184.0" styleClass="btn" text="%registro.registrarse" />
       <Label layoutX="141.0" layoutY="193.0" prefHeight="49.0" prefWidth="124.0" styleClass="labelLogin" text="%registro.correo" />
       <Label layoutX="141.0" layoutY="333.0" prefHeight="49.0" prefWidth="124.0" styleClass="labelLogin" text="%registro.contraseña" />
-      <Label layoutX="145.0" layoutY="316.0" prefHeight="17.0" prefWidth="124.0" styleClass="error" text="%login.error" visible="false" />
-      <Label layoutX="145.0" layoutY="445.0" prefHeight="17.0" prefWidth="124.0" styleClass="error" text="%login.error" visible="false" />
       <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="188.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../images/claro/logoSin.png" />
@@ -27,5 +25,9 @@
       <MFXTextField fx:id="introducirNombre" layoutX="141.0" layoutY="512.0" prefHeight="49.0" prefWidth="247.0" promptText="%login.prompt" styleClass="textfieldLogin" />
       <Label layoutX="141.0" layoutY="573.0" prefHeight="49.0" prefWidth="124.0" styleClass="labelLogin" text="%registro.sector" />
       <MFXTextField fx:id="introducirSector" layoutX="141.0" layoutY="631.0" prefHeight="49.0" prefWidth="247.0" promptText="%login.prompt" styleClass="textfieldLogin" />
+      <Label fx:id="errorCorreo" layoutX="141.0" layoutY="295.0" prefHeight="27.0" prefWidth="150.0" styleClass="error" />
+      <Label fx:id="errorContra" layoutX="141.0" layoutY="424.0" prefHeight="27.0" prefWidth="150.0" styleClass="error" />
+      <Label fx:id="errorNombre" layoutX="141.0" layoutY="547.0" prefHeight="27.0" prefWidth="150.0" styleClass="error" />
+      <Label fx:id="errorSector" layoutX="141.0" layoutY="666.0" prefHeight="27.0" prefWidth="150.0" styleClass="error" />
    </children>
 </AnchorPane>

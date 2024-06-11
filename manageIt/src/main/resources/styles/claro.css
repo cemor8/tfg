@@ -632,6 +632,13 @@ Configuracion
         -fx-background-radius : 5px;
         -fx-font-family : "Roboto";
         -fx-text-size : 18px;
+            -fx-scale-x: 1;
+                    -fx-scale-y: 1;
+}
+.btnOpciones:hover{
+        -fx-cursor: hand;
+            -fx-scale-x: 1.1;
+                    -fx-scale-y: 1.1;
 }
 .btnOpciones:selected{
     -fx-background-color : #305A8C;
@@ -655,6 +662,13 @@ Configuracion
     -fx-background-radius : 5px;
     -fx-font-family : "Roboto";
     -fx-text-size : 18px;
+    -fx-scale-x: 1;
+                -fx-scale-y: 1;
+}
+.btnGuardarConfiguracion:hover{
+    -fx-cursor: hand;
+    -fx-scale-x: 1.1;
+            -fx-scale-y: 1.1;
 }
 
 .btnOpciones{
@@ -1240,4 +1254,24 @@ Seleccionar dia
         -fx-border-width: 1;
         -fx-border-radius: 0 5 5 0;
 
+}
+.usuarios{
+    -fx-image: url(../images/mejora/Team.png);
+}
+
+.usuariospresionado{
+    -fx-image: url(../images/claro/Team.png);
+}
+.empresaM{
+    -fx-image: url(../images/mejora/Company.png);
+}
+.empresaMpresionado{
+    -fx-image: url(../images/claro/Company.png);
+}
+.empresa{
+    -fx-image: url(../images/mejora/Company.png);
+}
+
+.empresapresionado{
+    -fx-image: url(../images/claro/Company.png);
 }

@@ -15,7 +15,7 @@
       <MFXButton fx:id="btnLogin" layoutX="173.0" layoutY="489.0" onMouseClicked="#iniciar" prefHeight="49.0" prefWidth="184.0" styleClass="btn" text="%login.boton" />
       <Label layoutX="141.0" layoutY="193.0" prefHeight="49.0" prefWidth="124.0" styleClass="labelLogin" text="%login.correo" />
       <Label layoutX="141.0" layoutY="333.0" prefHeight="49.0" prefWidth="124.0" styleClass="labelLogin" text="%login.contraseña" />
-      <Label layoutX="145.0" layoutY="316.0" prefHeight="17.0" prefWidth="124.0" styleClass="error" text="%login.error" visible="false" />
+      <Label fx:id="error1" layoutX="145.0" layoutY="316.0" prefHeight="17.0" prefWidth="124.0" styleClass="error" text="%login.error" visible="false" />
       <Label layoutX="145.0" layoutY="445.0" prefHeight="17.0" prefWidth="124.0" styleClass="error" text="%login.error" visible="false" />
       <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="188.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
          <image>

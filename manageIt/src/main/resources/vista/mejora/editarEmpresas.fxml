@@ -18,7 +18,7 @@
                 <Label fx:id="errorNombre" layoutX="26.0" layoutY="475.0" prefHeight="17.0" prefWidth="150.0" styleClass="error" />
                 <Label fx:id="errorContraseña" layoutX="291.0" layoutY="475.0" prefHeight="17.0" prefWidth="150.0" styleClass="error" />
                 <Label fx:id="errorCorreo" layoutX="14.0" layoutY="140.0" prefHeight="17.0" prefWidth="198.0" styleClass="error" />
-                <Label layoutX="301.0" layoutY="27.0" prefHeight="49.0" prefWidth="188.0" styleClass="labelCrear" text="%modificarUsuario.departamento" />
+                <Label layoutX="301.0" layoutY="27.0" prefHeight="49.0" prefWidth="188.0" styleClass="labelCrear" text="%crearEmpresa.sector" />
                 <MFXTextField fx:id="introducirSector" layoutX="291.0" layoutY="94.0" prefHeight="49.0" prefWidth="188.0" styleClass="introducirNombreCrear" />
                 <Label layoutX="26.0" layoutY="357.0" prefHeight="49.0" prefWidth="188.0" styleClass="labelCrear" text="%modificarUsuario.nombre" />
                 <MFXTextField fx:id="introducirNombre" layoutX="26.0" layoutY="424.0" prefHeight="49.0" prefWidth="188.0" styleClass="introducirNombreCrear" />
@@ -31,16 +31,16 @@
         </AnchorPane>
         <AnchorPane layoutX="742.0" layoutY="136.0" prefHeight="557.0" prefWidth="331.0" styleClass="contenedor">
             <children>
-                <Label layoutX="83.0" layoutY="22.0" prefHeight="49.0" prefWidth="198.0" styleClass="labelCrear" text="%crearProyecto.imagen" />
+                <Label layoutX="83.0" layoutY="22.0" prefHeight="49.0" prefWidth="198.0" styleClass="labelCrear" text="%crearEmpresa.perfil" />
                 <ImageView fx:id="imagenPerfil" fitHeight="169.0" fitWidth="230.0" layoutX="51.0" layoutY="71.0" pickOnBounds="true" />
                 <ImageView fitHeight="25.0" fitWidth="36.0" layoutX="51.0" layoutY="240.0" onMouseClicked="#imagen" pickOnBounds="true" preserveRatio="true" styleClass="edit" />
-            <Label layoutX="83.0" layoutY="279.0" prefHeight="49.0" prefWidth="198.0" styleClass="labelCrear" text="%crearProyecto.imagen" />
+            <Label layoutX="83.0" layoutY="279.0" prefHeight="49.0" prefWidth="198.0" styleClass="labelCrear" text="%crearEmpresa.banner" />
             <ImageView fx:id="imagenBanner" fitHeight="98.0" fitWidth="304.0" layoutX="14.0" layoutY="355.0" pickOnBounds="true" />
             <ImageView fitHeight="25.0" fitWidth="36.0" layoutX="51.0" layoutY="453.0" onMouseClicked="#banner" pickOnBounds="true" preserveRatio="true" styleClass="edit" />
             </children>
         </AnchorPane>
-        <Label fx:id="labelTextoCrearProyecto" layoutX="450.0" layoutY="38.0" prefHeight="98.0" prefWidth="277.0" styleClass="introducciones" text="%modificarUsuario.usuario" />
-        <MFXButton layoutX="501.0" layoutY="717.0" onMouseClicked="#crear" prefHeight="49.0" prefWidth="174.0" styleClass="btnCrear" text="%modificarUsuario.guardar" />
+        <Label fx:id="labelTextoCrearProyecto" layoutX="450.0" layoutY="38.0" prefHeight="98.0" prefWidth="277.0" styleClass="introducciones" text="%crearEmpresa.empresa" />
+        <MFXButton layoutX="501.0" layoutY="717.0" onMouseClicked="#crear" prefHeight="49.0" prefWidth="174.0" styleClass="btnCrear" text="%crearEmpresa.guardar" />
         <MFXButton fx:id="btnAtras" layoutX="61.0" layoutY="56.0" onMouseClicked="#volver" prefHeight="90.0" prefWidth="113.0" styleClass="btnAtras" />
     </children>
 </AnchorPane>

@@ -11,6 +11,7 @@ import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
 import javafx.stage.FileChooser;
 import javafx.util.converter.DefaultStringConverter;
+import modelo.CambiarIdioma;
 import modelo.ConexionBase;
 import modelo.Data;
 import modelo.Proyecto;
@@ -92,23 +93,23 @@ public class ControllerVistaCrearProyecto {
 
         boolean error = false;
         if (imagenSeleccionada == null) {
-            errorImagen.setText("Selecciona imagen");
+            errorImagen.setText(CambiarIdioma.getInstance().getBundle().getString("error.imagen"));
             error = true;
         }
         if (!validarContenido(this.columnasExpresiones.get("descripcion"), this.introducirDescripcion.getText())) {
-            errorDescrip.setText("Descripcion de 15 - 100 caracteres");
+            errorDescrip.setText(CambiarIdioma.getInstance().getBundle().getString("error.descrp"));
             error = true;
         }
         if (!validarContenido(this.columnasExpresiones.get("nombre"), this.introducirNombre.getText())) {
-            errorNombre.setText("Nombre de 5 - 25 caracteres");
+            errorNombre.setText(CambiarIdioma.getInstance().getBundle().getString("error.nombre"));
             error = true;
         }
         if(seleccionarCliente.getValue() == null){
-            errorCliente.setText("Introduce un cliente");
+            errorCliente.setText(CambiarIdioma.getInstance().getBundle().getString("error.cli"));
             error = true;
         }
         if(this.datePicker.getValue() == null){
-            errorFecha.setText("Introduce una fecha de entrega");
+            errorFecha.setText(CambiarIdioma.getInstance().getBundle().getString("error.en"));
             error = true;
         }
 

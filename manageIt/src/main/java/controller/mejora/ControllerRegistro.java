@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -26,6 +27,17 @@ public class ControllerRegistro {
 
     @FXML
     private MFXButton btnLogin;
+    @FXML
+    private Label errorContra;
+
+    @FXML
+    private Label errorCorreo;
+
+    @FXML
+    private Label errorNombre;
+
+    @FXML
+    private Label errorSector;
 
     @FXML
     private MFXButton btnLogin111;
@@ -64,18 +76,28 @@ public class ControllerRegistro {
         if (this.data.getEmpresas().stream().anyMatch(empresa -> empresa.getNombre().equalsIgnoreCase(nombreEmpresa)) ||!this.validarContenido(columnasExpresiones.get("nombre"),nombreEmpresa)){
             /* No vale hay empresa con ese nombre, dar error  = true*/
             System.out.println("nombre mal");
+            this.errorNombre.setText(CambiarIdioma.getInstance().getBundle().getString("registro.errN"));
             error = true;
         }
         if (this.data.getEmpresas().stream().anyMatch(empresa -> empresa.getCorreo().equalsIgnoreCase(correoEmpresa)) || !this.validarContenido(columnasExpresiones.get("correo"),correoEmpresa)){
             /* No vale hay empresa con ese correo, dar error  = true*/
+            this.errorCorreo.setText(CambiarIdioma.getInstance().getBundle().getString("registro.ecorreo"));
+            System.out.println("correo mal");
+            error = true;
+        }
+        if (this.data.getUsuarios().stream().anyMatch(empresa -> empresa.getCorreo().equalsIgnoreCase(correoEmpresa)) || !this.validarContenido(columnasExpresiones.get("correo"),correoEmpresa)){
+            /* No vale hay empresa con ese correo, dar error  = true*/
+            this.errorCorreo.setText(CambiarIdioma.getInstance().getBundle().getString("registro.ecorreo"));
             System.out.println("correo mal");
             error = true;
         }
         if (!this.validarContenido(columnasExpresiones.get("sector"),sectorEmpresa)){
+            this.errorSector.setText(CambiarIdioma.getInstance().getBundle().getString("registro.esector"));
             System.out.println("sector mal");
             error = true;
         }
         if (!this.validarContenido(columnasExpresiones.get("contraseña"),contraseña)){
+            this.errorContra.setText(CambiarIdioma.getInstance().getBundle().getString("registro.c"));
             System.out.println("contraseña mal");
             error = true;
         }
