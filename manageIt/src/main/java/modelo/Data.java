@@ -40,8 +40,7 @@ public class Data {
         this.usuarios = ConexionBase.recibirUsuarios();
         this.proyectos = ConexionBase.recibirProyectos();
         this.tareas = ConexionBase.recibirTareas();
-        this.empresas = new ArrayList<>();
-        this.empresas.add(new Empresa(1,"empresa","empresa","1",new Image("file:"+"src/main/resources/images/mejora/empresa/prueba.jpg"),new Image("file:"+"src/main/resources/images/usuarios/persona.png"), "Sector prueba","holita"));
+        this.empresas = ConexionBase.recibirEmpresas();
 
 
 

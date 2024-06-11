@@ -59,7 +59,7 @@ public class ControllerVistaEmpresa {
             this.btn.setVisible(false);
         }
         for (Usuario usuario : this.data.getUsuarios()){
-            if (usuario.getIdEmpresa() == this.empresa.getId() && usuario.getId() != this.data.getCurrentUser().getId()){
+            if (usuario.getIdEmpresa() == this.empresa.getId() && (this.data.getCurrentUser() == null ||  usuario.getId() != this.data.getCurrentUser().getId())){
                 this.empleados.add(usuario);
             }
         }

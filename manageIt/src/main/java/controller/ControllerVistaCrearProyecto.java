@@ -157,6 +157,7 @@ public class ControllerVistaCrearProyecto {
 
             this.imagenProyecto.setImage(new Image("file:"+imagenSeleccionada));
 
+
         }
     }
 
@@ -178,6 +179,8 @@ public class ControllerVistaCrearProyecto {
             mediaPlayer.play();
 
         }
+
+        /*subit a bucket*/
     }
 
     /**

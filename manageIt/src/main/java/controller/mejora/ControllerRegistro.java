@@ -63,12 +63,12 @@ public class ControllerRegistro {
 
         if (this.data.getEmpresas().stream().anyMatch(empresa -> empresa.getNombre().equalsIgnoreCase(nombreEmpresa)) ||!this.validarContenido(columnasExpresiones.get("nombre"),nombreEmpresa)){
             /* No vale hay empresa con ese nombre, dar error  = true*/
-            System.out.println("correo mal");
+            System.out.println("nombre mal");
             error = true;
         }
         if (this.data.getEmpresas().stream().anyMatch(empresa -> empresa.getCorreo().equalsIgnoreCase(correoEmpresa)) || !this.validarContenido(columnasExpresiones.get("correo"),correoEmpresa)){
             /* No vale hay empresa con ese correo, dar error  = true*/
-            System.out.println("nombre mal");
+            System.out.println("correo mal");
             error = true;
         }
         if (!this.validarContenido(columnasExpresiones.get("sector"),sectorEmpresa)){
@@ -87,12 +87,11 @@ public class ControllerRegistro {
         /*Crear empresa*/
         /* poner imagenes por defecto, meter empresa en base de datos */
 
-        //Integer id = ConexionBase.obtenerId("empresas");
-        Integer id = 1;
-        Empresa empresa = new Empresa(id,nombreEmpresa,correoEmpresa,contraseña,new Image("file:"+"src/main/resources/images/mejora/empresa/prueba.jpg"),new Image("file:"+"src/main/resources/images/usuarios/persona.png"),sectorEmpresa,"Descripcion por defecto para nueva empresa, modificame!!");
+        Empresa empresa = new Empresa(ConexionBase.obtenerId("empresas"),nombreEmpresa,correoEmpresa,contraseña,new Image("file:"+"src/main/resources/images/mejora/empresa/prueba.jpg"),new Image("file:"+"src/main/resources/images/usuarios/persona.png"),sectorEmpresa,"Descripcion por defecto para nueva empresa, modificame!!");
         this.data.getEmpresas().add(empresa);
 
         this.data.setEmpresaSeleccionada(empresa);
+        ConexionBase.crearEmpresa(empresa);
 
         /*Poner vista de empresa*/
 

@@ -7,7 +7,7 @@
 
 <AnchorPane prefHeight="801.0" prefWidth="1106.0" styleClass="fondo" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ControllerPanel">
    <children>
-      <Label fx:id="labelMostrarNombre" layoutX="43.0" layoutY="40.0" prefHeight="65.0" prefWidth="314.0" styleClass="labelMostrarNombre" text="%panel.nombre" />
+      <Label fx:id="labelMostrarNombre" layoutX="43.0" layoutY="40.0" prefHeight="65.0" prefWidth="436.0" styleClass="labelMostrarNombre" text="%panel.nombre" />
       <AnchorPane fx:id="contenedorProyectos" layoutX="80.0" layoutY="437.0" prefHeight="309.0" prefWidth="436.0" styleClass="contenedorProyectos">
          <children>
             <VBox fx:id="contenedorCadaProyecto" layoutY="85.0" prefHeight="224.0" prefWidth="436.0" />

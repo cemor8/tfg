@@ -286,6 +286,9 @@ public class ControllerConfiguracionEmpresa {
         this.introducirBio.setText(this.data.getEmpresaSeleccionada().getDescripcion());
         this.introducirNombre2.setPromptText(this.data.getEmpresaSeleccionada().getNombre());
         this.introducirCorreo.setPromptText(this.data.getEmpresaSeleccionada().getCorreo());
+        this.introducirContraseña.setText(this.data.getEmpresaSeleccionada().getContraseña());
+        this.introducirSector.setText(this.data.getEmpresaSeleccionada().getSector());
+
 
         if (this.data.isEspañol()){
             this.btnEspañol.pseudoClassStateChanged(PseudoClass.getPseudoClass("selected"),true);

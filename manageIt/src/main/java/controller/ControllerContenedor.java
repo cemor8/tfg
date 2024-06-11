@@ -36,7 +36,6 @@ public class ControllerContenedor {
         this.data = data;
         this.data.getListaControladores().setControllerContenedor(this);
         if (esEmpresa){
-            this.data.setCurrentUser(this.data.getUsuarios().get(0));
             this.cargarSuperiorEmpresa();
             this.cargarLateralEmpresa();
             this.cargarContenidoEmpresa();

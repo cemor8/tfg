@@ -95,14 +95,26 @@ public class ControllerModificarUsuario {
         String puesto = introducirPuesto.getText();
 
         if ((this.data.getEmpresas().stream().anyMatch(empresa -> empresa.getNombre().equalsIgnoreCase(nombreUsuario)) ||!this.validarContenido(columnasExpresiones.get("nombre"),nombreUsuario)) && !nombreUsuario.isEmpty()){
-            /* No vale hay empresa con ese nombre, dar error  = true*/
+
             System.out.println("nombre mal");
             error = true;
             errorNombre.setText(CambiarIdioma.getInstance().getBundle().getString("errorU.nombre"));
         }
 
         if ((this.data.getEmpresas().stream().anyMatch(empresa -> empresa.getCorreo().equalsIgnoreCase(correoUsuario)) || !this.validarContenido(columnasExpresiones.get("correo"),correoUsuario))&& !correoUsuario.isEmpty()){
-            /* No vale hay empresa con ese correo, dar error  = true*/
+
+            System.out.println("correo mal");
+            error = true;
+            errorCorreo.setText(CambiarIdioma.getInstance().getBundle().getString("errorU.correo"));
+        }
+        if ((this.data.getUsuarios().stream().anyMatch(empresa -> empresa.getCorreo().equalsIgnoreCase(correoUsuario)) || !this.validarContenido(columnasExpresiones.get("correo"),correoUsuario))&& !correoUsuario.isEmpty()){
+
+            System.out.println("correo mal");
+            error = true;
+            errorCorreo.setText(CambiarIdioma.getInstance().getBundle().getString("errorU.correo"));
+        }
+        if (correoUsuario.equalsIgnoreCase("admin")){
+
             System.out.println("correo mal");
             error = true;
             errorCorreo.setText(CambiarIdioma.getInstance().getBundle().getString("errorU.correo"));
@@ -113,17 +125,17 @@ public class ControllerModificarUsuario {
             errorDepartamento.setText(CambiarIdioma.getInstance().getBundle().getString("errorU.departamento"));
         }
         if ((!this.validarContenido(columnasExpresiones.get("departamento"),puesto))&&!puesto.isEmpty()){
-            System.out.println("sector mal");
+            System.out.println("puesto mal");
             error = true;
             errorPuesto.setText(CambiarIdioma.getInstance().getBundle().getString("errorU.sector"));
         }
-        if ((!this.validarContenido(columnasExpresiones.get("contraseña"),contraseña))&& !contraseña.isEmpty() ){
+        if ((!this.validarContenido(columnasExpresiones.get("contraseña"),contraseña)) && !contraseña.isEmpty() ){
             System.out.println("contraseña mal");
             errorContraseña.setText(CambiarIdioma.getInstance().getBundle().getString("errorU.contraseña"));
             error = true;
         }
         if ((!this.validarContenido(columnasExpresiones.get("descripcion"),descripcion))&& !descripcion.isEmpty()){
-            System.out.println("contraseña mal");
+            System.out.println("descripcion mal");
             errorDescrp.setText(CambiarIdioma.getInstance().getBundle().getString("errorU.descripcion"));
             error = true;
         }
@@ -134,18 +146,26 @@ public class ControllerModificarUsuario {
         }
 
         if (this.usuario == null){
+            /*Comprobar correo del usuarios*/
             if (correoUsuario.isEmpty() ||contraseña.isEmpty() || puesto.isEmpty() ||departatamento.isEmpty()){
+                errorCorreo.setText(CambiarIdioma.getInstance().getBundle().getString("errorU.correo"));
+                errorPuesto.setText(CambiarIdioma.getInstance().getBundle().getString("errorU.sector"));
+                errorContraseña.setText(CambiarIdioma.getInstance().getBundle().getString("errorU.contraseña"));
+                errorPuesto.setText(CambiarIdioma.getInstance().getBundle().getString("errorU.sector"));
                 return;
             }
             Usuario usuario1 = new Usuario(correoUsuario,nombreUsuario,"",contraseña,descripcion,puesto,"",new ArrayList<>(),new ArrayList<>());
             Integer id = ConexionBase.obtenerId("usuarios");
             usuario1.setId(id);
+            usuario1.setIdEmpresa(this.data.getEmpresaSeleccionada().getId());
             usuario1.setDepartamento(departatamento);
             if (this.rutaImagen != null){
                 usuario1.setImagen(new Image("file:"+this.rutaImagen));
             }
-
+            this.data.getUsuarios().add(usuario1);
             ConexionBase.crearUsuario(usuario1);
+            this.rutaImagen = "src/main/resources/images/mejora/placeholder.jpg";
+            this.imagenUsuario.setImage(new Image("file:"+this.rutaImagen));
         }else {
             if (!correoUsuario.isEmpty()){
                 this.usuario.setCorreo(correoUsuario);

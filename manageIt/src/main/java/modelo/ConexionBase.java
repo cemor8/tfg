@@ -21,6 +21,7 @@ import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -134,7 +135,7 @@ public class ConexionBase {
             usuario.setNotas(notas);
             usuarios.add(usuario);
         }
-
+        System.out.println(usuarios);
         return usuarios;
 
     }
@@ -199,7 +200,16 @@ public class ConexionBase {
                     }
                 }
                 usuario.setContactos(contactos);
-
+                usuario.setId(usuarioDoc.getInteger("id"));
+                usuario.setCorreo(usuarioDoc.getString("correo"));
+                usuario.setApellidos(usuarioDoc.getString("apellidos"));
+                usuario.setNombre(usuarioDoc.getString("nombre"));
+                usuario.setContraseña(usuarioDoc.getString("contraseña"));
+                usuario.setDepartamento(usuarioDoc.getString("departamento"));
+                usuario.setPuesto(usuarioDoc.getString("puesto"));
+                usuario.setImagen(ConexionBase.convertirImagen(usuarioDoc.getString("imagen")));
+                usuario.setIdEmpresa(usuarioDoc.getInteger("empresa"));
+                usuario.setDescripcion(usuarioDoc.getString("descripcion"));
                 ArrayList<Nota> notasUsuario = new ArrayList<>();
                 List<Document> notasDocs = (List<Document>) usuarioDoc.get("notasDetalles");
                 if (notasDocs != null) {
@@ -224,6 +234,7 @@ public class ConexionBase {
                     }
                 }
                 usuario.setNotas(notasUsuario);
+
             }
 
             String fechaStr = notaDoc.getString("fecha_creacion");
@@ -246,7 +257,7 @@ public class ConexionBase {
             nota.setImagen(ConexionBase.convertirImagen(notaDoc.getString("imagen")));
 
             notas.add(nota);
-
+            System.out.println(nota);
 
 
 
@@ -283,7 +294,7 @@ public class ConexionBase {
     }
 
     public static ArrayList<Proyecto> recibirProyectos(){
-        System.out.println("Recibiendo proyectos");
+
         ArrayList<Proyecto> proyectos = new ArrayList<>();
         MongoCollection<Document> coleccionProyectos = database.getCollection("proyectos");
 
@@ -440,13 +451,13 @@ public class ConexionBase {
 
 
             proyectos.add(proyecto);
-            System.out.println(proyecto);
+
         }
         return proyectos;
 
     }
     public static ArrayList<Tarea> recibirTareas(){
-        System.out.println("recibiendo tareas");
+
         ArrayList<Tarea> tareas = new ArrayList<>();
         MongoCollection<Document> coleccionTareas = database.getCollection("tareas");
 
@@ -548,7 +559,7 @@ public class ConexionBase {
             tarea.setPersonasAsignadas(asignados);
             tareas.add(tarea);
 
-            System.out.println(tarea);
+
         }
         return tareas;
     }
@@ -698,7 +709,7 @@ public class ConexionBase {
         MongoCollection<Document> tareas = database.getCollection("tareas");
         Document project = proyectos.find(Filters.eq("id", id)).first();
         if (project != null) {
-            System.out.println("Proyecto encontrado: " + project.toJson());
+
             ArrayList<Integer> idsTareas = (ArrayList<Integer>) project.get("tareas");
 
 
@@ -794,22 +805,24 @@ public class ConexionBase {
         MongoCollection<Document> notas = database.getCollection("notas");
         MongoCollection<Document> proyectos = database.getCollection("proyectos");
         MongoCollection<Document> tareas = database.getCollection("tareas");
-        ArrayList<Proyecto> proyectos1 = ConexionBase.recibirProyectos();
-        ArrayList<Tarea> tareas1 = ConexionBase.recibirTareas();
-        ArrayList<Nota> notas1 = ConexionBase.recibirNotas();
 
+
+
+        ArrayList<Tarea> tareas1 = ConexionBase.recibirTareas();
         for (Tarea tarea : tareas1){
             if (tarea.getCreador().getId() == id){
                 ConexionBase.eliminarTarea(tarea.getId());
             }
         }
+        ArrayList<Proyecto> proyectos1 = ConexionBase.recibirProyectos();
         for (Proyecto proyecto : proyectos1){
             if (proyecto.getJefeProyecto().getId() == id){
                 ConexionBase.eliminarProyecto(proyecto.getId());
             }
         }
-
+        ArrayList<Nota> notas1 = ConexionBase.recibirNotas();
         for (Nota nota : notas1){
+            System.out.println(nota);
             if (nota.getUsuario().getId() == id){
                 ConexionBase.eliminarNota(nota.getId());
             }
@@ -876,8 +889,8 @@ public class ConexionBase {
     }
 
     public static void crearTarea(Tarea tarea) throws IOException {
-        System.out.println("creando tarea");
-        System.out.println();
+
+
         MongoCollection<Document> tareas = database.getCollection("tareas");
         ArrayList<Integer> usuariosTarea = new ArrayList<>();
         for (Usuario usuario : tarea.getPersonasAsignadas()){
@@ -937,10 +950,10 @@ public class ConexionBase {
         notas.insertOne(nuevoUsuario);
     }
 
-    public static void crearEmpresa(Empresa empresa){
+    public static void crearEmpresa(Empresa empresa) throws IOException {
         MongoCollection<Document> empresas = database.getCollection("empresas");
         Document empresaNueva = new Document("nombre",empresa.getNombre()).append("correo",empresa.getCorreo()).append("contraseña",empresa.getContraseña())
-                .append("id",empresa.getId()).append("sector",empresa.getSector()).append("imagen_perfil",empresa.getImagenPerfil()).append("banner",empresa.getImagenFondo())
+                .append("id",empresa.getId()).append("sector",empresa.getSector()).append("imagen_perfil",ConexionBase.transformarA64(empresa.getImagenPerfil())).append("banner",ConexionBase.transformarA64(empresa.getImagenFondo()))
                 .append("descripcion",empresa.getDescripcion());
         empresas.insertOne(empresaNueva);
 
@@ -986,8 +999,9 @@ public class ConexionBase {
             }
         }
 
-        empresas.deleteOne(Filters.eq("id", id));
+        //empresas.deleteOne(Filters.eq("id", id));
     }
+
 
 
     public static Integer obtenerId(String coleccionNombre){
