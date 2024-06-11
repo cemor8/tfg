@@ -999,7 +999,7 @@ public class ConexionBase {
             }
         }
 
-        //empresas.deleteOne(Filters.eq("id", id));
+        empresas.deleteOne(Filters.eq("id", id));
     }
 
 

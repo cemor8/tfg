@@ -121,7 +121,7 @@ public class ControllerConfiguracionEmpresa {
 
         if (this.rutaImagen == null || this.rutaImagen.equalsIgnoreCase("")){
             //controllerVistaConfiguracion.imgPersona.setImage(new Image("file:"+this.data.getCurrentUser().getRutaImagen()));
-            controllerConfiguracionEmpresa.imgPersona.setImage(this.data.getCurrentUser().getImagen());
+            controllerConfiguracionEmpresa.imgPersona.setImage(this.data.getEmpresaSeleccionada().getImagenPerfil());
         }else {
             controllerConfiguracionEmpresa.imgPersona.setImage(new Image("file:"+rutaImagen));
         }
@@ -162,7 +162,7 @@ public class ControllerConfiguracionEmpresa {
 
         if (this.rutaImagen == null || this.rutaImagen.equalsIgnoreCase("")){
             //controllerVistaConfiguracion.imgPersona.setImage(new Image("file:"+this.data.getCurrentUser().getRutaImagen()));
-            controllerConfiguracionEmpresa.imgPersona.setImage(this.data.getCurrentUser().getImagen());
+            controllerConfiguracionEmpresa.imgPersona.setImage(this.data.getEmpresaSeleccionada().getImagenPerfil());
         }else {
             controllerConfiguracionEmpresa.imgPersona.setImage(new Image("file:"+rutaImagen));
         }

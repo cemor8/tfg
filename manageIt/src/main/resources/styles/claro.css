@@ -1052,3 +1052,192 @@ Seleccionar dia
 .imagenPrincipal{
     -fx-image: url(../images/claro/logoSin.png);
 }
+
+.areaDescripcionCrear{
+    -fx-text-fill:"white";
+    -fx-font-size: 14px;
+    -fx-font-family : "Roboto Mono";
+    -fx-background-color: #305A8C;
+    -fx-background-radius : 10px;
+    -fx-padding: 10px;
+}
+
+
+.btnLupa {
+    -fx-background-radius: 50%;
+    -fx-min-width: 40px;
+    -fx-min-height: 29px;
+    -fx-max-width: 40px;
+    -fx-max-height: 29px;
+    -fx-background-color: white;
+    -fx-background-image: url(../images/menuLateral/lupa.png);
+    -fx-background-repeat: no-repeat;
+       -fx-background-position: center center;
+      -fx-background-size: 25px 25px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
+    -fx-cursor:hand;
+}
+.btnLupa:hover {
+      -fx-scale-x: 1.1;
+      -fx-scale-y: 1.1;
+}
+.date-picker-popup .label{
+    -fx-text-fill : white;
+}
+/*
+.imagenPrincipal{
+    -fx-image: url(../images/menuLateral/logo.png);
+}
+*/
+.btnVistaCadaContacto:hover{
+     -fx-scale-x: 1.1;
+         -fx-scale-y: 1.1;
+         -fx-cursor: hand;
+}
+.introducirContenido:pressed, .introducirContenido:hover{
+    -fx-border-color: #00E18A;
+}
+
+.btnCrear:hover{
+    -fx-cursor : hand;
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+}
+
+/* Estilos para el PieChart */
+.pie-chart {
+    -fx-background-color: #305A8C;
+}
+
+
+
+/* Estilos para los textos dentro de las rebanadas */
+.chart-pie-label {
+    -fx-fill: white;
+}
+
+/* Estilos para la leyenda */
+.chart-legend{
+    -fx-background-color: #305A8C;
+    -fx-text-fill: white;
+}
+.chart-legend-item{
+    -fx-text-fill: white;
+}
+.chart-pie-label {
+    -fx-text-fill: transparent;
+    -fx-stroke: transparent;
+    -fx-content-display: none;
+}
+
+
+
+/* Estilos tablas */
+
+.table-view {
+    -fx-background-color: transparent;
+    -fx-table-cell-border-color: transparent;
+    -fx-text-fill: white; /* Cambia el color del texto de toda la tabla a blanco */
+}
+
+.table-row-cell {
+    -fx-border-color: transparent transparent gray transparent;
+    -fx-border-width: 0 0 1 0;
+    -fx-padding: 5px;
+    -fx-background-color: transparent; /* Hace las filas transparentes */
+    -fx-font-size: 14px
+}
+
+.table-cell {
+    -fx-text-fill: white; /* Color del texto para las celdas individuales */
+    -fx-font-family: 'Roboto', sans-serif; /* Establece la fuente a Roboto */
+}
+
+/* Estilos para el encabezado de las columnas */
+.column-header-background {
+    -fx-background-color: transparent; /* Elimina el color de fondo del encabezado */
+}
+
+.column-header, .column-header .label {
+    -fx-font-weight: bold;
+    -fx-background-color: transparent; /* Hace transparente el fondo del encabezado y su etiqueta */
+    -fx-text-fill: white; /* Establece el color del texto del encabezado a blanco */
+
+}
+.table-view .placeholder {
+    -fx-text-fill: white; /* Establece el color del texto a blanco */
+    -fx-font-size: 16px; /* Opcional: Ajusta el tamaño de la fuente si lo deseas */
+    -fx-font-style: italic; /* Opcional: Puedes hacer que el texto sea cursiva para diferenciarlo */
+    -fx-font-family: 'Roboto', sans-serif; /* Establece la fuente a Roboto */
+}
+
+/* Estilos para filas seleccionadas */
+.table-row-cell:selected {
+    -fx-background-color: rgba(240, 240, 240, 0.5); /* Color gris claro tenue para filas seleccionadas */
+    -fx-table-cell-border-color: transparent;
+}
+.column-header {
+    -fx-padding: 0 0 20px 0; /* Agrega espacio en la parte inferior del encabezado */
+    -fx-font-size: 16px
+}
+.table-cell {
+    -fx-padding: 10px 5px; /* Agrega espacio arriba y abajo dentro de cada celda de datos */
+}
+
+.botonTablaEliminar {
+    -fx-background-color: #C1402E; /* Color rojo similar al de tu imagen */
+    -fx-text-fill: white; /* Texto blanco, asumiendo que quieres que haya texto */
+    -fx-font-family: 'Roboto'; /* Fuente Arial, puedes cambiarla */
+    -fx-font-size: 14px; /* Tamaño del texto */
+    -fx-padding: 10px 20px; /* Espaciado interno */
+    -fx-background-radius: 20; /* Bordes redondeados */
+    -fx-border-radius: 20; /* Radio del borde */
+    -fx-scale-x: 1;
+     -fx-scale-y: 1;
+    -transition: all 0.2s ease-in-out;
+}
+
+.botonTablaEliminar:hover {
+
+    -fx-scale-x: 1.1;
+         -fx-scale-y: 1.1;
+         -fx-cursor: hand;
+}
+.botonTablaModificar {
+    -fx-background-color: #3D753D; /* Color verde oscuro, ajusta según necesites */
+    -fx-text-fill: white; /* Texto blanco */
+    -fx-font-family: 'Roboto'; /* Fuente Arial, puedes cambiarla */
+    -fx-font-size: 14px; /* Tamaño del texto */
+    -fx-padding: 10px 20px; /* Espaciado interno */
+    -fx-background-radius: 20; /* Bordes redondeados */
+    -fx-border-radius: 20; /* Radio del borde */
+    -fx-scale-x: 1;
+         -fx-scale-y: 1;
+        -transition: all 0.2s ease-in-out;
+}
+
+.botonTablaModificar:hover {
+
+    -fx-scale-x: 1.1;
+             -fx-scale-y: 1.1;
+             -fx-cursor: hand;
+}
+
+
+.barraBusqueda{
+     -fx-background-color: white;
+        -fx-background-insets: 0, 0, 1, 0; /* Linea inferior más delgada */
+        -fx-background-radius: 5 0 0 5; /* Redondear solo las esquinas izquierdas */
+        -fx-border-color: black;
+        -fx-border-width: 2;
+        -fx-border-radius: 5 0 0 5;
+}
+
+.btnLupa{
+    -fx-background-color: white;
+        -fx-background-radius: 0 5 5 0;
+        -fx-border-color: black;
+        -fx-border-width: 1;
+        -fx-border-radius: 0 5 5 0;
+
+}

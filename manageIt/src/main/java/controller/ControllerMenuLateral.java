@@ -90,7 +90,9 @@ public class ControllerMenuLateral {
     @FXML
     void cerrar(MouseEvent event) throws IOException {
         this.data.setCurrentUser(null);
-
+        this.data.setOscuro(true);
+        CambiarIdioma.getInstance().cargarIdioma("es", "ES");
+        this.data.setEspañol(true);
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/vista/login.fxml"),CambiarIdioma.getInstance().getBundle());
         Parent root = fxmlLoader.load();
         ControllerLogin controllerLogin = fxmlLoader.getController();

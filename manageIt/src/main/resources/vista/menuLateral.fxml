@@ -231,7 +231,10 @@
             <Insets />
          </opaqueInsets>
       </VBox>
-      <ImageView fitHeight="105.0" fitWidth="129.0" layoutX="53.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true" styleClass="imagenPrincipal" />
+      <ImageView fitHeight="105.0" fitWidth="129.0" layoutX="53.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true" styleClass="imagenPrincipal">
+         <image>
+            <Image url="@../images/claro/logoSin.png" />
+         </image></ImageView>
    </children>
    <opaqueInsets>
       <Insets />
