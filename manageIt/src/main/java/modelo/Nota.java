@@ -85,7 +85,6 @@ public class Nota {
                 ", descripcion='" + descripcion + '\'' +
                 ", rutaImagen='" + rutaImagen + '\'' +
                 ", fechaCreacion=" + fechaCreacion +
-                this.usuario+
                 '}';
     }
 }

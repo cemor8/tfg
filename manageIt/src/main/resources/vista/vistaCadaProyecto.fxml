@@ -6,7 +6,6 @@
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.media.MediaView?>
 
 <AnchorPane prefHeight="801.0" prefWidth="1106.0" styleClass="fondo" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ControllerVistaCadaProyecto">
    <children>
@@ -27,10 +26,8 @@
       <Label layoutX="802.0" layoutY="347.0" prefHeight="31.0" prefWidth="104.0" styleClass="labelEstadoCadaVista" text="%cadaProyecto.estado" />
       <ComboBox fx:id="opcionesEstado" layoutX="802.0" layoutY="396.0" prefHeight="25.0" prefWidth="113.0" styleClass="combo" />
       <MFXButton fx:id="btnGuardar" layoutX="950.0" layoutY="393.0" onMouseClicked="#btnGuardarEstado" prefHeight="31.0" prefWidth="80.0" styleClass="btnCada" text="%cadaProyecto.guardar" />
-      <Label layoutX="99.0" layoutY="495.0" prefHeight="41.0" prefWidth="130.0" styleClass="labelVistaDescripcion" text="%cadaProyecto.descripcion" />
-      <TextArea fx:id="labelDescripcion" layoutX="99.0" layoutY="562.0" prefHeight="200.0" prefWidth="463.0" styleClass="areaDescripcion" wrapText="true" />
-      <ImageView fx:id="imgGuardarDesc" fitHeight="31.0" fitWidth="39.0" layoutX="574.0" layoutY="731.0" onMouseClicked="#guardarDesc" pickOnBounds="true" preserveRatio="true" styleClass="guardar" />
-      <MediaView fx:id="video" fitHeight="200.0" fitWidth="400.0" layoutX="677.0" layoutY="562.0" />
-      <Label layoutX="681.0" layoutY="495.0" prefHeight="41.0" prefWidth="130.0" styleClass="labelVistaDescripcion" text="%cadaProyecto.video" />
+      <Label layoutX="357.0" layoutY="495.0" prefHeight="41.0" prefWidth="130.0" styleClass="labelVistaDescripcion" text="%cadaProyecto.descripcion" />
+      <TextArea fx:id="labelDescripcion" layoutX="357.0" layoutY="562.0" prefHeight="200.0" prefWidth="463.0" styleClass="areaDescripcion" wrapText="true" />
+      <ImageView fx:id="imgGuardarDesc" fitHeight="31.0" fitWidth="39.0" layoutX="829.0" layoutY="731.0" onMouseClicked="#guardarDesc" pickOnBounds="true" preserveRatio="true" styleClass="guardar" />
    </children>
 </AnchorPane>

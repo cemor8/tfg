@@ -32,7 +32,7 @@
             <Label layoutX="34.0" layoutY="149.0" prefHeight="49.0" prefWidth="198.0" styleClass="labelCrear" text="%crearProyecto.imagen" />
             <ImageView fx:id="imagenProyecto" fitHeight="169.0" fitWidth="230.0" layoutX="40.0" layoutY="200.0" pickOnBounds="true" />
             <ImageView fitHeight="25.0" fitWidth="36.0" layoutX="288.0" layoutY="339.0" onMouseClicked="#imagen" pickOnBounds="true" preserveRatio="true" styleClass="edit" />
-            <Label fx:id="errorImagen" layoutX="34.0" layoutY="242.0" prefHeight="17.0" prefWidth="150.0" styleClass="error" />
+            <Label fx:id="errorImagen" layoutX="40.0" layoutY="369.0" prefHeight="17.0" prefWidth="150.0" styleClass="error" />
          </children>
       </AnchorPane>
       <Label fx:id="labelTextoCrearProyecto" layoutX="41.0" layoutY="28.0" prefHeight="98.0" prefWidth="277.0" styleClass="introducciones" text="%crearProyecto.crear" />
