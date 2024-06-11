@@ -49,6 +49,7 @@ public class ControllerMenuLateralEmpresa {
         this.data.setOscuro(true);
         CambiarIdioma.getInstance().cargarIdioma("es", "ES");
         this.data.setEspañol(true);
+        this.data = new Data();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/vista/login.fxml"), CambiarIdioma.getInstance().getBundle());
         Parent root = fxmlLoader.load();
         ControllerLogin controllerLogin = fxmlLoader.getController();
