@@ -35,6 +35,10 @@ public class ControllerConfiguracionEmpresa {
 
     @FXML
     private MFXButton btnIngles;
+    @FXML
+    private Label errorImagen2;
+    @FXML
+    private ImageView imgBanner;
 
     @FXML
     private MFXButton btnOscuro;
@@ -78,6 +82,7 @@ public class ControllerConfiguracionEmpresa {
     @FXML
     private MFXTextField introducirSector;
     public String rutaImagen;
+    public String rutaImagen2;
     private Data data;
     Map<String, String> columnasExpresiones = new HashMap<String, String>() {
         {
@@ -89,6 +94,29 @@ public class ControllerConfiguracionEmpresa {
         }
 
     };
+    @FXML
+    void editarBanner(MouseEvent event) {
+        FileChooser filechooser = new FileChooser();
+        filechooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("image files", "*.png","*.jpg","*.jpeg"));
+        File selectedFile = filechooser.showOpenDialog(null);
+
+        if(selectedFile != null){
+            String imagePath = selectedFile.getAbsolutePath();
+            this.rutaImagen2 = imagePath;
+
+            this.imgBanner.setImage(new Image("file:"+rutaImagen));
+
+        }
+    }
+
+    @FXML
+    void guardarBanner(MouseEvent event) throws IOException {
+        if (this.rutaImagen2!= null && !this.rutaImagen2.equalsIgnoreCase("")){
+            this.data.getEmpresaSeleccionada().setImagenFondo(new Image("file:"+this.rutaImagen2));
+
+        }
+        ConexionBase.modificarEmpresa(this.data.getEmpresaSeleccionada());
+    }
 
     @FXML
     void cambiarClaro(MouseEvent event) {
@@ -286,8 +314,9 @@ public class ControllerConfiguracionEmpresa {
         this.introducirBio.setText(this.data.getEmpresaSeleccionada().getDescripcion());
         this.introducirNombre2.setPromptText(this.data.getEmpresaSeleccionada().getNombre());
         this.introducirCorreo.setPromptText(this.data.getEmpresaSeleccionada().getCorreo());
-        this.introducirContraseña.setText(this.data.getEmpresaSeleccionada().getContraseña());
-        this.introducirSector.setText(this.data.getEmpresaSeleccionada().getSector());
+        this.introducirContraseña.setPromptText(this.data.getEmpresaSeleccionada().getContraseña());
+        this.introducirSector.setPromptText(this.data.getEmpresaSeleccionada().getSector());
+        this.imgBanner.setImage(this.data.getEmpresaSeleccionada().getImagenFondo());
 
 
         if (this.data.isEspañol()){
