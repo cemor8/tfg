@@ -104,7 +104,7 @@ public class ControllerConfiguracionEmpresa {
             String imagePath = selectedFile.getAbsolutePath();
             this.rutaImagen2 = imagePath;
 
-            this.imgBanner.setImage(new Image("file:"+rutaImagen));
+            this.imgBanner.setImage(new Image("file:"+rutaImagen2));
 
         }
     }
