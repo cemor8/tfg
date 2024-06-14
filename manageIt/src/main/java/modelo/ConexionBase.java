@@ -266,6 +266,12 @@ public class ConexionBase {
         return notas;
 
     }
+
+    /**
+     * Método que recibe una nota por su id
+     * @param id
+     * @return
+     */
     public static Nota recibirNota(Integer id){
         MongoCollection<Document> notasCollection = database.getCollection("notas");
 
@@ -293,6 +299,10 @@ public class ConexionBase {
         return nota;
     }
 
+    /**
+     * Método que recibe la lista de proyectos
+     * @return
+     */
     public static ArrayList<Proyecto> recibirProyectos(){
 
         ArrayList<Proyecto> proyectos = new ArrayList<>();
@@ -456,6 +466,11 @@ public class ConexionBase {
         return proyectos;
 
     }
+
+    /**
+     * Método que recibe las tareas
+     * @return
+     */
     public static ArrayList<Tarea> recibirTareas(){
 
         ArrayList<Tarea> tareas = new ArrayList<>();
@@ -563,6 +578,12 @@ public class ConexionBase {
         }
         return tareas;
     }
+
+    /**
+     * Método que transforma una imagen de base64 a Image
+     * @param base64Image
+     * @return
+     */
     public static Image convertirImagen(String base64Image){
 
         if (base64Image == null || base64Image.isEmpty()) {
@@ -574,6 +595,13 @@ public class ConexionBase {
         ByteArrayInputStream bis = new ByteArrayInputStream(imageBytes);
         return new Image(bis);
     }
+
+    /**
+     * Método que transforma una Image a base64
+     * @param image
+     * @return
+     * @throws IOException
+     */
     public static String transformarA64(Image image) throws IOException {
         if (image == null){
             return "";
@@ -588,7 +616,11 @@ public class ConexionBase {
     }
 
 
-
+    /**
+     * Método que recibe un usuario por su id
+     * @param id
+     * @return
+     */
 
     public static Usuario recibirUsuario(Integer id){
         MongoCollection<Document> coleccionUsuarios = database.getCollection("usuarios");
@@ -674,7 +706,10 @@ public class ConexionBase {
         return usuario;
     }
 
-
+    /**
+     * Método que elimina una tarea
+     * @param id
+     */
     public static void eliminarTarea(Integer id){
         MongoCollection<Document> notas = database.getCollection("notas");
         MongoCollection<Document> tareas = database.getCollection("tareas");
@@ -696,12 +731,15 @@ public class ConexionBase {
 
         tareas.deleteOne(Filters.eq("id", id));
 
-        //buscar el proyecto de la tarea y eliminar el id de la tarea de la lista del proyecto
+
 
 
     }
 
-
+    /**
+     * Método que elimina un proyecto por su id
+     * @param id
+     */
 
     public static void eliminarProyecto(Integer id){
         MongoCollection<Document> notas = database.getCollection("notas");
@@ -745,6 +783,11 @@ public class ConexionBase {
 
 
     }
+
+    /**
+     * Método que elimina una nota por su id
+     * @param id
+     */
     public static void eliminarNota(Integer id){
         // Colecciones
         MongoCollection<Document> notas = database.getCollection("notas");
@@ -758,6 +801,12 @@ public class ConexionBase {
 
         notas.deleteOne(Filters.eq("id", id));
     }
+
+    /**
+     * Método que modifica un usuario en la base de datos
+     * @param usuario
+     * @throws IOException
+     */
     public static void modificarUsuario(Usuario usuario) throws IOException {
         MongoCollection<Document> usuariosColeccion = database.getCollection("usuarios");
         //meter modificaciones
@@ -784,6 +833,11 @@ public class ConexionBase {
 
     }
 
+    /**
+     * Método que crea un usuario en la base de datos
+     * @param usuario
+     * @throws IOException
+     */
     public static void crearUsuario(Usuario usuario) throws IOException {
         MongoCollection<Document> usuarios = database.getCollection("usuarios");
 
@@ -798,8 +852,10 @@ public class ConexionBase {
     }
 
 
-
-
+    /**
+     * Método que elimina un usuario de la base de datos
+     * @param id
+     */
     public static void eliminarUsuario(Integer id){
         MongoCollection<Document> usuarios = database.getCollection("usuarios");
         MongoCollection<Document> notas = database.getCollection("notas");
@@ -832,8 +888,10 @@ public class ConexionBase {
     }
 
 
-
-
+    /**
+     * Método que modifica una tarea en la base de datos
+     * @param tarea
+     */
     public static void modificarTarea(Tarea tarea){
         MongoCollection<Document> tareas = database.getCollection("tareas");
         //meter modificaciones
@@ -853,6 +911,11 @@ public class ConexionBase {
         updateFields.append("asignados",usuariosAsignados);
         tareas.updateOne(Filters.eq("id", tarea.getId()), new Document("$set", updateFields));
     }
+
+    /**
+     * Método que modifica un proyecto en la base de datos
+     * @param proyecto
+     */
 
     public static void modificarProyecto(Proyecto proyecto){
         MongoCollection<Document> proyectos = database.getCollection("proyectos");
@@ -878,6 +941,12 @@ public class ConexionBase {
         updateFields.append("descripcion",proyecto.getDescripcion());
         proyectos.updateOne(Filters.eq("id", proyecto.getId()), new Document("$set", updateFields));
     }
+
+    /**
+     * Método que modifica una nota en la base de datos
+     * @param nota
+     * @throws IOException
+     */
     public static void modificarNota(Nota nota) throws IOException {
         MongoCollection<Document> notas = database.getCollection("notas");
 
@@ -888,6 +957,11 @@ public class ConexionBase {
         notas.updateOne(Filters.eq("id", nota.getId()), new Document("$set", updateFields));
     }
 
+    /**
+     * Método que crea una tarea en la base de datos
+     * @param tarea
+     * @throws IOException
+     */
     public static void crearTarea(Tarea tarea) throws IOException {
 
 
@@ -910,6 +984,12 @@ public class ConexionBase {
         // Añadir más campos según sean necesarios
         tareas.insertOne(nuevoUsuario);
     }
+
+    /**
+     * Método que crea un proyecto en la base de datos
+     * @param proyecto
+     * @throws IOException
+     */
     public static void crearProyecto(Proyecto proyecto) throws IOException {
         MongoCollection<Document> proyectos = database.getCollection("proyectos");
         ArrayList<Integer> usuariosProyecto = new ArrayList<>();
@@ -938,6 +1018,12 @@ public class ConexionBase {
         // Añadir más campos según sean necesarios
         proyectos.insertOne(nuevoUsuario);
     }
+
+    /**
+     * Método que crea una nota en la base de datos
+     * @param nota
+     * @throws IOException
+     */
     public static void crearNota(Nota nota) throws IOException {
         MongoCollection<Document> notas = database.getCollection("notas");
 
@@ -950,6 +1036,11 @@ public class ConexionBase {
         notas.insertOne(nuevoUsuario);
     }
 
+    /**
+     * Método que crea una empresa en la base de datos
+     * @param empresa
+     * @throws IOException
+     */
     public static void crearEmpresa(Empresa empresa) throws IOException {
         MongoCollection<Document> empresas = database.getCollection("empresas");
         Document empresaNueva = new Document("nombre",empresa.getNombre()).append("correo",empresa.getCorreo()).append("contraseña",empresa.getContraseña())
@@ -958,6 +1049,11 @@ public class ConexionBase {
         empresas.insertOne(empresaNueva);
 
     }
+
+    /**
+     * Método que recibe las empresas de la base de datos
+     * @return
+     */
     public static ArrayList<Empresa> recibirEmpresas(){
         MongoCollection<Document> empresas = database.getCollection("empresas");
         ArrayList<Empresa> empresasLista = new ArrayList<>();
@@ -975,6 +1071,12 @@ public class ConexionBase {
         }
         return empresasLista;
     }
+
+    /**
+     * Método que modifica una empresa de la base de datos
+     * @param empresa
+     * @throws IOException
+     */
     public static void modificarEmpresa(Empresa empresa) throws IOException {
         MongoCollection<Document> empresas = database.getCollection("empresas");
 
@@ -989,6 +1091,10 @@ public class ConexionBase {
         empresas.updateOne(Filters.eq("id", empresa.getId()), new Document("$set", updateFields));
     }
 
+    /**
+     * Método que elimina una empresa en la base de datos
+     * @param id
+     */
     public static void eliminarEmpresa(Integer id){
         MongoCollection<Document> empresas = database.getCollection("empresas");
 
@@ -1003,7 +1109,11 @@ public class ConexionBase {
     }
 
 
-
+    /**
+     * Método que obtiene un id para la coleccion que se indique
+     * @param coleccionNombre
+     * @return
+     */
     public static Integer obtenerId(String coleccionNombre){
         MongoCollection<Document> coleccion = null;
         switch (coleccionNombre){

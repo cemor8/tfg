@@ -43,6 +43,11 @@ public class ControllerMenuLateralEmpresa {
     private ImageView imagenSalir;
     private Data data;
 
+    /**
+     * Método que cierra sesion
+     * @param event
+     * @throws IOException
+     */
     @FXML
     void cerrar(MouseEvent event) throws IOException {
         this.data.setEmpresaSeleccionada(null);
@@ -66,6 +71,11 @@ public class ControllerMenuLateralEmpresa {
         stage1.close();
     }
 
+    /**
+     * Método que muestra la vista de la configuracion
+     * @param event
+     * @throws IOException
+     */
     @FXML
     void mostrarConfig(MouseEvent event) throws IOException {
         this.reiniciarHbox();
@@ -79,6 +89,11 @@ public class ControllerMenuLateralEmpresa {
 
     }
 
+    /**
+     * Método que muestra la vista de empresa
+     * @param event
+     * @throws IOException
+     */
     @FXML
     void verEmpresa(MouseEvent event) throws IOException {
         this.reiniciarHbox();
@@ -91,6 +106,11 @@ public class ControllerMenuLateralEmpresa {
         this.data.getListaControladores().getControllerContenedor().rellenarContenido(root);
     }
 
+    /**
+     * Método que muestra el panel de administracion de usuarios
+     * @param event
+     * @throws IOException
+     */
     @FXML
     void verUsuarios(MouseEvent event) throws IOException {
         this.reiniciarHbox();

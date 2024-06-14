@@ -68,7 +68,7 @@ public class ControllerProyectos {
         for (Proyecto proyecto : this.proyectosRecorrer){
             if(proyecto.getEstado().equalsIgnoreCase("En proceso")){
                 enProceso+=1;
-            }else if(proyecto.getEstado().equalsIgnoreCase("Pendiente")){
+            }else if(proyecto.getEstado().equalsIgnoreCase("Completado")){
                 pendientes+=1;
             }else if(proyecto.getEstado().equalsIgnoreCase("Bloqueado")){
                 bloqueados+=1;

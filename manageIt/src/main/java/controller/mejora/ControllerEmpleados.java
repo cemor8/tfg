@@ -27,6 +27,10 @@ public class ControllerEmpleados {
     private HBox hBoxMeter = new HBox();
     private Data data;
     private ArrayList<Usuario> empleados = new ArrayList<>();
+
+    /**
+     * Método que inicializa la vista de empleados de la empresa
+     */
     public void inicializar(){
         VBox vBox = new VBox();
         vBox.getStyleClass().add("vboxContactos");

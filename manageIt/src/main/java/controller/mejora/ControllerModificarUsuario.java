@@ -83,6 +83,11 @@ public class ControllerModificarUsuario {
 
     };
 
+    /**
+     * Método que crea o modifica un usuario
+     * @param event
+     * @throws IOException
+     */
     @FXML
     void crear(MouseEvent event) throws IOException {
         boolean error = false;
@@ -199,9 +204,18 @@ public class ControllerModificarUsuario {
         this.introducirCorreo.setText("");
         this.introducirContraseña.setText("");
         this.introducirPuesto.setText("");
-
+        this.errorDescrp.setText("");
+        this.errorContraseña.setText("");
+        this.errorDepartamento.setText("");
+        this.errorPuesto.setText("");
+        this.errorNombre.setText("");
+        this.errorCorreo.setText("");
     }
 
+    /**
+     * Método que pide una imagen para el usuario
+     * @param event
+     */
     @FXML
     void imagen(MouseEvent event) {
         FileChooser filechooser = new FileChooser();
@@ -216,6 +230,12 @@ public class ControllerModificarUsuario {
 
         }
     }
+
+    /**
+     * Método que vuelve a la vista de administracion de usuarios
+     * @param event
+     * @throws IOException
+     */
     @FXML
     void volver(MouseEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/vista/mejora/tablaUsuariosEmpresa.fxml"), CambiarIdioma.getInstance().getBundle());
@@ -224,6 +244,12 @@ public class ControllerModificarUsuario {
         controllerTablaUsuarios.recibirData(this.data);
         this.data.getListaControladores().getControllerContenedor().rellenarContenido(root);
     }
+
+    /**
+     * Método que recibe la informacion e inicializa los campos
+     * @param data
+     * @param usuario
+     */
     public void recibirData(Data data, Usuario usuario){
         this.data = data;
         this.btnAtras.setText("");
@@ -234,7 +260,6 @@ public class ControllerModificarUsuario {
             this.introducirCorreo.setPromptText(CambiarIdioma.getInstance().getBundle().getString("login.prompt"));
             this.introducirContraseña.setPromptText(CambiarIdioma.getInstance().getBundle().getString("login.prompt"));
             this.introducirDepartamento.setPromptText(CambiarIdioma.getInstance().getBundle().getString("login.prompt"));
-            this.introducirDescripcion.setText(CambiarIdioma.getInstance().getBundle().getString("login.prompt"));
             this.introducirNombre.setPromptText(CambiarIdioma.getInstance().getBundle().getString("login.prompt"));
             this.introducirPuesto.setPromptText(CambiarIdioma.getInstance().getBundle().getString("login.prompt"));
             this.rutaImagen = "src/main/resources/images/mejora/placeholder.jpg";

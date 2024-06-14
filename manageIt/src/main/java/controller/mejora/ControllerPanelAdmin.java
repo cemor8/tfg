@@ -28,6 +28,11 @@ public class ControllerPanelAdmin implements Initializable {
     private ObservableList<Empresa> empresaObservableList= FXCollections.observableArrayList();
     private Data data;
 
+    /**
+     * Método que abre la vista para modificar o crear una empresa
+     * @param event
+     * @throws IOException
+     */
     @FXML
     void crear(MouseEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/vista/mejora/editarEmpresas.fxml"), CambiarIdioma.getInstance().getBundle());
@@ -37,6 +42,10 @@ public class ControllerPanelAdmin implements Initializable {
         this.data.getListaControladores().getControllerContenedor().rellenarContenido(root);
     }
 
+    /**
+     * Método que elimina una empresa
+     * @param event
+     */
     @FXML
     void eliminar(MouseEvent event) {
         Empresa empresa = this.tabla.getSelectionModel().getSelectedItem();
@@ -49,6 +58,11 @@ public class ControllerPanelAdmin implements Initializable {
         ConexionBase.eliminarEmpresa(empresa.getId());
     }
 
+    /**
+     * Método que abre la vista para modificar una empresa
+     * @param event
+     * @throws IOException
+     */
     @FXML
     void modificar(MouseEvent event) throws IOException {
         Empresa empresa = this.tabla.getSelectionModel().getSelectedItem();
@@ -62,6 +76,11 @@ public class ControllerPanelAdmin implements Initializable {
         controllerEditarEmpresas.recibirData(this.data,empresa);
         this.data.getListaControladores().getControllerContenedor().rellenarContenido(root);
     }
+
+    /**
+     * Método que recibe la informacion e inicializa los campos
+     * @param data
+     */
     public void recibirData(Data data){
         this.data = data;
         this.btnMeter.setText("");

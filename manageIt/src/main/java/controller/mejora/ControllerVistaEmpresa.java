@@ -43,7 +43,11 @@ public class ControllerVistaEmpresa {
     private Empresa empresa;
     private ArrayList<Usuario> empleados = new ArrayList<>();
 
-
+    /**
+     * Método que abre la vista de los empleados de la empresa
+     * @param event
+     * @throws IOException
+     */
     @FXML
     void verEmpleados(MouseEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/vista/mejora/empleados.fxml"), CambiarIdioma.getInstance().getBundle());
@@ -52,6 +56,12 @@ public class ControllerVistaEmpresa {
         controllerEmpleados.recibirData(this.data,this.empleados);
         this.data.getListaControladores().getControllerContenedor().rellenarContenido(root);
     }
+
+    /**
+     * Método que recibe informacion
+     * @param data
+     * @param empresa
+     */
     public void recibirData(Data data, Empresa empresa){
         this.data = data;
         this.empresa = empresa;
@@ -65,6 +75,10 @@ public class ControllerVistaEmpresa {
         }
         this.cargarDatos();
     }
+
+    /**
+     * Método que carga los datos
+     */
     public void cargarDatos(){
         this.imgFondo.setImage(this.empresa.getImagenFondo());
         this.imgFondo.setPreserveRatio(false);

@@ -37,6 +37,11 @@ public class LoginEmpresa {
     @FXML
     private MFXTextField introducirCorreo;
 
+    /**
+     * Método que inicia sesion como la empresa
+     * @param event
+     * @throws IOException
+     */
     @FXML
     void iniciarEmpresa(MouseEvent event) throws IOException {
         /** Iniciar sesion como la empresa  */
@@ -69,6 +74,11 @@ public class LoginEmpresa {
 
     }
 
+    /**
+     * Método que abre la vista de registro
+     * @param event
+     * @throws IOException
+     */
     @FXML
     void registrar(MouseEvent event) throws IOException {
         /*  Abrir formulario de registro */
@@ -90,6 +100,11 @@ public class LoginEmpresa {
 
     }
 
+    /**
+     * Método que vuelve al login de usuarios
+     * @param event
+     * @throws IOException
+     */
     @FXML
     void volverLogin(MouseEvent event) throws IOException {
         /*  volver login anterior */

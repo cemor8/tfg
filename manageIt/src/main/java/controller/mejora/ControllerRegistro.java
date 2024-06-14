@@ -57,13 +57,18 @@ public class ControllerRegistro {
     Map<String, String> columnasExpresiones = new HashMap<String, String>() {
         {
             put("correo", "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$");
-            put("nombre", "^.{5,15}$");
-            put("sector", "^.{5,10}$");
+            put("nombre", "^.{5,25}$");
+            put("sector", "^.{5,25}$");
             put("contraseña", "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[A-Za-z\\d]{8,}$");
         }
 
     };
 
+    /**
+     * Métood que registra una empresa
+     * @param event
+     * @throws IOException
+     */
     @FXML
     void registrarse(MouseEvent event) throws IOException {
         /** Comprobar datos y registrarse*/
@@ -135,6 +140,11 @@ public class ControllerRegistro {
 
     }
 
+    /**
+     * Método que vuelve al login
+     * @param event
+     * @throws IOException
+     */
     @FXML
     void volverLogin(MouseEvent event) throws IOException {
         /* Volver al login */

@@ -84,6 +84,11 @@ public class ControllerEditarEmpresas {
 
     };
 
+    /**
+     * Método que modifica o crea una empresa nueva
+     * @param event
+     * @throws IOException
+     */
     @FXML
     void crear(MouseEvent event) throws IOException {
         boolean error = false;
@@ -168,8 +173,18 @@ public class ControllerEditarEmpresas {
         this.introducirCorreo.setText("");
         this.introducirContraseña.setText("");
 
+        this.errorContraseña.setText("");
+        this.errorCorreo.setText("");
+        this.errorDescrp.setText("");
+        this.errorNombre.setText("");
+
+
     }
 
+    /**
+     * Método que pide seleccionar una imagen de perfil
+     * @param event
+     */
     @FXML
     void imagen(MouseEvent event) {
         FileChooser filechooser = new FileChooser();
@@ -184,6 +199,10 @@ public class ControllerEditarEmpresas {
 
         }
     }
+    /**
+     * Método que pide seleccionar una imagen de banner
+     * @param event
+     */
     @FXML
     void banner(MouseEvent event) {
         FileChooser filechooser = new FileChooser();
@@ -199,6 +218,11 @@ public class ControllerEditarEmpresas {
         }
     }
 
+    /**
+     * Método que vuelve al panel de admin
+     * @param event
+     * @throws IOException
+     */
     @FXML
     void volver(MouseEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/vista/mejora/panelAdmin.fxml"), CambiarIdioma.getInstance().getBundle());
@@ -207,6 +231,12 @@ public class ControllerEditarEmpresas {
         controllerPanelAdmin.recibirData(this.data);
         this.data.getListaControladores().getControllerContenedor().rellenarContenido(root);
     }
+
+    /**
+     * Método que se encarga de recibir la informacion
+     * @param data
+     * @param empresa
+     */
     public void recibirData(Data data, Empresa empresa){
         this.data = data;
         this.empresa = empresa;

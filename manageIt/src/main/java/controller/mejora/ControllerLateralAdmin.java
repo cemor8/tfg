@@ -37,6 +37,11 @@ public class ControllerLateralAdmin {
     private ImageView imagenSalir;
     private Data data;
 
+    /**
+     * Método que cierra sesion
+     * @param event
+     * @throws IOException
+     */
     @FXML
     void cerrar(MouseEvent event) throws IOException {
         this.data.setEmpresaSeleccionada(null);
@@ -60,6 +65,11 @@ public class ControllerLateralAdmin {
         stage1.close();
     }
 
+    /**
+     * Método que accede a la vista modificar empresas
+     * @param event
+     * @throws IOException
+     */
     @FXML
     void verEmpresas(MouseEvent event) throws IOException {
 

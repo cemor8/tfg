@@ -94,6 +94,11 @@ public class ControllerConfiguracionEmpresa {
         }
 
     };
+
+    /**
+     * Método que se encarga de pedir una imagen para modificarla en el banner de la empresa
+     * @param event
+     */
     @FXML
     void editarBanner(MouseEvent event) {
         FileChooser filechooser = new FileChooser();
@@ -109,6 +114,11 @@ public class ControllerConfiguracionEmpresa {
         }
     }
 
+    /**
+     * Método que guarda la imagen seleccionada para el banner
+     * @param event
+     * @throws IOException
+     */
     @FXML
     void guardarBanner(MouseEvent event) throws IOException {
         if (this.rutaImagen2!= null && !this.rutaImagen2.equalsIgnoreCase("")){
@@ -118,6 +128,10 @@ public class ControllerConfiguracionEmpresa {
         ConexionBase.modificarEmpresa(this.data.getEmpresaSeleccionada());
     }
 
+    /**
+     * Método que cambia el modo a claro
+     * @param event
+     */
     @FXML
     void cambiarClaro(MouseEvent event) {
         if (!this.data.isOscuro()){
@@ -129,6 +143,11 @@ public class ControllerConfiguracionEmpresa {
         this.data.getListaControladores().getControllerContenedor().meterEstilo("/styles/claro.css");
     }
 
+    /**
+     * Método que cambia el idioma a español
+     * @param event
+     * @throws IOException
+     */
     @FXML
     void cambiarEspañol(MouseEvent event) throws IOException {
         if (this.data.isEspañol()){
@@ -171,6 +190,11 @@ public class ControllerConfiguracionEmpresa {
         this.data.getListaControladores().getControllerContenedor().cargarLateralEmpresa();
     }
 
+    /**
+     * Método que cambia el idioma a ingles
+     * @param event
+     * @throws IOException
+     */
     @FXML
     void cambiarIngles(MouseEvent event) throws IOException {
         if (!this.data.isEspañol()){
@@ -212,6 +236,10 @@ public class ControllerConfiguracionEmpresa {
         this.data.getListaControladores().getControllerContenedor().cargarLateralEmpresa();
     }
 
+    /**
+     * método que cambia el tema a oscuro
+     * @param event
+     */
     @FXML
     void cambiarOscuro(MouseEvent event) {
         if (this.data.isOscuro()){
@@ -223,6 +251,10 @@ public class ControllerConfiguracionEmpresa {
         this.data.getListaControladores().getControllerContenedor().meterEstilo("/styles/oscuro.css");
     }
 
+    /**
+     * método que pide una imagen de perfil para cambiarla
+     * @param event
+     */
     @FXML
     void editarImagen(MouseEvent event) {
         FileChooser filechooser = new FileChooser();
@@ -237,6 +269,12 @@ public class ControllerConfiguracionEmpresa {
 
         }
     }
+
+    /**
+     * Método que se encarga de cambiar la contraseña
+     * @param event
+     * @throws IOException
+     */
     @FXML
     void guardarContraseña(MouseEvent event) throws IOException {
         if (!validarContenido(this.columnasExpresiones.get("contraseña"), this.introducirContraseña.getText())) {
@@ -247,6 +285,11 @@ public class ControllerConfiguracionEmpresa {
         ConexionBase.modificarEmpresa(this.data.getEmpresaSeleccionada());
     }
 
+    /**
+     * metodo que guarda el correo
+     * @param event
+     * @throws IOException
+     */
     @FXML
     void guardarCorreo(MouseEvent event) throws IOException {
         if (!validarContenido(this.columnasExpresiones.get("correo"), this.introducirCorreo.getText())) {
@@ -257,6 +300,11 @@ public class ControllerConfiguracionEmpresa {
         ConexionBase.modificarEmpresa(this.data.getEmpresaSeleccionada());
     }
 
+    /**
+     * Método que guarda el sector
+     * @param event
+     * @throws IOException
+     */
     @FXML
     void guardarSector(MouseEvent event) throws IOException {
         if (!validarContenido(this.columnasExpresiones.get("sector"), this.introducirSector.getText())) {
@@ -267,6 +315,11 @@ public class ControllerConfiguracionEmpresa {
         ConexionBase.modificarEmpresa(this.data.getEmpresaSeleccionada());
     }
 
+    /**
+     * Método que guarda la bio
+     * @param event
+     * @throws IOException
+     */
     @FXML
     void guardarBio(MouseEvent event) throws IOException {
         if (!validarContenido(this.columnasExpresiones.get("descripcion"), this.introducirBio.getText())) {
@@ -277,6 +330,11 @@ public class ControllerConfiguracionEmpresa {
         ConexionBase.modificarEmpresa(this.data.getEmpresaSeleccionada());
     }
 
+    /**
+     * Método que guarda la imagen
+     * @param event
+     * @throws IOException
+     */
     @FXML
     void guardarImagen(MouseEvent event) throws IOException {
         if (this.rutaImagen!= null && !this.rutaImagen.equalsIgnoreCase("")){
@@ -287,6 +345,11 @@ public class ControllerConfiguracionEmpresa {
         ConexionBase.modificarEmpresa(this.data.getEmpresaSeleccionada());
     }
 
+    /**
+     * Método que guarda el nombre
+     * @param event
+     * @throws IOException
+     */
     @FXML
     void guardarNombre(MouseEvent event) throws IOException {
         if (!validarContenido(this.columnasExpresiones.get("nombre"), this.introducirNombre2.getText())) {

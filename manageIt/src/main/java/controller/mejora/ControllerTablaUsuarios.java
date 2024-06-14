@@ -34,7 +34,11 @@ public class ControllerTablaUsuarios implements Initializable {
     private ObservableList<Usuario> usuariosObservable= FXCollections.observableArrayList();
 
 
-
+    /**
+     * Método que abre la vista para crear un usuario nuevo
+     * @param event
+     * @throws IOException
+     */
     @FXML
     void crear(MouseEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/vista/mejora/vistaModificacionUsuario.fxml"), CambiarIdioma.getInstance().getBundle());
@@ -44,6 +48,10 @@ public class ControllerTablaUsuarios implements Initializable {
         this.data.getListaControladores().getControllerContenedor().rellenarContenido(root);
     }
 
+    /**
+     * Método que elimina un usuario
+     * @param event
+     */
     @FXML
     void eliminar(MouseEvent event) {
         Usuario usuario = this.tabla.getSelectionModel().getSelectedItem();
@@ -57,6 +65,11 @@ public class ControllerTablaUsuarios implements Initializable {
 
     }
 
+    /**
+     * Método que abre la vista que modifica un usuario
+     * @param event
+     * @throws IOException
+     */
     @FXML
     void modificar(MouseEvent event) throws IOException {
         Usuario usuario = this.tabla.getSelectionModel().getSelectedItem();
@@ -95,6 +108,11 @@ public class ControllerTablaUsuarios implements Initializable {
         columnaDepartamento.setCellValueFactory(new PropertyValueFactory<>("departamento"));
 
     }
+
+    /**
+     * Método que recibe la informacion e inicializa los campos
+     * @param data
+     */
     public void recibirData(Data data){
         this.data = data;
         this.btnMeter.setText("");
