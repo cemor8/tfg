@@ -2,11 +2,11 @@ module com.example.manageit {
     requires javafx.controls;
     requires javafx.fxml;
     requires javafx.media;
-    requires MaterialFX;
     requires atlantafx.base;
     requires org.mongodb.driver.sync.client;
     requires org.mongodb.bson;
     requires org.mongodb.driver.core;
+    requires MaterialFX;
 
 
     opens mainApp to javafx.fxml;

@@ -709,8 +709,9 @@ Imagenes
     -fx-image: url(../images/menuLateral/NewProduct.png);
 
 }
+/*-fx-image: url(../images/menuLateral/CheckList.png);*/
 .tareas{
-    -fx-image: url(../images/menuLateral/CheckList.png);
+    -fx-image: url(../images/Checklist.png);
 }
 .notas{
     -fx-image: url(../images/menuLateral/Paper.png);
@@ -746,7 +747,7 @@ Imagenes
 }
 
 .tareasPresionado{
-    -fx-image: url(../images/menuLateral/CheckListV.png);
+    -fx-image: url(../images/menuLateral/ChecklistV.png);
 }
 .notasPresionado{
     -fx-image: url(../images/menuLateral/PaperV.png);
