@@ -178,6 +178,7 @@ public class ControllerNotas {
 
         this.tituloNota.setText("");
         this.tituloNota.setText(this.notaSeleccionada.getTitulo());
+        System.out.println(this.notaSeleccionada.getTitulo());
 
 
         this.descripcion.setText(this.notaSeleccionada.getDescripcion());

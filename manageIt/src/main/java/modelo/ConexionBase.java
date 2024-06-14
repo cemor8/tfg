@@ -373,6 +373,7 @@ public class ConexionBase {
                     nota.setDescripcion(notaUsuario.getString("descripcion"));
                     nota.setUsuario(ConexionBase.recibirUsuario(notaUsuario.getInteger("usuario_creador")));
                     nota.setImagen(ConexionBase.convertirImagen(notaUsuario.getString("imagen")));
+                    nota.setTitulo(notaUsuario.getString("titulo"));
                     String fechaStr = notaUsuario.getString("fecha_creacion");
                     SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
                     try {
@@ -539,6 +540,7 @@ public class ConexionBase {
                     nota.setDescripcion(notaUsuario.getString("descripcion"));
                     nota.setUsuario(ConexionBase.recibirUsuario(notaUsuario.getInteger("usuario_creador")));
                     nota.setImagen(ConexionBase.convertirImagen(notaUsuario.getString("imagen")));
+                    nota.setTitulo(notaUsuario.getString("titulo"));
                     String fechaStr = notaUsuario.getString("fecha_creacion");
                     SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
                     try {
